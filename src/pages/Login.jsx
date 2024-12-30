@@ -5,10 +5,14 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);  // Track loading state
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_API_URL;
+
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    setLoading(true);  // Start loading animation
 
     try {
       const response = await axios.post(`https://times-store-production.up.railway.app/api/auth/local`, {
@@ -18,10 +22,12 @@ const Login = () => {
 
       const token = response.data.jwt;
       localStorage.setItem('jwt', token);  
+      setLoading(false);  // Stop loading animation
       navigate('/');
     } catch (error) {
       console.error('Login error:', error);
       alert('Invalid Email Or Password');
+      setLoading(false);  // Stop loading animation
     }
   };
 
@@ -53,8 +59,15 @@ const Login = () => {
           <button
             type="submit"
             className="w-full py-3 bg-pink-600 text-white font-semibold rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            disabled={loading}  // Disable button while loading
           >
-            Login
+            {loading ? (
+              <div className="flex justify-center">
+                <div className="animate-spin border-t-2 border-white w-6 h-6 rounded-full"></div>
+              </div>
+            ) : (
+              'Login'
+            )}
           </button>
         </form>
         <div className="mt-4 text-center text-sm text-gray-600">
