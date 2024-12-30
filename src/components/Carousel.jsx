@@ -50,7 +50,7 @@ function Carousel() {
                 <div
                     className="flex transition-transform duration-500 ease-in-out"
                     style={{
-                        transform: `translateX(-${(100 / products.length) * currentIndex}%)`,
+                        transform: `translateX(-${(50 / products.length) * currentIndex}%)`,
                     }}
                 >
                     {products.map((product, index) => (
