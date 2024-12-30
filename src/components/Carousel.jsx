@@ -63,7 +63,7 @@ function Carousel() {
     };
 
     return (
-        <div className="relative w-[82%]">
+        <div className="relative md:w-[82%]">
             {loading && (
                 <div className="flex justify-center items-center">
                     <div className="w-12 h-12 border-4 border-t-4 border-gray-200 border-t-pink-500 rounded-full animate-spin"></div>
