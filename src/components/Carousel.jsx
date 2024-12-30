@@ -85,8 +85,7 @@ function Carousel() {
                 >
                     {products.length > 0 && (
                         <>
-                            {/* Clone the last item */}
-                            <div className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4 lg:w-1/5 p-2 group relative">
+                            <div className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4 p-2 group relative">
                                 <div className="relative">
                                     <img
                                         src={products[products.length - 1].image.url}
