@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Profile() {
@@ -151,7 +152,7 @@ function Profile() {
                   <h3 className="text-xl font-semibold">Order ID: {order.id}</h3>
                   <p>Products: {order.Products}</p>
                   <p>Total Price: Rs {order.TotalPrice}</p>
-                  <p>Status: {order.state ? order.state : 'Not provided'}</p>
+                  <Link to='canceledorders' className='text-blue-500 hover:underline'>Status</Link>
                   <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
                   <button
                     className="pl-2 pr-2 py-1.5 bg-red-500 text-white hover:bg-red-600 transition-all rounded-md mt-1"

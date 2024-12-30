@@ -163,17 +163,18 @@ function Checkout() {
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-8 rounded-lg shadow-lg w-1/3 text-center">
-            <h2 className="text-xl font-bold mb-4">Order Confirmed!</h2>
-            <p className="mb-4">Your order has been placed successfully. Thank you for shopping with us!</p>
-            <button
-              onClick={closeModal}
-              className="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600"
-            >
-              Close
-            </button>
-          </div>
+        <div className="bg-white sm:p-8 p-4 rounded-lg shadow-lg w-full sm:w-1/3 text-center">
+          <h2 className="text-xl font-bold mb-4">Order Confirmed!</h2>
+          <p className="mb-4">Your order has been placed successfully. Thank you for shopping with us!</p>
+          <button
+            onClick={closeModal}
+            className="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600"
+          >
+            Close
+          </button>
         </div>
+      </div>
+      
       )}
     </div>
   );
