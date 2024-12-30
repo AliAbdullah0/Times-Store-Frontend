@@ -102,7 +102,7 @@ function Carousel() {
 
                             {/* Show all products */}
                             {products.map((product, index) => (
-                                <div key={index} className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4 lg:w-1/5 p-2 group relative">
+                                <div key={index} className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4 p-2 group relative">
                                     <div className="relative">
                                         <img
                                             src={product.image.url}
@@ -119,7 +119,7 @@ function Carousel() {
                             ))}
 
                             {/* Clone the first item */}
-                            <div className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4 lg:w-1/5 p-2 group relative">
+                            <div className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4  p-2 group relative">
                                 <div className="relative">
                                     <img
                                         src={products[0].image.url}
