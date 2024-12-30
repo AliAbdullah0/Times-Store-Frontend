@@ -36,7 +36,7 @@ function Home() {
             </div>
         </div>
     </div>
-    <div className='w-[95%] flex items-center justify-center overflow-x-hidden'>
+    <div className='w-full flex items-center justify-center overflow-hidden'>
 <Carousel/>
 </div>
 <Feature/>
