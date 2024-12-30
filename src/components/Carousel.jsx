@@ -90,12 +90,12 @@ function Carousel() {
                                 <div className="relative">
                                     <img
                                         src={products[products.length - 1].image.url}
-                                        alt={products[products.length - 1].name}
+                                        alt={products[products.length - 1].title}
                                         className="w-full h-48 object-cover rounded-lg transition duration-300 group-hover:blur-sm"
                                     />
                                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         <h3 className="text-lg font-semibold dark:text-white bg-black bg-opacity-50 p-2 rounded-lg">
-                                            {products[products.length - 1].name}
+                                            {products[products.length - 1].title}
                                         </h3>
                                     </div>
                                 </div>
@@ -107,12 +107,12 @@ function Carousel() {
                                     <div className="relative">
                                         <img
                                             src={product.image.url}
-                                            alt={product.name}
+                                            alt={product.title}
                                             className="w-full h-48 object-cover rounded-lg transition duration-300 group-hover:blur-sm"
                                         />
                                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                             <h3 className="text-lg font-semibold dark:text-white bg-black bg-opacity-50 p-2 rounded-lg">
-                                                {product.name}
+                                                {product.title}
                                             </h3>
                                         </div>
                                     </div>
@@ -124,12 +124,12 @@ function Carousel() {
                                 <div className="relative">
                                     <img
                                         src={products[0].image.url}
-                                        alt={products[0].name}
+                                        alt={products[0].title}
                                         className="w-full h-48 object-cover rounded-lg transition duration-300 group-hover:blur-sm"
                                     />
                                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         <h3 className="text-lg font-semibold dark:text-white bg-black bg-opacity-50 p-2 rounded-lg">
-                                            {products[0].name}
+                                            {products[0].title}
                                         </h3>
                                     </div>
                                 </div>
