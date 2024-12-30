@@ -81,7 +81,7 @@ function Navigation({
 
       {mobileMenuOpen && (
         <div className="lg:hidden absolute top-24 w-full dark:bg-gray-800 dark:text-white text-gray-800 shadow-md z-40">
-          <nav className="flex flex-col items-center py-4 p-2 gap-2">
+          <nav className="flex flex-col items-center py-4 p-2 gap-2 dark:bg-gray-900 bg-white shadow-md">
             <Link to="/" className="py-2 px-4 w-full text-white bg-pink-500 rounded-md p-2">
               Home
             </Link>

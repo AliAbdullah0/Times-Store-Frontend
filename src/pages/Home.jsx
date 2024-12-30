@@ -1,6 +1,7 @@
 import React from 'react'
 import Products from './Products'
 import Feature from '../components/Feature'
+import Carousel from '../components/Carousel'
 
 function Home() {
   return (
@@ -28,12 +29,14 @@ function Home() {
                         Products
                     </a>
                 </div>
+                
             </div>
             <div class="hidden sm:block sm:w-1/3 lg:w-3/5 relative">
                 <img src="https://www.tailwind-kit.com/images/object/10.png" class="max-w-xs md:max-w-sm m-auto hover:-translate-y-2 hover:transition-all"/>
             </div>
         </div>
     </div>
+<Carousel/>
 <Feature/>
 </main>
   )
