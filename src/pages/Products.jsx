@@ -28,9 +28,9 @@ function Products() {
   }, []);
 
   const renderLoading = () => (
-    <div className="w-full min-h-[80vh] flex items-center justify-center">
-      <img src="imgs/1496.gif" alt="Loading" className="h-14" />
-    </div>
+    <div className="flex justify-center items-center">
+    <div className="w-12 h-12 border-4 border-t-4 border-gray-200 border-t-pink-500 rounded-full animate-spin"></div>
+</div>
   );
 
   const renderError = () => (

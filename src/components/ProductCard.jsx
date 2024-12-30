@@ -30,7 +30,7 @@ function ProductCard({ product }) {
             state: { product } 
           }}
         >
-          <button className="bg-pink-500 text-white text-sm md:text-base p-2 rounded-xl hover:bg-pink-600 hover:transition-all">
+          <button className="bg-pink-500 text-white text-xs md:text-base p-2 rounded-xl hover:bg-pink-600 hover:transition-all">
             Buy Now
           </button>
         </Link>
