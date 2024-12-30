@@ -22,6 +22,14 @@ function Carousel() {
     useEffect(() => {
         getProducts();
     }, []);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            handleNext();
+        }, 3000); // Change slides every 3 seconds
+    
+        return () => clearInterval(interval); // Cleanup on component unmount
+    }, [products.length]);
+    
 
     const handlePrev = () => {
         setCurrentIndex((prevIndex) => (prevIndex === 0 ? products.length - 1 : prevIndex - 1));
@@ -33,7 +41,9 @@ function Carousel() {
 
     return (
         <div className="relative">
-            {loading && <div className="absolute inset-0 flex items-center justify-center bg-gray-200 bg-opacity-50">Loading...</div>}
+            {loading && <div className="flex justify-center items-center">
+                    <div className="w-12 h-12 border-4 border-t-4 border-gray-200 border-t-pink-500 rounded-full animate-spin"></div>
+                </div>}
             {error && <div className="absolute inset-0 flex items-center justify-center bg-red-200 bg-opacity-75">{error}</div>}
 
             <div className="carousel-container overflow-hidden relative">
