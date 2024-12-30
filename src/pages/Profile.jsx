@@ -169,7 +169,7 @@ function Profile() {
               ))}
             </ul>
           ) : (
-            <p className="text-center">No orders found.</p>
+            <p className="text-center text-gray-200">No orders found.</p>
           )}
 
           {cancelingError && (
