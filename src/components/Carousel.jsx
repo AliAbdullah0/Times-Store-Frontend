@@ -5,8 +5,8 @@ function Carousel() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-    const [currentIndex, setCurrentIndex] = useState(1); // Start at 1 to avoid showing empty space initially
-    const [isTransitioning, setIsTransitioning] = useState(false); // To prevent jumps when transitioning
+    const [currentIndex, setCurrentIndex] = useState(1);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     const getProducts = async () => {
         setLoading(true);
@@ -25,12 +25,12 @@ function Carousel() {
     }, []);
 
     useEffect(() => {
-        if (products.length === 0) return; // Prevent interval from running if no products
+        if (products.length === 0) return;
         const interval = setInterval(() => {
             handleNext();
-        }, 3000); // Change slides every 3 seconds
+        }, 3000);
 
-        return () => clearInterval(interval); // Cleanup on component unmount
+        return () => clearInterval(interval);
     }, [products.length]);
 
     const handlePrev = () => {
@@ -38,7 +38,7 @@ function Carousel() {
         setIsTransitioning(true);
 
         setCurrentIndex((prevIndex) => {
-            const newIndex = prevIndex === 0 ? products.length : prevIndex - 1;
+            const newIndex = prevIndex === 1 ? products.length : prevIndex - 1;
             return newIndex;
         });
     };
@@ -48,12 +48,11 @@ function Carousel() {
         setIsTransitioning(true);
 
         setCurrentIndex((prevIndex) => {
-            const newIndex = prevIndex === products.length + 1 ? 1 : prevIndex + 1;
+            const newIndex = prevIndex === products.length ? 1 : prevIndex + 1;
             return newIndex;
         });
     };
 
-    // Handle transition end to reset smooth scroll
     const handleTransitionEnd = () => {
         if (currentIndex === 0) {
             setCurrentIndex(products.length);
@@ -82,51 +81,57 @@ function Carousel() {
                     style={{
                         transform: `translateX(-${(100 / (products.length + 2)) * currentIndex}%)`,
                     }}
-                    onTransitionEnd={handleTransitionEnd} // Reset index after transition
+                    onTransitionEnd={handleTransitionEnd}
                 >
                     {products.length > 0 && (
                         <>
                             {/* Clone the last item */}
-                            <div className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4 lg:w-1/5 p-2">
-                                <img
-                                    src={products[products.length - 1].image.url}
-                                    alt={products[products.length - 1].name}
-                                    className="w-full h-48 object-cover rounded-lg"
-                                />
-                                <div className="mt-2 text-center">
-                                    <h3 className="text-lg font-semibold dark:text-white">
-                                        {products[products.length - 1].name}
-                                    </h3>
-                                    <p className="text-sm text-pink-500">
-                                        Rs {products[products.length - 1].price}
-                                    </p>
+                            <div className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4 lg:w-1/5 p-2 group relative">
+                                <div className="relative">
+                                    <img
+                                        src={products[products.length - 1].image.url}
+                                        alt={products[products.length - 1].name}
+                                        className="w-full h-48 object-cover rounded-lg transition duration-300 group-hover:blur-sm"
+                                    />
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <h3 className="text-lg font-semibold dark:text-white bg-black bg-opacity-50 p-2 rounded-lg">
+                                            {products[products.length - 1].name}
+                                        </h3>
+                                    </div>
                                 </div>
                             </div>
 
                             {/* Show all products */}
                             {products.map((product, index) => (
-                                <div key={index} className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4 lg:w-1/5 p-2">
-                                    <img
-                                        src={product.image.url}
-                                        alt={product.name}
-                                        className="w-full h-48 object-cover rounded-lg"
-                                    />
-                                    <div className="mt-2 text-center">
-                                        <h3 className="text-lg font-semibold dark:text-white">{product.name}</h3>
-                                        <p className="text-sm text-pink-500">Rs {product.price}</p>
+                                <div key={index} className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4 lg:w-1/5 p-2 group relative">
+                                    <div className="relative">
+                                        <img
+                                            src={product.image.url}
+                                            alt={product.name}
+                                            className="w-full h-48 object-cover rounded-lg transition duration-300 group-hover:blur-sm"
+                                        />
+                                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <h3 className="text-lg font-semibold dark:text-white bg-black bg-opacity-50 p-2 rounded-lg">
+                                                {product.name}
+                                            </h3>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
 
-                            <div className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4 lg:w-1/5 p-2">
-                                <img
-                                    src={products[0].image.url}
-                                    alt={products[0].name}
-                                    className="w-full h-48 object-cover rounded-lg"
-                                />
-                                <div className="mt-2 text-center">
-                                    <h3 className="text-lg font-semibold dark:text-white">{products[0].name}</h3>
-                                    <p className="text-sm text-pink-300">Rs {products[0].price}</p>
+                            {/* Clone the first item */}
+                            <div className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4 lg:w-1/5 p-2 group relative">
+                                <div className="relative">
+                                    <img
+                                        src={products[0].image.url}
+                                        alt={products[0].name}
+                                        className="w-full h-48 object-cover rounded-lg transition duration-300 group-hover:blur-sm"
+                                    />
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <h3 className="text-lg font-semibold dark:text-white bg-black bg-opacity-50 p-2 rounded-lg">
+                                            {products[0].name}
+                                        </h3>
+                                    </div>
                                 </div>
                             </div>
                         </>
