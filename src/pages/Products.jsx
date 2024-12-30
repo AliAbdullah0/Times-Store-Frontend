@@ -52,7 +52,7 @@ function Products() {
     ));
 
   return (
-    <div className="w-full flex flex-col md:flex-row p-2 items-center md:items-start h-fit dark:bg-gray-800 gap-2">
+    <div className="w-full flex flex-col md:flex-row p-2 items-center md:items-start h-fit dark:bg-gray-800 gap-2 flex-wrap">
       {loading
         ? renderLoading()
         : error
