@@ -32,7 +32,7 @@ function Profile() {
 
   const fetchUserProfile = async (email) => {
     try {
-      const response = await fetch(`${apiUrl}/users/me`, {
+      const response = await fetch(`https://times-store-production.up.railway.app/api/users/me`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         },
@@ -51,7 +51,7 @@ function Profile() {
   const fetchUserOrders = async (email) => {
     try {
       setIsLoading(true);
-      const response = await axios.get(`${apiUrl}/orders?populate=*`);
+      const response = await axios.get(`https://times-store-production.up.railway.app/api/orders?populate=*`);
       const filteredOrders = response.data.data.filter((order) => order.Email === email);
       setOrders(filteredOrders);
     } catch (error) {
@@ -64,7 +64,7 @@ function Profile() {
   const fetchCanceledOrders = async () => {
     setIsCanceledLoading(true);
     try {
-      const response = await axios.get(`${apiUrl}/canceleds?populate=*`);
+      const response = await axios.get(`https://times-store-production.up.railway.app/api/canceleds?populate=*`);
       setCanceledOrders(response.data.data);
     } catch (error) {
       console.log(error);
@@ -89,7 +89,7 @@ function Profile() {
       if (!orderToCancel) throw new Error('Order not found');
 
       await axios.post(
-        `${apiUrl}/canceleds/`,
+        `https://times-store-production.up.railway.app/api/canceleds/`,
         {
           data: {
             Product: orderToCancel?.Products || 'N/A',

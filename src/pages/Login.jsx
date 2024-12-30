@@ -11,7 +11,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${apiUrl}/auth/local`, {
+      const response = await axios.post(`https://times-store-production.up.railway.app/api/auth/local`, {
         identifier: email,
         password,
       });

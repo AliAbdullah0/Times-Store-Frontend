@@ -12,7 +12,7 @@ const Registeration = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${apiUrl}/auth/local/register`, {
+      const response = await axios.post(`https://times-store-production.up.railway.app/api/auth/local/register`, {
         username,
         email,
         password,

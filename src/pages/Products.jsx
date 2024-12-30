@@ -14,7 +14,8 @@ function Products() {
     setLoading(true);
     try {
       const response = await fetchProducts();
-      setProducts(response.data.data);
+      setProducts(response.data.data || []);
+
     } catch (err) {
       setError('Error fetching products');
     } finally {

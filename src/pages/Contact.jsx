@@ -23,7 +23,7 @@ function Contact() {
     setFormSuccess(null);
 
     try {
-      const response = await axios.post(`${apiUrl}/feedbacks`, {
+      const response = await axios.post(`https://times-store-production.up.railway.app/api/feedbacks`, {
         data: {
           name,
           email,

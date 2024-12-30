@@ -12,7 +12,7 @@ function CanceledOrders() {
     const fetchCanceledOrders = async () => {
         setIsCanceledLoading(true);
         try {
-            const response = await axios.get(`${apiUrl}/canceleds?populate=*`);
+            const response = await axios.get(`https://times-store-production.up.railway.app/api/canceleds?populate=*`);
             setCanceledOrders(response.data.data);
         } catch (error) {
             console.log(error);
