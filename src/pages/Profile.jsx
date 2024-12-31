@@ -132,32 +132,32 @@ function Profile() {
       {isLoading ? (
         <div className="flex w-full justify-center items-center rounded-2xl">
 
-          <div class="mx-auto bg-gray-800 w-full rounded-2xl">
-            <div class="h-48 p-3 overflow-hidden bg-gray-900 rounded-2xl animate-pulse">
+          <div class="mx-auto bg-zinc-800 w-full rounded-2xl">
+            <div class="h-48 p-3 overflow-hidden bg-zinc-900 rounded-2xl animate-pulse">
             </div>
             <div class="p-3 h-full rounded-lg">
               <div class="grid grid-cols-3 gap-4 mt-2">
-                <div class="h-8 rounded bg-gray-900 animate-pulse">
+                <div class="h-8 rounded bg-zinc-900 animate-pulse">
                 </div>
-                <div class="h-8 rounded bg-gray-900 animate-pulse">
+                <div class="h-8 rounded bg-zinc-900 animate-pulse">
                 </div>
-                <div class="h-8 rounded bg-gray-900 animate-pulse">
+                <div class="h-8 rounded bg-zinc-900 animate-pulse">
                 </div>
-                <div class="h-8 col-span-2 bg-gray-900 rounded animate-pulse">
+                <div class="h-8 col-span-2 bg-zinc-900 rounded animate-pulse">
                 </div>
-                <div class="h-8 rounded bg-gray-900 animate-pulse">
+                <div class="h-8 rounded bg-zinc-900 animate-pulse">
                 </div>
-                <div class="h-8 rounded bg-gray-900 animate-pulse">
+                <div class="h-8 rounded bg-zinc-900 animate-pulse">
                 </div>
-                <div class="h-8 rounded bg-gray-900 animate-pulse">
+                <div class="h-8 rounded bg-zinc-900 animate-pulse">
                 </div>
-                <div class="h-8 col-span-2 bg-gray-900 rounded animate-pulse">
+                <div class="h-8 col-span-2 bg-zinc-900 rounded animate-pulse">
                 </div>
-                <div class="h-8 rounded bg-gray-900 animate-pulse">
+                <div class="h-8 rounded bg-zinc-900 animate-pulse">
                 </div>
-                <div class="h-8 col-span-2 bg-gray-900 rounded animate-pulse">
+                <div class="h-8 col-span-2 bg-zinc-900 rounded animate-pulse">
                 </div>
-                <div class="h-8 rounded bg-gray-900 animate-pulse">
+                <div class="h-8 rounded bg-zinc-900 animate-pulse">
                 </div>
               </div>
             </div>
@@ -179,7 +179,7 @@ function Profile() {
           {orders.length > 0 ? (
             <ul className="space-y-4">
               {orders.map((order) => (
-                <li key={order.id} className="p-4 border border-gray-300 text-white rounded-lg bg-black">
+                <li key={order.id} className=" border- border-transparent bg-clip-border p-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white rounded-lg bg-black">
                   <h3 className="text-xl font-semibold">Order ID: {order.id}</h3>
                   <p>Products: {order.Products}</p>
                   <p>Total Price: Rs {order.TotalPrice}</p>
