@@ -84,7 +84,6 @@ function Navigation({
                   </Link>
                 </>
               )}
-              <DarkModeToggle/>
             </nav>
             <button
               className="lg:hidden flex flex-col ml-4"
