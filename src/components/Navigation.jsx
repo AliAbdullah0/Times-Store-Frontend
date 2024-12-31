@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import DarkModeToggle from '../pages/Darkmode';
 
 function Navigation({
   links = ['Products', 'Orders', 'Contact'],
@@ -83,6 +84,7 @@ function Navigation({
                   </Link>
                 </>
               )}
+              <DarkModeToggle/>
             </nav>
             <button
               className="lg:hidden flex flex-col ml-4"
