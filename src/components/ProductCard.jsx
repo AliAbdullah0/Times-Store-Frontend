@@ -4,7 +4,7 @@ function ProductCard({ product }) {
   if (!product) return null;
 
   return (
-    <div className="flex flex-col md:w-[23%] w-10/12 justify-between ml-2 mr-2 drop-shadow-xl rounded-md p-2">
+    <div className="flex flex-col md:w-[23%] w-10/12 justify-between ml-2 mr-2 hover:scale-[1.03] hover:transition-all hover:shadow-2xl drop-shadow-xl rounded-md p-2">
       <div className='w-full overflow-hidden'>
         <img
           src={product.image?.url || 'default-image.png'}
