@@ -102,7 +102,7 @@ function Checkout() {
 
   return (
     <div className="max-w-4xl mt-2 mb-2 mx-auto p-6 bg-transparent shadow-lg">
-      <h1 className="text-3xl font-bold text-pink-500 mb-6 border-b-2 border-pink-500"><span className='text-white'>Check</span>kout</h1>
+      <h1 className="text-3xl font-bold text-pink-500 mb-6"><span className='text-white'>Chec</span>kout</h1>
       
       <div className="flex flex-col md:flex-row items-center mb-6">
         <div className="w-full md:w-1/2 p-4 overflow-hidden">
