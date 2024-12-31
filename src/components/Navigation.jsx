@@ -143,7 +143,7 @@ function Navigation({
                 </Link>
                 <Link
                   to="canceledorders"
-                  className="w-full py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-md"
+                  className="w-full py-2 px-4 dark:text-gray-300 bg-transparent border-2 border-pink-500 hover:bg-pink-500 rounded-md"
                   onClick={toggleMobileMenu}
                 >
                   Canceled
@@ -153,7 +153,7 @@ function Navigation({
                     handleLogout();
                     toggleMobileMenu();
                   }}
-                  className="w-full py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-md"
+                  className="w-full py-2 px-4 dark:text-gray-300 hover:bg-gray-700 border-white bg-transparent border-2 rounded-md"
                 >
                   Logout
                 </button>
