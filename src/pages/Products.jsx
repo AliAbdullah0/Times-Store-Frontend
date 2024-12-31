@@ -55,14 +55,16 @@ function Products() {
   );
 
   const filteredProducts = products.filter((product) => {
-    // Filter by search query
-    const matchesQuery = product.name.toLowerCase().includes(searchQuery.toLowerCase());
-
-    // Filter by selected filter
+    // Ensure product name and category are defined before applying .toLowerCase()
+    const matchesQuery = product.name && product.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = product.category && product.category.toLowerCase().includes(searchQuery.toLowerCase());
+  
+    // Filter by search query and selected filter
     if (selectedFilter === 'all') return matchesQuery;
-    if (selectedFilter === 'category' && product.category.toLowerCase().includes(searchQuery.toLowerCase())) return true;
+    if (selectedFilter === 'category' && matchesCategory) return true;
     return matchesQuery;
   });
+  
 
   const renderProducts = () =>
     filteredProducts.map((product) => (
