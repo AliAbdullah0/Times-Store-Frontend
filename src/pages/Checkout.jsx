@@ -105,23 +105,23 @@ function Checkout() {
       
       <div className="flex flex-col md:flex-row items-center mb-6">
         <div className="w-full md:w-1/2 p-4 overflow-hidden">
-          <h2 className="text-2xl font-semibold mb-2">{title}</h2>
+          <h2 className="text-2xl font-semibold mb-2 text-black">{title}</h2>
           <div className="overflow-hidden w-full">
             <img src={productImage} alt={title} className="w-full h-64 object-cover rounded-md hover:scale-105 hover:transition-all" />
           </div>
         </div>
         <div className="w-full md:w-1/2 p-4">
-          <p className="text-lg">Price: <span className="font-semibold">Rs {price}</span></p>
-          <p className="text-lg">Delivery Charge: <span className="font-semibold">Rs {deliveryCharge}</span></p>
-          <p className="text-lg">Total Price: <span className="font-semibold">Rs {totalPrice}</span></p>
-          <p className="text-lg">Product ID: <span className="font-semibold">{id}</span></p>
+          <p className="text-lg text-black">Price: <span className="font-semibold text-pink-500">Rs {price}</span></p>
+          <p className="text-lg text-black">Delivery Charge: <span className="font-semibold text-pink-500">Rs {deliveryCharge}</span></p>
+          <p className="text-lg text-black">Total Price: <span className="font-semibold text-pink-500">Rs {totalPrice}</span></p>
+          <p className="text-lg text-black">Product ID: <span className="font-semibold text-pink-500">{id}</span></p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="mb-4">
-          <p className="text-lg">Email: <span className="font-semibold">{userData.email}</span></p>
-          <p className="text-lg">Username: <span className="font-semibold">{userData.username}</span></p>
+          <p className="text-lg text-black">Email: <span className="font-semibold text-pink-500">{userData.email}</span></p>
+          <p className="text-lg text-black">Username: <span className="font-semibold text-pink-500">{userData.username}</span></p>
         </div>
 
         <div className="flex flex-col md:flex-row">
