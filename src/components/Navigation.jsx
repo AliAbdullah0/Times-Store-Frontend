@@ -45,7 +45,7 @@ function Navigation({
               <Link to="profile" className="pl-2 pr-2 py-1.5 text-sm hover:bg-pink-600 hover:transition-all rounded-md bg-pink-500 text-white">
               My Orders
             </Link>
-            <Link to="canceledorders" className="pl-2 pr-2 py-1.5 ml-2 text-sm hover:bg-red-600 hover:transition-all rounded-md bg-red-500 text-white">
+            <Link to="canceledorders" className="pl-2 pr-2 py-1.5 ml-2 text-sm hover:transition-all rounded-md hover:bg-pink-500 bg-transparent border-2 border-pink-500 dark:text-white">
               Canceled
             </Link>
              <button onClick={handleLogout} className="pl-2 ml-2 mr-1 pr-2 py-2 text-sm hover:bg-black hover:transition-all rounded-md bg-[#1a1919] text-white">

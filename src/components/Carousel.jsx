@@ -93,14 +93,14 @@ function Carousel() {
                                         className="w-full h-48 object-cover rounded-lg transition duration-300 group-hover:blur-sm"
                                     />
                                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <h3 className="text-lg font-semibold dark:text-white bg-black bg-opacity-50 p-2 rounded-lg">
+                                        <h3 className="text-lg font-semiboldtext-white bg-black bg-opacity-50 p-2 rounded-lg">
                                             {products[products.length - 1].title}
                                         </h3>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Show all products */}
+                     
                             {products.map((product, index) => (
                                 <div key={index} className="carousel-item flex-shrink-0 drop-shadow-xl w-full sm:w-1/3 md:w-1/4 p-2 group relative">
                                     <div className="relative">
@@ -110,7 +110,7 @@ function Carousel() {
                                             className="w-full h-48 object-cover rounded-lg transition duration-300 group-hover:blur-sm"
                                         />
                                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <h3 className="text-lg font-semibold dark:text-white bg-black bg-opacity-50 p-2 rounded-lg">
+                                            <h3 className="text-lg font-semibold text-white bg-black bg-opacity-50 p-2 rounded-lg">
                                                 {product.title}
                                             </h3>
                                         </div>
@@ -127,7 +127,7 @@ function Carousel() {
                                         className="w-full h-48 object-cover rounded-lg transition duration-300 group-hover:blur-sm"
                                     />
                                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <h3 className="text-lg font-semibold dark:text-white bg-black bg-opacity-50 p-2 rounded-lg">
+                                        <h3 className="text-lg font-semibold text-white bg-black bg-opacity-50 p-2 rounded-lg">
                                             {products[0].title}
                                         </h3>
                                     </div>
