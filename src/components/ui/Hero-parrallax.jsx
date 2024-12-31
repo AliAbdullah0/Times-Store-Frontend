@@ -1,14 +1,15 @@
 import React from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Link } from "react-router-dom";  
+import { TextGenerateEffect } from "./Text-generate-effect";
 export const Header = () => {
     return (
       <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
         <h1 className="text-2xl md:text-7xl font-boldtext-white">
-          ZENTIME <br /> WATCHES
+         <TextGenerateEffect words={'ZENTIME'} duration={0.5}/><br /><TextGenerateEffect words={'WATCHES'}/> 
         </h1>
         <p className="max-w-2xl text-base md:text-xl mt-8text-neutral-200">
-        Where timeless craftsmanship meets modern design.Our collection is curated to help you make a statement with your timepiece. Explore our selection of carefully crafted watches, each one designed to bring precision and style to your wrist.
+        <TextGenerateEffect words={'Where timeless craftsmanship meets modern design.Our collection is curated to help you make a statement with your timepiece. Explore our selection of carefully crafted watches, each one designed to bring precision and style to your wrist.'} duration={1}/>
         </p>
       </div>
     );
@@ -80,7 +81,7 @@ export const ProductCard = ({ product, translate }) => {
     >
       <Link to={`/product`} className="block group-hover/product:shadow-2xl">
         <img
-          src={product.image?.url || product.thumbnail} // Fallback for product image
+          src={product.image?.url || product.thumbnail} 
           height={600}
           width={600}
           className="object-cover object-left-top absolute h-full w-full inset-0"
