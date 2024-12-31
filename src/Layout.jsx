@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 
 function Layout() {
   return (
-    <div className='w-full flex flex-col bg-black overflow-x-hidden '>
+    <div className='w-full flex min-h-screen flex-col bg-black overflow-x-hidden '>
         <Navigation/>          
         <Outlet/>
         <Footer/>
