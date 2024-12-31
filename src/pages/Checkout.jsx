@@ -100,8 +100,8 @@ function Checkout() {
   };
 
   return (
-    <div className="max-w-4xl mt-2 mb-2 mx-auto p-6 bg-black border-white border-2 shadow-lg">
-      <h1 className="text-3xl font-bold text-center mb-6">Checkout</h1>
+    <div className="max-w-4xl mt-2 mb-2 mx-auto p-6 bg-black border-white border-[1px] shadow-lg">
+      <h1 className="text-3xl font-bold text-pink-500 mb-6 border-b-2 border-pink-500"><span className='text-white'>Check</span>kout</h1>
       
       <div className="flex flex-col md:flex-row items-center mb-6">
         <div className="w-full md:w-1/2 p-4 overflow-hidden">
@@ -111,17 +111,17 @@ function Checkout() {
           </div>
         </div>
         <div className="w-full md:w-1/2 p-4">
-          <p className="text-lg text-white">Price: <span className="font-semibold text-pink-">Rs {price}</span></p>
-          <p className="text-lg text-white">Delivery Charge: <span className="font-semibold text-pink-">Rs {deliveryCharge}</span></p>
-          <p className="text-lg text-white">Total Price: <span className="font-semibold text-pink-">Rs {totalPrice}</span></p>
-          <p className="text-lg text-white">Product ID: <span className="font-semibold text-pink-">{id}</span></p>
+          <p className="text-lg text-white">Price: <span className="font-semibold text-pink-500">Rs {price}</span></p>
+          <p className="text-lg text-white">Delivery Charge: <span className="font-semibold text-pink-500">Rs {deliveryCharge}</span></p>
+          <p className="text-lg text-white">Total Price: <span className="font-semibold text-pink-500">Rs {totalPrice}</span></p>
+          <p className="text-lg text-white">Product ID: <span className="font-semibold text-pink-500">{id}</span></p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="mb-4">
-          <p className="text-lg text-white">Email: <span className="font-semibold text-pink-">{userData.email}</span></p>
-          <p className="text-lg text-white">Username: <span className="font-semibold text-pink-">{userData.username}</span></p>
+          <p className="text-lg text-white">Email: <span className="font-semibold text-pink-500">{userData.email}</span></p>
+          <p className="text-lg text-white">Username: <span className="font-semibold text-pink-500">{userData.username}</span></p>
         </div>
 
         <div className="flex flex-col md:flex-row">
@@ -132,7 +132,7 @@ function Checkout() {
             value={formData.Address}
             onChange={handleChange}
             required
-            className="p-3 border border-gray-300 rounded-md w-full md:w-1/2 mr-2 mb-4 md:mb-0"
+            className="p-3 border border-gray-300 bg-transparent rounded-md w-full md:w-1/2 text-gray-200 mr-2 mb-4 md:mb-0"
           />
           <input
             type="text"
@@ -141,7 +141,7 @@ function Checkout() {
             value={formData.Phone}
             onChange={handleChange}
             required
-            className="p-3 border border-gray-300 rounded-md w-full md:w-1/2"
+            className="p-3 border border-gray-300 bg-transparent rounded-md w-full text-gray-200 md:w-1/2"
           />
         </div>
 
