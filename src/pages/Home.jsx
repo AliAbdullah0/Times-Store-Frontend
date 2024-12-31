@@ -5,7 +5,7 @@ import Carousel from '../components/Carousel'
 
 function Home() {
   return (
-    <main class="dark:bg-gray-800 bg-white relative overflow-x-h">
+    <main class="dark:bg-gray-800 bg-white  relative overflow-x-h">
     <div class="bg-white dark:bg-gray-800 flex relative z-20 items-center overflow-hidden">
         <div class="container mx-auto px-6 flex relative">
             <div class="sm:w-2/3 lg:w-2/5 flex flex-col relative z-20">
@@ -35,10 +35,13 @@ function Home() {
             </div>
         </div>
     </div>
-    <div className='w-full flex items-center justify-center overflow-hidden'>
+<div className='w-full flex items-center justify-center overflow-hidden'>
 <Carousel/>
 </div>
+<div className='w-full overflow-x-hidden flex items-center justify-center'>
 <Feature/>
+</div>
+
 </main>
   )
 }

@@ -32,7 +32,7 @@ function Navigation({
             to="/"
             className="uppercase text-gray-800 dark:text-white font-black sm:text-3xl text-2xl"
           >
-            Times
+            <span className='uppercase text-pink-500 font-black sm:text-3xl text-2xl'>ZEN</span>TIME
           </Link>
           <div className="flex items-center">
             <nav className="font-sen text-gray-800 dark:text-white uppercase text-lg lg:flex items-center hidden">
@@ -102,7 +102,7 @@ function Navigation({
           } transition-transform duration-300 ease-in-out`}
         >
           <div className="flex items-center justify-between p-4 border-b border-gray-700">
-            <h2 className="text-lg font-bold">Menu</h2>
+            <h2 className="text-lg font-bold"><span className='text-lg font-bold text-pink-500'>Zen</span>time</h2>
             <button
               onClick={toggleMobileMenu}
               className="text-white focus:outline-none"

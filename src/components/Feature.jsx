@@ -3,17 +3,17 @@ import React from 'react'
 function Feature() {
   return (
     
-<div class="relative max-w-screen-xl p-4 px-4 mx-auto bg-white dark:bg-gray-800 sm:px-6 lg:px-8 py-26 lg:mt-20">
+<div class="relative p-5 px-4 mx-auto bg-pink-600 sm:px-6 lg:px-8 py-26 w-full lg:mt-20 md:mt-10 mt-3">
     <div class="relative">
         <div class="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div class="ml-auto lg:col-start-2 lg:max-w-2xl">
                 <p class="text-base font-semibold leading-6 text-indigo-500 uppercase">
-                    Time
+                    ZENTIME
                 </p>
-                <h4 class="mt-2 text-2xl font-extrabold leading-8 text-gray-900 dark:text-white sm:text-3xl sm:leading-9">
+                <h4 class="mt-2 text-2xl font-extrabold leading-8 dark:text-white sm:text-3xl sm:leading-9">
                 Make a statement with our premium collection of sophisticated timepieces.
                 </h4>
-                <p class="mt-4 text-lg leading-6 text-gray-500 dark:text-gray-300">
+                <p class="mt-4 text-lg leading-6text-gray-300">
                 At Timeless Elegance, we believe a watch is more than just a timepiece—it's a statement of style, personality, and sophistication. Whether you're seeking a luxurious accessory, a reliable companion for daily wear, or a meaningful gift, we offer a curated collection of watches to suit every occasion and lifestyle.
                 </p>
                 <ul class="gap-6 mt-8 md:grid md:grid-cols-2">
@@ -25,7 +25,7 @@ function Feature() {
                                     </path>
                                 </svg>
                             </span>
-                            <span class="ml-4 text-base font-medium leading-6 text-gray-500 dark:text-gray-200">
+                            <span class="ml-4 text-base font-medium leading-6 text-gray-200">
                             Premium Quality
                             </span>
                         </div>
@@ -38,7 +38,7 @@ function Feature() {
                                     </path>
                                 </svg>
                             </span>
-                            <span class="ml-4 text-base font-medium leading-6 text-gray-500 dark:text-gray-200">
+                            <span class="ml-4 text-base font-medium leading-6 text-gray-200">
                             Diverse Selection
                             </span>
                         </div>
@@ -51,7 +51,7 @@ function Feature() {
                                     </path>
                                 </svg>
                             </span>
-                            <span class="ml-4 text-base font-medium leading-6 text-gray-500 dark:text-gray-200">
+                            <span class="ml-4 text-base font-medium leading-6 text-gray-200">
                             Affordable Luxury
                             </span>
                         </div>
@@ -64,7 +64,7 @@ function Feature() {
                                     </path>
                                 </svg>
                             </span>
-                            <span class="ml-4 text-base font-medium leading-6 text-gray-500 dark:text-gray-200">
+                            <span class="ml-4 text-base font-medium leading-6 text-gray-200">
                             Trusted by Customers
                             </span>
                         </div>
@@ -74,12 +74,12 @@ function Feature() {
             <div class="relative mt-10 lg:-mx-4 relative-20 lg:mt-0 lg:col-start-1">
                 <div class="relative space-y-4 ">
                     <div class="flex items-end justify-center space-x-4 pl-3 pr-3 lg:justify-start">
-                        <img class="w-32 rounded-lg shadow-lg md:w-56 ml-3" width="200" src="imgs/9t229bdi.png" alt="1"/>
-                        <img class="w-40 rounded-lg shadow-lg md:w-64" width="260" src="imgs/75zzl617.png" alt="2"/>
+                        <img class="w-32 rounded-lg shadow-lg md:w-56 ml-3" width="200" src="https://images.pexels.com/photos/2155319/pexels-photo-2155319.jpeg?auto=compress&cs=tinysrgb&w=600" alt="1"/>
+                        <img class="w-40 rounded-lg shadow-lg md:w-64" width="260" src="https://images.pexels.com/photos/23474/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600" alt="2"/>
                     </div>
                     <div class="flex items-start justify-center ml-12 pr-3 space-x-4 lg:justify-start">
-                        <img class="w-24 rounded-lg shadow-lg md:w-40" width="170" src="imgs/jordan-brand-pic 3.jpg" alt="3"/>
-                        <img class="w-32 rounded-lg shadow-lg md:w-56" width="200" src="imgs/jordan-brand-ppic 5.png" alt="4"/>
+                        <img class="w-24 rounded-lg shadow-lg md:w-40 " width="170" src="https://images.pexels.com/photos/29968347/pexels-photo-29968347/free-photo-of-dramatic-portrait-of-man-in-black-hat.jpeg?auto=compress&cs=tinysrgb&w=600" alt="3"/>
+                        <img class="w-32 rounded-lg shadow-lg md:w-56" width="200" src="https://images.pexels.com/photos/971197/pexels-photo-971197.jpeg?auto=compress&cs=tinysrgb&w=600" alt="4"/>
                     </div>
                 </div>
             </div>
