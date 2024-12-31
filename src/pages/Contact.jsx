@@ -45,7 +45,7 @@ function Contact() {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto p-6">
+    <div className="w-full max-w-7xl mx-auto p-6 bg-black">
       <h1 className="text-3xl font-extrabold text-pink-500 mb-6">Contact Us</h1>
 
       <div className="bg-gray-50 p-6 rounded-lg shadow-md">

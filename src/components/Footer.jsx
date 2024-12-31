@@ -7,7 +7,7 @@ function Footer({
 }) {
   return (
     
-<footer class="bg-white dark:bg-gray-800 w-full py-8 ">
+<footer class="bg-white dark:bg-black w-full py-8 ">
     <div class="max-w-screen-xl px-4 mx-auto">
         <ul class="flex flex-wrap justify-between max-w-screen-md mx-auto text-lg font-light">
             {

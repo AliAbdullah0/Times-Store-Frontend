@@ -100,7 +100,7 @@ function Checkout() {
   };
 
   return (
-    <div className="max-w-4xl mt-2 mb-2 mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <div className="max-w-4xl mt-2 mb-2 mx-auto p-6 bg-white shadow-lg">
       <h1 className="text-3xl font-bold text-center mb-6">Checkout</h1>
       
       <div className="flex flex-col md:flex-row items-center mb-6">

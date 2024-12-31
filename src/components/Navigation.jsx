@@ -27,7 +27,7 @@ function Navigation({
 
   return (
     <>
-      <header className="h-24 dark:bg-gray-800 sm:h-32 flex items-center z-30 w-full">
+      <header className="h-24 dark:bg-black sm:h-32 flex items-center z-30 w-full">
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link
             to="/"
@@ -99,7 +99,7 @@ function Navigation({
 
         {/* Mobile Drawer */}
         <div
-          className={`fixed top-0 left-0 h-full bg-gray-800 dark:bg-gray-900 text-white w-3/4 z-50 transform ${
+          className={`fixed top-0 left-0 h-full bg-black text-white w-3/4 z-50 transform ${
             mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
           } transition-transform duration-300 ease-in-out`}
         >
