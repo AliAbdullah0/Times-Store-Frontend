@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DarkModeToggle from '../pages/Darkmode';
-import { MovingBorder } from './ui/MovingBorders';
 
 function Navigation({
   links = ['Products', 'Orders', 'Contact'],
@@ -49,12 +48,12 @@ function Navigation({
               </Link>
               {isVerified && (
                 <>
-                  <MovingBorder children={<Link
-                  to="profile"
-                  onClick={toggleMobileMenu}
-                >
-                  Profile
-                </Link>}/>
+                  <Link
+                    to="profile"
+                    className="pl-2 pr-2 py-1.5 text-sm hover:bg-pink-600 hover:transition-all rounded-md bg-pink-500 text-white"
+                  >
+                    My Profile
+                  </Link>
                   <Link
                     to="canceledorders"
                     className="pl-2 pr-2 py-1.5 ml-2 text-sm hover:transition-all rounded-md hover:bg-pink-500 bg-transparent border-2 border-pink-500 dark:text-white"
@@ -135,12 +134,13 @@ function Navigation({
             </Link>
             {isVerified ? (
               <>
-                <MovingBorder children={<Link
+                <Link
                   to="profile"
+                  className="w-full py-2 px-4 text-white bg-pink-500 rounded-md"
                   onClick={toggleMobileMenu}
                 >
                   My Orders
-                </Link>}/>
+                </Link>
                 <Link
                   to="canceledorders"
                   className="w-full py-2 px-4 dark:text-gray-300 bg-transparent border-2 border-pink-500 hover:bg-pink-500 rounded-md"
