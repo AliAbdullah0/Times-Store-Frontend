@@ -31,7 +31,7 @@ function Home() {
   }, []); 
 
   return (
-    <main className="bg-black relative overflow-x-hidden space-y-16">
+    <main className="bg-black relative overflow-x-hidden">
       {loading &&(<div className="flex w-full justify-center items-center mt-8">
     <div className="w-12 h-12 border-4 border-t-4 border-gray-200 border-t-pink-500 rounded-full animate-spin"></div>
 </div>)}

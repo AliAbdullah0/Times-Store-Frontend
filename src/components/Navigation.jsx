@@ -52,7 +52,7 @@ function Navigation({
                     to="profile"
                     className="pl-2 pr-2 py-1.5 text-sm hover:bg-pink-600 hover:transition-all rounded-md bg-pink-500 text-white"
                   >
-                    My Orders
+                    My Profile
                   </Link>
                   <Link
                     to="canceledorders"
@@ -62,7 +62,7 @@ function Navigation({
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="pl-2 ml-2 mr-1 pr-2 py-2 text-sm hover:bg-black hover:transition-all rounded-md bg-[#1a1919] text-white"
+                    className="pl-2 ml-2 mr-1 pr-2 py-2 text-sm  hover:bg-white hover:text-black hover:transition-all rounded-md bg-transparent text-white"
                   >
                     Logout
                   </button>
@@ -78,7 +78,7 @@ function Navigation({
                   </Link>
                   <Link
                     to="register"
-                    className="pl-2 ml-2 mr-1 pr-2 py-2 text-sm hover:bg-black hover:transition-all rounded-md bg-[#1a1919] text-white"
+                    className="pl-2 ml-2 mr-1 pr-2 py-2 text-sm hover:bg-white hover:text-black hover:transition-all rounded-md bg-transparent text-white"
                   >
                     Register
                   </Link>
