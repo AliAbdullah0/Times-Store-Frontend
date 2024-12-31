@@ -6,6 +6,8 @@ import Carousel from '../components/Carousel';
 import { HeroParallax } from '../components/ui/Hero-parrallax';
 import { fetchProducts } from '../api';
 import { CanvasRevealEffectDemo3 } from '../components/CanvasRevealEffectDemo3';
+import { BackgroundLines } from '../components/ui/Background-lines';
+import { TextGenerateEffect } from '../components/ui/Text-generate-effect';
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -37,7 +39,7 @@ function Home() {
 </div>)}
       {error && <p>{error}</p>}
       <HeroParallax products={items} />
-        <CanvasRevealEffectDemo3/>
+      <BackgroundLines children={<TextGenerateEffect words={'Time is a canvas, and each moment is a stroke of your masterpiece.'}/>} />
       <div className="w-full overflow-x-hidden flex items-center justify-center">
         <Feature />
       </div>

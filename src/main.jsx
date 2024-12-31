@@ -22,11 +22,11 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path='/' element={<Layout/>}>
             <Route index element={<Home/>}/>
-            <Route path='product' element={<Products/>}/>
+            <Route path='product' element={<BackgroundBeamsWithCollision children={<Products/>}/>}/>
             <Route path='product/checkout/:id/:title/:price/:image' element={<BackgroundBeamsWithCollision children={<Checkout/>}/>}/>
             <Route path='register' element={<Registeration/>} />
             <Route path='login' element={<Login/>} />
-            <Route path='profile' element={<Profile/>} />
+            <Route path='profile' element={<BackgroundBeamsWithCollision children={<Profile/>}/>} />
             <Route path='canceledorders' element={<CanceledOrders/>} />
             <Route path='contact' element={ <BackgroundBeamsWithCollision children={<Contact/>}/>}/>
             <Route path='*' element={<Error/>}/>

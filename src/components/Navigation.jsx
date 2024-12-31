@@ -96,13 +96,12 @@ function Navigation({
           </div>
         </div>
 
-        {/* Mobile Drawer */}
         <div
-          className={`fixed top-0 left-0 h-full dark:bg-black text-white w-3/4 z-50 transform ${
+          className={`fixed top-0 left-0 h-full bg-black text-white w-3/4 z-50 transform ${
             mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
           } transition-transform duration-300 ease-in-out`}
         >
-          <div className="flex items-center justify-between p-4 border-b border-gray-700">
+          <div className="flex items-center justify-between p-4 border-b border-gray-400">
             <h2 className="text-lg font-bold"><span className='text-lg font-bold text-pink-500'>Zen</span>time</h2>
             <button
               onClick={toggleMobileMenu}
@@ -121,14 +120,14 @@ function Navigation({
             </Link>
             <Link
               to="/product"
-              className="w-full py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-md"
+              className="w-full py-2 px-4 text-gray-300 hover:border hover:border-pink-500 rounded-md"
               onClick={toggleMobileMenu}
             >
               Product
             </Link>
             <Link
               to="/contact"
-              className="w-full py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-md"
+              className="w-full py-2 px-4 text-gray-300 hover:border hover:border-pink-500 rounded-md"
               onClick={toggleMobileMenu}
             >
               Contact

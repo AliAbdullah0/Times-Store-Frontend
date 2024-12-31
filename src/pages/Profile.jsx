@@ -169,9 +169,9 @@ function Profile() {
       ) : (
         <>
           {user && (
-            <div className="mb-6 bg-gray-100 p-4 rounded-lg shadow text-black">
-              <h2 className="text-2xl font-semibold text-black"><span className='text-2xl font-semibold text-pink-500'>Hello,</span> {user.username}</h2>
-              <p className="italic text-black">{user.email}</p>
+            <div className="mb-6 bg-transparent p-4 rounded-lg shadow text-white">
+              <h2 className="text-2xl font-semibold text-indigo-500"><span className='text-2xl font-semibold text-blue-500'>Hello,</span> {user.username}</h2>
+              <p className="italic text-indigo-500">{user.email}</p>
             </div>
           )}
 
@@ -179,7 +179,7 @@ function Profile() {
           {orders.length > 0 ? (
             <ul className="space-y-4">
               {orders.map((order) => (
-                <li key={order.id} className="p-4 border border-gray-300 text-black rounded-lg bg-gray-50">
+                <li key={order.id} className="p-4 border border-gray-300 text-white rounded-lg bg-black">
                   <h3 className="text-xl font-semibold">Order ID: {order.id}</h3>
                   <p>Products: {order.Products}</p>
                   <p>Total Price: Rs {order.TotalPrice}</p>
