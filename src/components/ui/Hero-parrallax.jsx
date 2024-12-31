@@ -6,10 +6,10 @@ export const Header = () => {
     return (
       <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
         <h1 className="text-2xl md:text-7xl font-boldtext-white">
-         <TextGenerateEffect words={'ZENTIME'} duration={0.5}/><br /><TextGenerateEffect words={'WATCHES'}/> 
+         <TextGenerateEffect words={'ZENTIME'} duration={0.5} className={'text-2xl md:text-7xl font-boldtext-white'}/><br /><TextGenerateEffect className={'text-2xl md:text-7xl font-boldtext-white'} words={'WATCHES'}/> 
         </h1>
-        <p className="max-w-2xl text-base md:text-xl mt-8text-neutral-200">
-        <TextGenerateEffect words={'Where timeless craftsmanship meets modern design.Our collection is curated to help you make a statement with your timepiece. Explore our selection of carefully crafted watches, each one designed to bring precision and style to your wrist.'} duration={1}/>
+        <p className="max-w-2xl text-base md:text-xl mt-8 text-neutral-200">
+        <TextGenerateEffect words={'Where timeless craftsmanship meets modern design.Our collection is curated to help you make a statement with your timepiece. Explore our selection of carefully crafted watches, each one designed to bring precision and style to your wrist.'} className={'max-w-2xl text-base md:text-xl mt-8 text-neutral-200'} duration={1}/>
         </p>
       </div>
     );
