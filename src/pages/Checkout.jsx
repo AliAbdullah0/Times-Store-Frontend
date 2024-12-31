@@ -181,12 +181,4 @@ function Checkout() {
   );
 }
 
-function RenderCheckout(){
-  return(
-    <>
-      <BackgroundBeamsWithCollision children={Checkout} />
-    </>
-  )
-}
-
 export default Checkout;

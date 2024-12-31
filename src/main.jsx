@@ -14,6 +14,7 @@ import Profile from './pages/Profile.jsx'
 import CanceledOrders from './pages/CanceledOrders.jsx'
 import Contact from './pages/Contact.jsx'
 import { Analytics } from "@vercel/analytics/react"
+import { BackgroundBeamsWithCollision } from './components/ui/Background-beams-with-collision.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -22,7 +23,7 @@ createRoot(document.getElementById('root')).render(
         <Route path='/' element={<Layout/>}>
             <Route index element={<Home/>}/>
             <Route path='product' element={<Products/>}/>
-            <Route path='product/checkout/:id/:title/:price/:image' element={<Checkout/>}/>
+            <Route path='product/checkout/:id/:title/:price/:image' element={<BackgroundBeamsWithCollision children={<Checkout/>}/>}/>
             <Route path='register' element={<Registeration/>} />
             <Route path='login' element={<Login/>} />
             <Route path='profile' element={<Profile/>} />
