@@ -33,7 +33,7 @@ const Registeration = () => {
   };
 
   return (
-    <div className="flex flex-wrap w-full">
+    <div className="flex flex-wrap w-full p-3">
       {/* Left Section */}
       <div className="flex flex-col w-full md:w-1/2">
         <div className="flex justify-center pt-12 md:justify-start md:pl-12 md:-mb-24">
@@ -111,7 +111,7 @@ const Registeration = () => {
                   <div className="animate-spin border-t-2 border-white border-2 w-5 h-5 rounded-full"></div>
                 </div>
               ) : (
-                'Submit'
+                'Create'
               )}
             </button>
           </form>
