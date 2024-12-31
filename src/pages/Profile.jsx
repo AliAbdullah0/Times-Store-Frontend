@@ -133,7 +133,7 @@ function Profile() {
         <div className="flex w-full justify-center items-center rounded-2xl">
 
           <div class="mx-auto bg-white dark:bg-gray-800 w-full shadow-lg rounded-2xl">
-            <div class="h-48 p-3 overflow-hidden bg-gray-200 dark:bg-gray-800 animate-pulse">
+            <div class="h-48 p-3 overflow-hidden bg-gray-200 dark:bg-gray-900 animate-pulse">
             </div>
             <div class="p-3 h-full">
               <div class="grid grid-cols-3 gap-4 mt-2">
@@ -155,7 +155,7 @@ function Profile() {
                 </div>
                 <div class="h-8 bg-gray-200 rounded dark:bg-gray-900 animate-pulse">
                 </div>
-                <div class="col-span-2 ...">
+                <div class="h-8 col-span-2 bg-gray-200 dark:bg-gray-900 rounded animate-pulse">
                 </div>
               </div>
             </div>
