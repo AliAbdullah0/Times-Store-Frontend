@@ -139,7 +139,7 @@ function Navigation({
                   className="w-full py-2 px-4 text-white bg-pink-500 rounded-md"
                   onClick={toggleMobileMenu}
                 >
-                  My Orders
+                  Profile
                 </Link>
                 <Link
                   to="canceledorders"
