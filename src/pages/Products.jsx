@@ -3,7 +3,7 @@ import ProductCard from '../components/ProductCard';
 import { fetchProducts } from '../api';
 import Error from '../pages/Error';
 import ProductsNotFound from '../components/ProductsNotFound';
-
+import Checkout from './Checkout';
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -28,16 +28,19 @@ function Products() {
     getProducts();
   }, []);
 
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-  };
+  const filteredProducts = products.filter((product) => {
+    // Ensure product name and category are defined before applying .toLowerCase()
+    const matchesQuery = product.name && product.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = product.category && product.category.toLowerCase().includes(searchQuery.toLowerCase());
 
-  const handleFilterChange = (e) => {
-    setSelectedFilter(e.target.value);
-  };
+    // Filter by search query and selected filter
+    if (selectedFilter === 'all') return matchesQuery;
+    if (selectedFilter === 'category' && matchesCategory) return true;
+    return matchesQuery;
+  });
 
   const renderLoading = () => (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center h-full">
       <div className="w-12 h-12 border-4 border-t-4 border-gray-200 border-t-pink-500 rounded-full animate-spin"></div>
     </div>
   );
@@ -54,46 +57,35 @@ function Products() {
     </div>
   );
 
-  const filteredProducts = products.filter((product) => {
-    // Ensure product name and category are defined before applying .toLowerCase()
-    const matchesQuery = product.name && product.name.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = product.category && product.category.toLowerCase().includes(searchQuery.toLowerCase());
-  
-    // Filter by search query and selected filter
-    if (selectedFilter === 'all') return matchesQuery;
-    if (selectedFilter === 'category' && matchesCategory) return true;
-    return matchesQuery;
-  });
-  
-
   const renderProducts = () =>
     filteredProducts.map((product) => (
       <ProductCard key={product.id} product={product} />
     ));
 
   return (
-    <div className="w-full flex flex-col p-2 items-center md:items-start h-fit dark:bg-gray-800 gap-2 flex-wrap">
+    <div className="w-full flex flex-col md:flex-row p-2 items-center md:items-start h-fit dark:bg-gray-800 gap-2 flex-wrap">
       {/* Search Bar */}
-      <div className="mb-4 flex gap-2">
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={handleSearch}
-          placeholder="Search for products..."
-          className="p-2 border rounded-lg w-64"
-        />
-        <select
-          value={selectedFilter}
-          onChange={handleFilterChange}
-          className="p-2 border rounded-lg"
-        >
-          <option value="all">All</option>
-          <option value="category">Category</option>
-          {/* Add more filter options as needed */}
-        </select>
+      <div className="w-full mb-4 flex flex-col items-center">
+        <div className="relative w-full max-w-md">
+          <input
+            type="text"
+            className="w-full p-3 pr-10 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <select
+            className="absolute right-3 top-2 p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={selectedFilter}
+            onChange={(e) => setSelectedFilter(e.target.value)}
+          >
+            <option value="all">All</option>
+            <option value="category">Category</option>
+          </select>
+        </div>
       </div>
 
-      {/* Render Products */}
+      {/* Products */}
       {loading
         ? renderLoading()
         : error
