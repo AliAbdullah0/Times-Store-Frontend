@@ -1,6 +1,22 @@
 import React from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";  // Adjust according to your router setup
+
+export const Header = () => {
+    return (
+      <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
+        <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
+          The Ultimate <br /> development studio
+        </h1>
+        <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
+          We build beautiful products with the latest technologies and frameworks.
+          We are a team of passionate developers and designers that love to build
+          amazing products.
+        </p>
+      </div>
+    );
+  };
+  
 
 export const HeroParallax = ({ products }) => {
   const firstRow = products.slice(0, 5);
@@ -53,21 +69,6 @@ export const HeroParallax = ({ products }) => {
   );
 };
 
-export const Header = () => {
-  return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
-        The Ultimate <br /> development studio
-      </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        We build beautiful products with the latest technologies and frameworks.
-        We are a team of passionate developers and designers that love to build
-        amazing products.
-      </p>
-    </div>
-  );
-};
-
 export const ProductCard = ({ product, translate }) => {
   return (
     <motion.div
@@ -80,9 +81,9 @@ export const ProductCard = ({ product, translate }) => {
       key={product.id}
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
-      <Link href='/product' className="block group-hover/product:shadow-2xl">
+      <Link to={`/product`} className="block group-hover/product:shadow-2xl">
         <img
-          src={product.image.url}
+          src={product.image?.url || product.thumbnail} // Fallback for product image
           height={600}
           width={600}
           className="object-cover object-left-top absolute h-full w-full inset-0"
