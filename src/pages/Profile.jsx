@@ -76,11 +76,11 @@ function Profile() {
 
   const handleOrderCancellation = async (orderId) => {
     try {
-      setCancelingError(false); 
+      setCancelingError(false);
 
       if (canceledOrders.some((order) => order.OrderId === orderId)) {
         setCancelingError(true);
-        setIsModalOpen(true); 
+        setIsModalOpen(true);
         return;
       }
 
@@ -122,7 +122,7 @@ function Profile() {
   };
 
   const closeModal = () => {
-    setIsModalOpen(false); 
+    setIsModalOpen(false);
   };
 
   return (
@@ -130,17 +130,40 @@ function Profile() {
       <h1 className="text-3xl font-extrabold text-pink-500 mb-6">Your Profile</h1>
 
       {isLoading ? (
-        <div className="flex justify-center items-center">
-        <div className="w-12 h-12 border-4 border-t-4 border-gray-200 border-t-pink-500 rounded-full animate-spin"></div>
-    </div>
+        <div className="flex w-full justify-center items-center">
+
+          <div class="mx-auto bg-white w-full shadow-lg rounded-2xl">
+            <div class="h-48 p-3 overflow-hidden bg-gray-200 animate-pulse">
+            </div>
+            <div class="p-3 h-full">
+              <div class="grid grid-cols-3 gap-4 mt-2">
+                <div class="h-8 bg-gray-200 rounded animate-pulse">
+                </div>
+                <div class="h-8 bg-gray-200 rounded animate-pulse">
+                </div>
+                <div class="h-8 bg-gray-200 rounded animate-pulse">
+                </div>
+                <div class="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                </div>
+                <div class="h-8 bg-gray-200 rounded  animate-pulse">
+                </div>
+                <div class="...">
+                </div>
+                <div class="col-span-2 ...">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       ) : error ? (
         <div className="text-center text-red-500">{error}</div>
       ) : (
         <>
           {user && (
-            <div className="mb-6 bg-gray-100 p-4 rounded-lg shadow">
-              <h2 className="text-2xl font-semibold">Hello, {user.username}</h2>
-              <p className="italic">{user.email}</p>
+            <div className="mb-6 bg-gray-100 p-4 rounded-lg shadow text-black">
+              <h2 className="text-2xl font-semibold text-black"><span className='text-2xl font-semibold text-pink-500'>Hello,</span> {user.username}</h2>
+              <p className="italic text-black">{user.email}</p>
             </div>
           )}
 
@@ -155,9 +178,9 @@ function Profile() {
                   <a href='/canceledorders' className='text-blue-500 hover:underline'>Status</a>
                   <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
                   <button
-                    className="pl-2 pr-2 py-1.5 bg-red-500  hover:bg-red-600 transition-all rounded-md mt-1"
+                    className="pl-2 pr-2 py-1.5 bg-red-500 text-white hover:bg-red-600 transition-all rounded-md mt-1"
                     onClick={() => handleOrderCancellation(order.id)}
-                    disabled={cancelingError==true} // Disable button if this order is being canceled
+                    disabled={cancelingError == true} // Disable button if this order is being canceled
                   >
                     {cancelingOrderId === order.id ? (
                       <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-white border-opacity-75"></div>
@@ -178,7 +201,6 @@ function Profile() {
             </div>
           )}
 
-          {/* Modal */}
           {isModalOpen && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
               <div className="bg-white p-6 rounded-lg shadow-lg">
@@ -186,7 +208,7 @@ function Profile() {
                 <p className="text-center mt-4">This order has already been canceled.</p>
                 <div className="mt-4 text-center">
                   <button
-                    className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+                    className="bg-black text-white py-2 px-4 rounded-md hover:bg-white hover:text-black hover:transition-all"
                     onClick={closeModal}
                   >
                     Close

@@ -95,7 +95,7 @@ const Login = () => {
             >
               {loading ? (
                 <div className="flex justify-center">
-                  <div className="animate-spin border-t-2 border-white border-2 w-5 h-5 rounded-full"></div>
+                  <div className="animate-spin border-t-2 border-black border-2 w-5 h-5 rounded-full"></div>
                 </div>
               ) : (
                 'Login'
