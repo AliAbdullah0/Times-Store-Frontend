@@ -130,24 +130,30 @@ function Profile() {
       <h1 className="text-3xl font-extrabold text-pink-500 mb-6">Your Profile</h1>
 
       {isLoading ? (
-        <div className="flex w-full justify-center items-center">
+        <div className="flex w-full justify-center items-center rounded-2xl">
 
-          <div class="mx-auto bg-white w-full shadow-lg rounded-2xl">
-            <div class="h-48 p-3 overflow-hidden bg-gray-200 animate-pulse">
+          <div class="mx-auto bg-white dark:bg-gray-800 w-full shadow-lg rounded-2xl">
+            <div class="h-48 p-3 overflow-hidden bg-gray-200 dark:bg-gray-800 animate-pulse">
             </div>
             <div class="p-3 h-full">
               <div class="grid grid-cols-3 gap-4 mt-2">
-                <div class="h-8 bg-gray-200 rounded animate-pulse">
+                <div class="h-8 bg-gray-200 rounded dark:bg-gray-800 animate-pulse">
                 </div>
-                <div class="h-8 bg-gray-200 rounded animate-pulse">
+                <div class="h-8 bg-gray-200 rounded dark:bg-gray-800 animate-pulse">
                 </div>
-                <div class="h-8 bg-gray-200 rounded animate-pulse">
+                <div class="h-8 bg-gray-200 rounded dark:bg-gray-800 animate-pulse">
                 </div>
-                <div class="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                <div class="h-8 col-span-2 bg-gray-200 dark:bg-gray-800 rounded animate-pulse">
                 </div>
-                <div class="h-8 bg-gray-200 rounded  animate-pulse">
+                <div class="h-8 bg-gray-200 rounded dark:bg-gray-800 animate-pulse">
                 </div>
-                <div class="...">
+                <div class="h-8 bg-gray-200 rounded dark:bg-gray-800 animate-pulse">
+                </div>
+                <div class="h-8 bg-gray-200 rounded dark:bg-gray-800 animate-pulse">
+                </div>
+                <div class="h-8 col-span-2 bg-gray-200 dark:bg-gray-800 rounded animate-pulse">
+                </div>
+                <div class="h-8 bg-gray-200 rounded dark:bg-gray-800 animate-pulse">
                 </div>
                 <div class="col-span-2 ...">
                 </div>
