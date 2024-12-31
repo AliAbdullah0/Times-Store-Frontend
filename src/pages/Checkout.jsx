@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { BackgroundBeamsWithCollision } from '../components/ui/Background-beams-with-collision';
 
 function Checkout() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -100,7 +101,7 @@ function Checkout() {
   };
 
   return (
-    <div className="max-w-4xl mt-2 mb-2 mx-auto p-6 bg-black border-white border-[1px] shadow-lg">
+    <div className="max-w-4xl mt-2 mb-2 mx-auto p-6 bg-black shadow-lg">
       <h1 className="text-3xl font-bold text-pink-500 mb-6 border-b-2 border-pink-500"><span className='text-white'>Check</span>kout</h1>
       
       <div className="flex flex-col md:flex-row items-center mb-6">
@@ -178,6 +179,14 @@ function Checkout() {
       )}
     </div>
   );
+}
+
+function RenderCheckout(){
+  return(
+    <>
+      <BackgroundBeamsWithCollision children={Checkout} />
+    </>
+  )
 }
 
 export default Checkout;
