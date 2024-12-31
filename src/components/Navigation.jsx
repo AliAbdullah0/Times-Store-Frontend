@@ -89,9 +89,9 @@ function Navigation({
               className="lg:hidden flex flex-col ml-4"
               onClick={toggleMobileMenu}
             >
-              <span className="w-6 h-1 bg-gray-800 dark:bg-white mb-1"></span>
-              <span className="w-6 h-1 bg-gray-800 dark:bg-white mb-1"></span>
-              <span className="w-6 h-1 bg-gray-800 dark:bg-white mb-1"></span>
+              <span className="w-6 h-1 bg-pink-500 mb-1"></span>
+              <span className="w-6 h-1 bg-pink-500 mb-1"></span>
+              <span className="w-6 h-1 bg-pink-500 mb-1"></span>
             </button>
           </div>
         </div>
