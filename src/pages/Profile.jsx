@@ -179,7 +179,7 @@ function Profile() {
           {orders.length > 0 ? (
             <ul className="space-y-4">
               {orders.map((order) => (
-                <li key={order.id} className=" border- border-transparent bg-clip-border p-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white rounded-lg bg-black">
+                <li key={order.id} className=" border-2 border-transparent bg-clip-border p-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white rounded-lg bg-black">
                   <h3 className="text-xl font-semibold">Order ID: {order.id}</h3>
                   <p>Products: {order.Products}</p>
                   <p>Total Price: Rs {order.TotalPrice}</p>
