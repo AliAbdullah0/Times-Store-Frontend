@@ -30,7 +30,7 @@ function Home() {
   }, []); // Empty dependency array ensures it runs only on mount
 
   return (
-    <main className="dark:bg-black bg-white relative overflow-x-hidden">
+    <main className="bg-black relative overflow-x-hidden">
       {loading &&(<div className="flex w-full justify-center items-center">
     <div className="w-12 h-12 border-4 border-t-4 border-gray-200 border-t-pink-500 rounded-full animate-spin"></div>
 </div>)}

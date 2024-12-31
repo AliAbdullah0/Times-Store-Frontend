@@ -100,28 +100,28 @@ function Checkout() {
   };
 
   return (
-    <div className="max-w-4xl mt-2 mb-2 mx-auto p-6 bg-white shadow-lg">
+    <div className="max-w-4xl mt-2 mb-2 mx-auto p-6 bg-black border-white border-2 shadow-lg">
       <h1 className="text-3xl font-bold text-center mb-6">Checkout</h1>
       
       <div className="flex flex-col md:flex-row items-center mb-6">
         <div className="w-full md:w-1/2 p-4 overflow-hidden">
-          <h2 className="text-2xl font-semibold mb-2 text-black">{title}</h2>
+          <h2 className="text-2xl font-semibold mb-2 text-white">{title}</h2>
           <div className="overflow-hidden w-full">
             <img src={productImage} alt={title} className="w-full h-64 object-cover rounded-md hover:scale-105 hover:transition-all" />
           </div>
         </div>
         <div className="w-full md:w-1/2 p-4">
-          <p className="text-lg text-black">Price: <span className="font-semibold text-pink-500">Rs {price}</span></p>
-          <p className="text-lg text-black">Delivery Charge: <span className="font-semibold text-pink-500">Rs {deliveryCharge}</span></p>
-          <p className="text-lg text-black">Total Price: <span className="font-semibold text-pink-500">Rs {totalPrice}</span></p>
-          <p className="text-lg text-black">Product ID: <span className="font-semibold text-pink-500">{id}</span></p>
+          <p className="text-lg text-white">Price: <span className="font-semibold text-pink-">Rs {price}</span></p>
+          <p className="text-lg text-white">Delivery Charge: <span className="font-semibold text-pink-">Rs {deliveryCharge}</span></p>
+          <p className="text-lg text-white">Total Price: <span className="font-semibold text-pink-">Rs {totalPrice}</span></p>
+          <p className="text-lg text-white">Product ID: <span className="font-semibold text-pink-">{id}</span></p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="mb-4">
-          <p className="text-lg text-black">Email: <span className="font-semibold text-pink-500">{userData.email}</span></p>
-          <p className="text-lg text-black">Username: <span className="font-semibold text-pink-500">{userData.username}</span></p>
+          <p className="text-lg text-white">Email: <span className="font-semibold text-pink-">{userData.email}</span></p>
+          <p className="text-lg text-white">Username: <span className="font-semibold text-pink-">{userData.username}</span></p>
         </div>
 
         <div className="flex flex-col md:flex-row">

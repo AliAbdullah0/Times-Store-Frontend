@@ -27,16 +27,16 @@ function Navigation({
 
   return (
     <>
-      <header className="h-24 dark:bg-black light:bg-white sm:h-32 flex items-center z-30 w-full">
+      <header className="h-24 bg-black sm:h-32 flex items-center z-30 w-full">
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link
             to="/"
-            className="uppercase light:text-gray-800 dark:text-white font-black sm:text-3xl text-2xl"
+            className="uppercase light:text-gray-800 text-white font-black sm:text-3xl text-2xl"
           >
             <span className='uppercase text-pink-500 font-black sm:text-3xl text-2xl'>ZEN</span>TIME
           </Link>
           <div className="flex items-center">
-            <nav className="font-sen text-gray-800 dark:text-white uppercase text-lg lg:flex items-center hidden">
+            <nav className="font-sen text-white uppercase text-lg lg:flex items-center hidden">
               <Link to="/" className="py-2 px-4 flex">
                 Home
               </Link>
