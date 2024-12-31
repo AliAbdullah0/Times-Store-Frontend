@@ -1,27 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navigation({
-  links = ['Products', 'Orders', 'Contact'],
+  links = ["Products", "Orders", "Contact"],
   ...props
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [products, setProducts] = useState([]); // All products
+  const [filteredProducts, setFilteredProducts] = useState([]); // Filtered products
+  const [filteredLinks, setFilteredLinks] = useState(links);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem("jwt");
     setIsVerified(false);
   };
 
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchTerm(query);
+
+    // Filter links
+    setFilteredLinks(
+      links.filter((link) => link.toLowerCase().includes(query))
+    );
+
+    // Filter products
+    setFilteredProducts(
+      products.filter((product) =>
+        product.attributes.name.toLowerCase().includes(query)
+      )
+    );
+  };
+
   useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
+    // Check if user is verified
+    const jwt = localStorage.getItem("jwt");
     if (jwt) {
       setIsVerified(true);
     }
+
+    // Fetch products from the API
+    fetch("https://times-store-production.up.railway.app/api/products")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && data.data) {
+          setProducts(data.data); // Set products
+        }
+      })
+      .catch((error) => console.error("Error fetching products:", error));
   }, []);
 
   return (
@@ -35,16 +67,42 @@ function Navigation({
             Times
           </Link>
           <div className="flex items-center">
+            {/* Search Bar */}
+            <div className="hidden lg:flex items-center">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="py-2 px-4 border border-gray-300 rounded-md mr-4"
+                value={searchTerm}
+                onChange={handleSearch}
+              />
+              <div className="search-results relative">
+                {filteredProducts.length > 0 && (
+                  <ul className="product-list absolute top-12 bg-white border border-gray-300 rounded-md shadow-lg w-full">
+                    {filteredProducts.map((product) => (
+                      <li
+                        key={product.id}
+                        className="product-item py-2 px-4 hover:bg-gray-100"
+                      >
+                        <Link to={`/products/${product.id}`}>
+                          {product.attributes.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
             <nav className="font-sen text-gray-800 dark:text-white uppercase text-lg lg:flex items-center hidden">
-              <Link to="/" className="py-2 px-4 flex">
-                Home
-              </Link>
-              <Link to="/product" className="py-2 px-4 flex">
-                Product
-              </Link>
-              <Link to="/contact" className="py-2 px-4 flex">
-                Contact
-              </Link>
+              {filteredLinks.map((link) => (
+                <Link
+                  key={link}
+                  to={`/${link.toLowerCase()}`}
+                  className="py-2 px-4 flex"
+                >
+                  {link}
+                </Link>
+              ))}
               {isVerified && (
                 <>
                   <Link
@@ -52,12 +110,6 @@ function Navigation({
                     className="pl-2 pr-2 py-1.5 text-sm hover:bg-pink-600 hover:transition-all rounded-md bg-pink-500 text-white"
                   >
                     My Orders
-                  </Link>
-                  <Link
-                    to="canceledorders"
-                    className="pl-2 pr-2 py-1.5 ml-2 text-sm hover:transition-all rounded-md hover:bg-pink-500 bg-transparent border-2 border-pink-500 dark:text-white"
-                  >
-                    Canceled
                   </Link>
                   <button
                     onClick={handleLogout}
@@ -93,90 +145,6 @@ function Navigation({
               <span className="w-6 h-1 bg-gray-800 dark:bg-white mb-1"></span>
             </button>
           </div>
-        </div>
-
-        {/* Mobile Drawer */}
-        <div
-          className={`fixed top-0 left-0 h-full bg-gray-800 dark:bg-gray-900 text-white w-3/4 z-50 transform ${
-            mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-          } transition-transform duration-300 ease-in-out`}
-        >
-          <div className="flex items-center justify-between p-4 border-b border-gray-700">
-            <h2 className="text-lg font-bold">Menu</h2>
-            <button
-              onClick={toggleMobileMenu}
-              className="text-white focus:outline-none"
-            >
-              ✖
-            </button>
-          </div>
-          <nav className="flex flex-col items-start mt-4 space-y-4 p-4">
-            <Link
-              to="/"
-              className="w-full py-2 px-4 text-white bg-pink-500 rounded-md"
-              onClick={toggleMobileMenu}
-            >
-              Home
-            </Link>
-            <Link
-              to="/product"
-              className="w-full py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-md"
-              onClick={toggleMobileMenu}
-            >
-              Product
-            </Link>
-            <Link
-              to="/contact"
-              className="w-full py-2 px-4 text-gray-300 hover:bg-gray-700 rounded-md"
-              onClick={toggleMobileMenu}
-            >
-              Contact
-            </Link>
-            {isVerified ? (
-              <>
-                <Link
-                  to="profile"
-                  className="w-full py-2 px-4 text-white bg-pink-500 rounded-md"
-                  onClick={toggleMobileMenu}
-                >
-                  My Orders
-                </Link>
-                <Link
-                  to="canceledorders"
-                  className="w-full py-2 px-4 dark:text-gray-300 bg-transparent border-2 border-pink-500 hover:bg-pink-500 rounded-md"
-                  onClick={toggleMobileMenu}
-                >
-                  Canceled
-                </Link>
-                <button
-                  onClick={() => {
-                    handleLogout();
-                    toggleMobileMenu();
-                  }}
-                  className="w-full py-2 px-4 dark:text-gray-300 hover:bg-gray-700 border-white bg-transparent border-2 rounded-md"
-                >
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <Link
-                  to="login"
-                  className="w-full py-2 px-4 text-white bg-pink-500 rounded-md"
-                  onClick={toggleMobileMenu}
-                >
-                  Login
-                </Link>
-                <Link
-                  to="register"
-                  className="w-full py-2 px-4 dark:text-gray-300 bg-transparent border-2 border-pink-500 hover:bg-pink-500 rounded-md"
-                  onClick={toggleMobileMenu}
-                >
-                  Register
-                </Link>
-              </>
-            )}
-          </nav>
         </div>
       </header>
     </>

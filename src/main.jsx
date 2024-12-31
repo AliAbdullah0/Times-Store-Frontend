@@ -13,6 +13,7 @@ import Registeration from './pages/Registration.jsx'
 import Profile from './pages/Profile.jsx'
 import CanceledOrders from './pages/CanceledOrders.jsx'
 import Contact from './pages/Contact.jsx'
+import { Analytics } from "@vercel/analytics/react"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
