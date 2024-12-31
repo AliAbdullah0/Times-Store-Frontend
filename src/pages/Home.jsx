@@ -34,9 +34,6 @@ function Home() {
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <HeroParallax products={items} />
-      <div className="w-full flex items-center justify-center overflow-hidden">
-        <Carousel />
-      </div>
       <div className="w-full overflow-x-hidden flex items-center justify-center">
         <Feature />
       </div>
