@@ -89,11 +89,19 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-black shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2"
+              className={`w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-black shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2 ${loading ? 'opacity-70 cursor-not-allowed' : ''
+                }`}
               disabled={loading}
             >
-              {loading ? 'Loading...' : 'Submit'}
+              {loading ? (
+                <div className="flex justify-center">
+                  <div className="animate-spin border-t-2 border-white border-2 w-5 h-5 rounded-full"></div>
+                </div>
+              ) : (
+                'Submit'
+              )}
             </button>
+
           </form>
           <div className="pt-12 pb-12 text-center">
             <p>
