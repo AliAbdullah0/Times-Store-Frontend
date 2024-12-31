@@ -13,7 +13,7 @@ export function CanvasRevealEffectDemo3() {
       className="h-[40rem] flex flex-col lg:flex-row overflow-hidden items-center justify-center bg-black w-full gap-4 mx-auto px-8 relative">
       <p
         className="md:text-2xl text-2xl font-medium text-center text-white relative z-20 max-w-2xl mx-auto">
-        <TextGenerateEffect words={'Time is a canvas, and each moment is a stroke of your masterpiece.'}/>
+        <TextGenerateEffect words={'Time is a canvas, and each moment is a stroke of your masterpiece.'} duration={2.5}/>
       </p>
       <AnimatePresence>
         {hovered && (
