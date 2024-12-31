@@ -94,7 +94,7 @@ function Navigation({
             {
               isVerified && (
                 <>
-            <Link to="canceledorders" className="pl-2 pr-2 py-1.5 w-full text-sm hover:bg-red-600 hover:transition-all rounded-md bg-red-500 text-white">
+            <Link to="canceledorders" className="pl-2 pr-2 py-1.5 w-full text-sm hover:bg-pink-500 hover:transition-all rounded-md bg-transparent border-2 border-pink-500 dark:text-white">
               Canceled
             </Link>
               <Link to="profile" className="pl-2 pr-2 py-1.5 w-full text-sm hover:bg-pink-600 hover:transition-all rounded-md bg-pink-500 text-white">
