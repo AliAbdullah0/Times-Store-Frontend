@@ -7,6 +7,7 @@ import { fetchProducts } from '../api'
 
 function Home() {
     const [products, setProducts] = useState([]);
+    const [items,setItems] = useState([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
   
@@ -15,7 +16,7 @@ function Home() {
       try {
         const response = await fetchProducts();
         setProducts(response.data.data || []);
-  
+        products.map((items)=>setItems(items))
       } catch (err) {
         setError('Error fetching products');
       } finally {
@@ -28,7 +29,7 @@ function Home() {
     }, []);
   return (
     <main class="dark:bg-gray-800 bg-white  relative overflow-x-h">
-    <HeroParallax products={products}/>
+    <HeroParallax products={items}/>
 <div className='w-full flex items-center justify-center overflow-hidden'>
 <Carousel/>
 </div>

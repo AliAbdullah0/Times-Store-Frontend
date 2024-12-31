@@ -80,9 +80,9 @@ export const ProductCard = ({ product, translate }) => {
       key={product.id}
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
-      <Link href={product.link} className="block group-hover/product:shadow-2xl">
+      <Link href='/product' className="block group-hover/product:shadow-2xl">
         <img
-          src={product.thumbnail}
+          src={product.image.url}
           height={600}
           width={600}
           className="object-cover object-left-top absolute h-full w-full inset-0"
