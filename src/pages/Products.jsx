@@ -3,7 +3,7 @@ import ProductCard from '../components/ProductCard';
 import { fetchProducts } from '../api';
 import Error from '../pages/Error';
 import ProductsNotFound from '../components/ProductsNotFound';
-import Checkout from './Checkout';
+
 
 function Products() {
   const [products, setProducts] = useState([]);
