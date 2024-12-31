@@ -144,11 +144,11 @@ function Profile() {
             </div>
           )}
 
-          <h2 className="text-2xl font-semibold mb-4 ">Your Orders</h2>
+          <h2 className="text-2xl font-semibold mb-4 dark:text-white">Your Orders</h2>
           {orders.length > 0 ? (
             <ul className="space-y-4">
               {orders.map((order) => (
-                <li key={order.id} className="p-4 border border-gray-300 rounded-lg bg-gray-50">
+                <li key={order.id} className="p-4 border border-gray-300 text-black rounded-lg bg-gray-50">
                   <h3 className="text-xl font-semibold">Order ID: {order.id}</h3>
                   <p>Products: {order.Products}</p>
                   <p>Total Price: Rs {order.TotalPrice}</p>
