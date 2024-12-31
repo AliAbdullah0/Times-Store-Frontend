@@ -38,7 +38,7 @@ function Home() {
       {error && <p>{error}</p>}
       <HeroParallax products={items} />
         <CanvasRevealEffectDemo3/>
-      <div className="w-full overflow-x-hidden flex space-y-16 items-center justify-center">
+      <div className="w-full overflow-x-hidden flex items-center justify-center">
         <Feature />
       </div>
     </main>

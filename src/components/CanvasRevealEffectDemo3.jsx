@@ -2,6 +2,7 @@ import React from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "../components/ui/Canvas-reveal-effect";
+import { TextGenerateEffect } from "./ui/Text-generate-effect";
 
 export function CanvasRevealEffectDemo3() {
   const [hovered, setHovered] = React.useState(false);
@@ -12,7 +13,7 @@ export function CanvasRevealEffectDemo3() {
       className="h-[40rem] flex flex-col lg:flex-row overflow-hidden items-center justify-center bg-black w-full gap-4 mx-auto px-8 relative">
       <p
         className="md:text-2xl text-2xl font-medium text-center text-white relative z-20 max-w-2xl mx-auto">
-        Time is a canvas, and each moment is a stroke of your masterpiece.
+        <TextGenerateEffect words={'Time is a canvas, and each moment is a stroke of your masterpiece.'}/>
       </p>
       <AnimatePresence>
         {hovered && (
