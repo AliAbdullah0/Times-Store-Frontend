@@ -27,7 +27,7 @@ createRoot(document.getElementById('root')).render(
             <Route path='register' element={<Registeration/>} />
             <Route path='login' element={<Login/>} />
             <Route path='profile' element={<BackgroundBeamsWithCollision children={<Profile/>}/>} />
-            <Route path='canceledorders' element={<CanceledOrders/>} />
+            <Route path='canceledorders' element={<BackgroundBeamsWithCollision children={<CanceledOrders/>}/>} />
             <Route path='contact' element={ <BackgroundBeamsWithCollision children={<Contact/>}/>}/>
             <Route path='*' element={<Error/>}/>
         </Route>

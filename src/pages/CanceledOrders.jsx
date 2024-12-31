@@ -34,31 +34,31 @@ function CanceledOrders() {
                     {canceledOrders.map((order) => (
                         <li
                             key={order.id}
-                            className="bg-gray-50 p-4 rounded-lg shadow-md border border-gray-200"
+                            className="bg-black p-4 rounded-lg shadow-md text-white"
                         >
                             <h3 className="text-xl font-semibold text-pink-600">
                                 Order ID: {order.OrderId}
                             </h3>
-                            <p className="text-gray-700">
+                            <p className="text-neutral-200">
                                 Product: {order.Product || 'N/A'}
                             </p>
-                            <p className="text-gray-700">
+                            <p className="text-neutral-200">
                                 Ordered By: {order.OrderedBy}
                             </p>
-                            <p className="text-gray-700">
+                            <p className="text-neutral-200">
                                 Email: {order.Email}
                             </p>
-                            <p className="text-gray-700">
+                            <p className="text-neutral-200">
                                 Ordered On: {new Date(order.OrderedOn).toLocaleDateString()}
                             </p>
-                            <p className="text-gray-700">
+                            <p className="text-neutral-200">
                                 Canceled On: {new Date(order.CanceledOn).toLocaleDateString()}
                             </p>
                         </li>
                     ))}
                 </ul>
             ) : (
-                <p className="text-center text-gray-500">No canceled orders found.</p>
+                <p className="text-center text-gray-200">No canceled orders found.</p>
             )}
         </div>
     );
