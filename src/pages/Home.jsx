@@ -31,7 +31,9 @@ function Home() {
 
   return (
     <main className="dark:bg-gray-800 bg-white relative overflow-x-hidden">
-      {loading && <p>Loading...</p>}
+      {loading &&(<div className="flex w-full justify-center items-center">
+    <div className="w-12 h-12 border-4 border-t-4 border-gray-200 border-t-pink-500 rounded-full animate-spin"></div>
+</div>)}
       {error && <p>{error}</p>}
       <HeroParallax products={items} />
       <div className="w-full overflow-x-hidden flex items-center justify-center">
