@@ -100,7 +100,7 @@ function Navigation({
               <Link to="profile" className="pl-2 pr-2 py-1.5 w-full text-sm hover:bg-pink-600 hover:transition-all rounded-md bg-pink-500 text-white">
               My Orders
             </Link>
-             <button onClick={handleLogout} className="pl-2 pr-2 py-2 text-sm hover:bg-black hover:transition-all rounded-md bg-[#1a1919] text-white">
+             <button onClick={handleLogout} className="pl-2 pr-2 w-full py-2 text-sm hover:bg-black hover:transition-all rounded-md bg-[#1a1919] text-white">
              Logout
            </button>
            </>
@@ -109,10 +109,10 @@ function Navigation({
             {
               !isVerified && (
                 <>
-            <Link to="login" className="pl-2 pr-2 py-1.5 text-sm hover:bg-pink-600 hover:transition-all rounded-md bg-pink-500 text-white">
+            <Link to="login" className="pl-2 pr-2 py-1.5 w-full text-sm hover:bg-pink-600 hover:transition-all rounded-md bg-pink-500 text-white">
               Login
             </Link>
-            <Link to="register" className="pl-2 ml-2 mr-1 pr-2 py-2 text-sm hover:bg-black hover:transition-all rounded-md bg-[#1a1919] text-white">
+            <Link to="register" className="pl-2 w-full pr-2 py-2 text-sm hover:bg-black hover:transition-all rounded-md bg-[#1a1919] text-white">
             Register
           </Link>
           </>
