@@ -144,7 +144,7 @@ function Profile() {
             </div>
           )}
 
-          <h2 className="text-2xl font-semibold mb-4 dark:text-white">Your Orders</h2>
+          <h2 className="text-2xl font-semibold mb-4 ">Your Orders</h2>
           {orders.length > 0 ? (
             <ul className="space-y-4">
               {orders.map((order) => (
@@ -155,7 +155,7 @@ function Profile() {
                   <a href='/canceledorders' className='text-blue-500 hover:underline'>Status</a>
                   <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
                   <button
-                    className="pl-2 pr-2 py-1.5 bg-red-500 text-white hover:bg-red-600 transition-all rounded-md mt-1"
+                    className="pl-2 pr-2 py-1.5 bg-red-500  hover:bg-red-600 transition-all rounded-md mt-1"
                     onClick={() => handleOrderCancellation(order.id)}
                     disabled={cancelingError==true} // Disable button if this order is being canceled
                   >
