@@ -50,19 +50,19 @@ function Navigation({
                 <>
                   <Link
                     to="profile"
-                    className="pl-2 pr-2 py-1.5 text-sm hover:bg-white hover:text-black hover:transition-all hover:ease-in-out rounded-md bg-black text-white"
+                    className="font-sen text-white uppercase text-lg "
                   >
                     My Profile
                   </Link>
                   <Link
                     to="canceledorders"
-                    className="pl-2 pr-2 py-1.5 ml-2 text-sm hover:transition-all rounded-md hover:bg-pink-500 bg-transparent border-2 border-pink-500 dark:text-white"
+                    className="pl-2 pr-2 py-1.5 ml-2 text-lg hover:transition-all uppercase font-sen rounded-md hover:bg-pink-500 bg-transparent border-2 border-pink-500 dark:text-white"
                   >
                     Canceled
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="pl-2 ml-2 mr-1 pr-2 py-2 text-sm uppercase hover:bg-white hover:text-black hover:transition-all rounded-md bg-transparent text-white"
+                    className="pl-2 ml-2 mr-1 pr-2 py-2 uppercase font-sen text-lg  hover:bg-white hover:text-black hover:transition-all rounded-md bg-transparent text-white"
                   >
                     Logout
                   </button>
