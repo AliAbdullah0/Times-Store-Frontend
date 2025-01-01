@@ -77,18 +77,16 @@ function Profile() {
   const handleOrderCancellation = async (orderId) => {
     try {
       setCancelingError(false);
-
+  
       if (canceledOrders.some((order) => order.OrderId === orderId)) {
         setCancelingError(true);
         setIsModalOpen(true);
         return;
       }
-
-      setCancelingOrderId(orderId);
-
+  
       const orderToCancel = orders.find((order) => order.id === orderId);
       if (!orderToCancel) throw new Error('Order not found');
-
+  
       await axios.post(
         `https://times-store-production.up.railway.app/api/canceleds/`,
         {
@@ -108,24 +106,16 @@ function Profile() {
           },
         }
       );
-
-      const canceledButtonState = JSON.parse(localStorage.getItem('canceledButtons')) || {};
-      canceledButtonState[orderId] = true;
-      localStorage.setItem('canceledButtons', JSON.stringify(canceledButtonState));
-
-      setOrders((prevOrders) =>
-        prevOrders.map((order) =>
-          order.id === orderId ? { ...order, state: 'canceled' } : order
-        )
-      );
-
+  
+      // Save the canceled order state in localStorage
+      localStorage.setItem(`canceled_${orderId}`, true);
+  
       navigate('/canceledorders'); // Navigate to canceled orders
     } catch (error) {
       setError(error.response?.data?.message || 'Failed to cancel the order.');
-    } finally {
-      setCancelingOrderId(null);
     }
   };
+  
 
   useEffect(() => {
     // Load the canceled buttons state from local storage
@@ -205,19 +195,16 @@ function Profile() {
                   <a href='/canceledorders' className='text-blue-500 hover:underline'>Status</a>
                   <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
                   <button
-                    className={`pl-2 pr-2 py-1.5 ${order.state === 'canceled'
-                        ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
-                        : 'bg-red-500 text-white hover:bg-red-600 transition-all'
-                      } rounded-md mt-1`}
-                    onClick={() => handleOrderCancellation(order.id)}
-                    disabled={order.state === 'canceled' || cancelingOrderId === order.id}
-                  >
-                    {order.state === 'canceled'
-                      ? 'Canceled'
-                      : cancelingOrderId === order.id
-                        ? <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-black border-opacity-75"></div>
-                        : 'Cancel Order'}
-                  </button>
+  className={`pl-2 pr-2 py-1.5 ${localStorage.getItem(`canceled_${order.id}`)
+      ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+      : 'bg-red-500 text-white hover:bg-red-600 transition-all'
+    } rounded-md mt-1`}
+  onClick={() => handleOrderCancellation(order.id)}
+  disabled={localStorage.getItem(`canceled_${order.id}`)}
+>
+  {localStorage.getItem(`canceled_${order.id}`) ? 'Canceled' : 'Cancel Order'}
+</button>
+
 
                 </li>
               ))}
@@ -234,12 +221,12 @@ function Profile() {
 
           {isModalOpen && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-              <div className="bg-white p-6 rounded-lg shadow-lg">
+              <div className="bg-white text-black p-6 rounded-lg shadow-lg">
                 <h2 className="text-xl font-semibold text-center">Order Already Canceled</h2>
                 <p className="text-center mt-4">This order has already been canceled.</p>
                 <div className="mt-4 text-center">
                   <button
-                    className="bg-black text-white py-2 px-4 rounded-md hover:bg-white hover:text-black hover:transition-all"
+                    className="bg-black text-pink-500 py-2 px-4 rounded-md hover:bg-white hover:text-black hover:transition-all"
                     onClick={closeModal}
                   >
                     Close
