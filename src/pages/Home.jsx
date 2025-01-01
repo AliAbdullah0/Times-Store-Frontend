@@ -13,6 +13,7 @@ function Home() {
   const { products, setProducts } = useProduct(); 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isVerified, setIsVerified] = useState(false);
 
   const getProducts = async () => {
     if (products.length > 0) return; 
@@ -30,8 +31,14 @@ function Home() {
   };
 
   useEffect(() => {
-    getProducts();
+    getProducts()
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      setIsVerified(true);
+      window.location.reload(); 
+    }
   }, []);
+  
 
   return (
     <main className="bg-black relative overflow-x-hidden">
