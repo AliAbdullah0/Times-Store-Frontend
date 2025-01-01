@@ -17,7 +17,7 @@ function ProductCard({ product }) {
           <li className="font-extrabold text-pink-400 text-2xl">{product.title}</li>
           <li className="dark:text-gray-200 text-sm">{product.description}</li>
           <li className="dark:text-gray-200 text-sm">
-            <span className="font-extrabold text-base text-gray-800 dark:text-gray-200">Items Left:</span> {product.stock}
+            <span className="font-extrabold text-base text-gray-200">Items Left:</span> {product.stock}
           </li>
           <li className="font-semibold font-[Roboto] text-sm text-pink-400">
             <span className="font-extrabold text-base dark:text-gray-200">Rs </span> {product.price}
