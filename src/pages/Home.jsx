@@ -6,6 +6,7 @@ import Carousel from '../components/Carousel';
 import { HeroParallax } from '../components/ui/Hero-parrallax';
 import { fetchProducts } from '../api';
 import { CanvasRevealEffectDemo3 } from '../components/CanvasRevealEffectDemo3';
+import { TextGenerateEffect } from '../components/ui/Text-generate-effect';
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -33,7 +34,7 @@ function Home() {
   return (
     <main className="bg-black relative overflow-x-hidden">
       {loading &&(<div className="flex w-full justify-center items-center mt-8">
-        <h2 className='uppercase md:text-5xl text-3xl text-gray-400 font-black animate-pulse'>Creating Mindblowing effects</h2>
+        <h2 className='uppercase md:text-5xl text-3xl text-gray-400 font-extrabold animate-pulse'><TextGenerateEffect words={'Creating Mindblowing effects'}className={'uppercase md:text-5xl text-3xl text-gray-400 font-extrabold animate-pulse'}/></h2>
       </div>
     )}
       {error && <p>{error}</p>}
