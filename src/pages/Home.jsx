@@ -34,7 +34,7 @@ function Home() {
   return (
     <main className="bg-black relative overflow-x-hidden">
       {loading &&(<div className="flex w-full justify-center items-center mt-8">
-        <h2 className='uppercase md:text-5xl text-xl text-gray-400 font-bold animate-pulse'><TextGenerateEffect words={'Creating Mindblowing effects'}className={'uppercase md:text-5xl text-xl text-gray-400 font-bold animate-pulse'}/></h2>
+        <h2 className='uppercase md:text-5xl text-xl text-gray-400 text-center font-bold animate-pulse'><TextGenerateEffect words={'Creating Mindblowing effects'}className={'uppercase md:text-5xl text-xl text-gray-400 text-center font-bold animate-pulse'}/></h2>
       </div>
     )}
       {error && <p>{error}</p>}
