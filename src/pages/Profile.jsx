@@ -109,17 +109,36 @@ function Profile() {
         }
       );
 
+      const canceledButtonState = JSON.parse(localStorage.getItem('canceledButtons')) || {};
+      canceledButtonState[orderId] = true;
+      localStorage.setItem('canceledButtons', JSON.stringify(canceledButtonState));
+
       setOrders((prevOrders) =>
         prevOrders.map((order) =>
           order.id === orderId ? { ...order, state: 'canceled' } : order
         )
       );
+
+      navigate('/canceledorders'); // Navigate to canceled orders
     } catch (error) {
       setError(error.response?.data?.message || 'Failed to cancel the order.');
     } finally {
       setCancelingOrderId(null);
     }
   };
+
+  useEffect(() => {
+    // Load the canceled buttons state from local storage
+    const canceledButtonState = JSON.parse(localStorage.getItem('canceledButtons')) || {};
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        canceledButtonState[order.id]
+          ? { ...order, state: 'canceled' }
+          : order
+      )
+    );
+  }, []);
+
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -186,19 +205,20 @@ function Profile() {
                   <a href='/canceledorders' className='text-blue-500 hover:underline'>Status</a>
                   <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
                   <button
-                    className="pl-2 pr-2 py-1.5 bg-red-500 text-white hover:bg-red-600 transition-all rounded-md mt-1"
-                    onClick={() => {
-                      handleOrderCancellation(order.id)
-                      navigate('/canceledorders')
-                    }}
-                    disabled={cancelingError == true} // Disable button if this order is being canceled
+                    className={`pl-2 pr-2 py-1.5 ${order.state === 'canceled'
+                        ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+                        : 'bg-red-500 text-white hover:bg-red-600 transition-all'
+                      } rounded-md mt-1`}
+                    onClick={() => handleOrderCancellation(order.id)}
+                    disabled={order.state === 'canceled' || cancelingOrderId === order.id}
                   >
-                    {cancelingOrderId === order.id ? (
-                      <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-white border-opacity-75"></div>
-                    ) : (
-                      'Cancel Order'
-                    )}
+                    {order.state === 'canceled'
+                      ? 'Canceled'
+                      : cancelingOrderId === order.id
+                        ? <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-black border-opacity-75"></div>
+                        : 'Cancel Order'}
                   </button>
+
                 </li>
               ))}
             </ul>
