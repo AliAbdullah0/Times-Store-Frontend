@@ -187,7 +187,10 @@ function Profile() {
                   <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
                   <button
                     className="pl-2 pr-2 py-1.5 bg-red-500 text-white hover:bg-red-600 transition-all rounded-md mt-1"
-                    onClick={() => handleOrderCancellation(order.id)}
+                    onClick={() => {
+                      handleOrderCancellation(order.id)
+                      navigate('/canceledorders')
+                    }}
                     disabled={cancelingError == true} // Disable button if this order is being canceled
                   >
                     {cancelingOrderId === order.id ? (
