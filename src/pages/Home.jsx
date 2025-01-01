@@ -33,8 +33,9 @@ function Home() {
   return (
     <main className="bg-black relative overflow-x-hidden">
       {loading &&(<div className="flex w-full justify-center items-center mt-8">
-    <div className="w-12 h-12 border-4 border-t-4 border-gray-200 border-t-pink-500 rounded-full animate-spin"></div>
-</div>)}
+        <h2 className='uppercase md:text-6xl text-4xl bg-gray-400 font-black animate-pulse'>Creating Mindblowing effects</h2>
+      </div>
+    )}
       {error && <p>{error}</p>}
       <HeroParallax products={items} />
         <CanvasRevealEffectDemo3/>
