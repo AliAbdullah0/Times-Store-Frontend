@@ -50,7 +50,7 @@ function Navigation({
                 <>
                   <Link
                     to="profile"
-                    className="pl-2 pr-2 py-1.5 text-sm hover:bg-pink-600 hover:transition-all rounded-md bg-pink-500 text-white"
+                    className="pl-2 pr-2 py-1.5 text-sm hover:bg-white hover:text-black hover:transition-all hover:ease-in-out rounded-md bg-black text-white"
                   >
                     My Profile
                   </Link>
@@ -62,7 +62,7 @@ function Navigation({
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="pl-2 ml-2 mr-1 pr-2 py-2 text-sm  hover:bg-white hover:text-black hover:transition-all rounded-md bg-transparent text-white"
+                    className="pl-2 ml-2 mr-1 pr-2 py-2 text-sm uppercase hover:bg-white hover:text-black hover:transition-all rounded-md bg-transparent text-white"
                   >
                     Logout
                   </button>
@@ -153,7 +153,7 @@ function Navigation({
                     handleLogout();
                     toggleMobileMenu();
                   }}
-                  className="w-full py-2 px-4 dark:text-gray-300 hover:bg-gray-700 border-white bg-transparent border-2 rounded-md"
+                  className="w-full py-2 px-4 dark:text-gray-300 uppercase hover:bg-gray-700 border-white bg-transparent border-2 rounded-md"
                 >
                   Logout
                 </button>
