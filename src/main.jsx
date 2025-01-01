@@ -13,11 +13,12 @@ import Registeration from './pages/Registration.jsx'
 import Profile from './pages/Profile.jsx'
 import CanceledOrders from './pages/CanceledOrders.jsx'
 import Contact from './pages/Contact.jsx'
-import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import { BackgroundBeamsWithCollision } from './components/ui/Background-beams-with-collision.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <SpeedInsights/>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout/>}>
