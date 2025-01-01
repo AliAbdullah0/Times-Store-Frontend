@@ -56,7 +56,7 @@ function Navigation({
                   </Link>
                   <Link
                     to="canceledorders"
-                    className="pl-2 pr-2 py-1.5 ml-2 text-lg hover:transition-all uppercase font-sen rounded-md hover:bg-pink-500 bg-transparent border-2 border-pink-500 dark:text-white"
+                    className="pl-2 pr-2 py-1.5 ml-2 text-lg hover:transition-all uppercase font-sen rounded-md hover:bg-pink-500 bg-transparent text-white"
                   >
                     Canceled
                   </Link>
