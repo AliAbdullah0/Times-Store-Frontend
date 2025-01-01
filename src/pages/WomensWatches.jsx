@@ -59,7 +59,7 @@ function Products() {
     ));
 
   return (
-    <div className="w-full flex flex-col md:flex-row p-2 items-center md:items-start h-fit bg-black gap-2 flex-wrap">
+    <div className="w-full bg-grid-small-white/[0.2] flex flex-col md:flex-row p-2 items-center md:items-start h-fit bg-black gap-2 flex-wrap">
       {loading
         ? <MultiStepLoader
           loading={true}
