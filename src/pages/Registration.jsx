@@ -102,7 +102,7 @@ const Registeration = () => {
             </div>
             <button
               type="submit"
-              className={`w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-black shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2 ${loading ? 'opacity-70 cursor-not-allowed' : ''
+              className={`w-full px-4 py-2 text-base font-semibold text-center text-black transition duration-200 ease-in bg-white shadow-md hover:bg-gradient-to-b mt-4 hover:from-pink-500 hover:to-pink-600 hover:text-white focus:outline-none focus:ring-2 ${loading ? 'opacity-70 cursor-not-allowed' : ''
                 }`}
               disabled={loading}
             >
@@ -117,8 +117,8 @@ const Registeration = () => {
           </form>
           <div className="pt-12 pb-12 text-center">
             <p>
-              Already Have An Account?
-              <a href="/login" className="font-semibold underline">
+              Already Have An Account? 
+              <a href="/login" className="ml-1 font-semibold underline">
                 Login Here
               </a>
             </p>

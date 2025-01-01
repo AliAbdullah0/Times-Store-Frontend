@@ -15,15 +15,23 @@ import CanceledOrders from './pages/CanceledOrders.jsx'
 import Contact from './pages/Contact.jsx'
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { BackgroundBeamsWithCollision } from './components/ui/Background-beams-with-collision.jsx'
+import WomenWatches from './pages/WomensWatches'
+import { ProductProvider } from './ProductContext.jsx'
+import { WomensContextProvider } from './WomensWatches.jsx'
+import { ProfileContextProvider } from './ProfileContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <SpeedInsights/>
     <BrowserRouter>
+    <ProfileContextProvider>
+    <WomensContextProvider>
+    <ProductProvider>
       <Routes>
         <Route path='/' element={<Layout/>}>
             <Route index element={<Home/>}/>
-            <Route path='product' element={<BackgroundBeamsWithCollision children={<Products/>}/>}/>
+            <Route path='product/men' element={<Products/>}/>
+            <Route path='product/women' element={<WomenWatches/>}/>
             <Route path='product/checkout/:id/:title/:price/:image' element={<BackgroundBeamsWithCollision children={<Checkout/>}/>}/>
             <Route path='register' element={<Registeration/>} />
             <Route path='login' element={<Login/>} />
@@ -33,6 +41,9 @@ createRoot(document.getElementById('root')).render(
             <Route path='*' element={<Error/>}/>
         </Route>
       </Routes>
+      </ProductProvider>
+      </WomensContextProvider>
+      </ProfileContextProvider>
     </BrowserRouter>
   </StrictMode>
 )

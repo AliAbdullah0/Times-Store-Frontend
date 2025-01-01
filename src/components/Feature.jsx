@@ -3,7 +3,7 @@ import React from 'react'
 function Feature() {
   return (
     
-<div class="relative p-5 px-4 mx-auto bg-pink-600 sm:px-6 lg:px-8 py-26 w-full lg:mt-20 md:mt-10 mt-3">
+<div class="relative p-5 px-4 mx-auto sm:px-6 lg:px-8 py-26 w-full lg:mt-20 md:mt-10 mt-3">
     <div class="relative">
         <div class="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div class="ml-auto lg:col-start-2 lg:max-w-2xl">

@@ -163,8 +163,8 @@ function Checkout() {
       {errorMessage && <p className="mt-4 text-red-500">{errorMessage}</p>}
 
       {isModalOpen && (
-        <div className="fixed p-2 inset-0 bg-black text-white flex justify-center items-center z-50">
-        <div className="sm:p-8 p-4 rounded-lg shadow-lg w-full sm:w-1/3 text-center">
+        <div className="fixed p-2 inset-0 text-white flex justify-center items-center z-50">
+        <div className="sm:p-8 p-4 rounded-lg bg-black shadow-lg w-full sm:w-1/3 text-center">
           <h2 className="text-xl font-bold mb-4">Order Confirmed!</h2>
           <p className="mb-4">Your order has been placed successfully. Thank you for shopping with us!</p>
           <button

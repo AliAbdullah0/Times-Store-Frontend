@@ -89,7 +89,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className={`w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-black shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2 ${loading ? 'opacity-70 cursor-not-allowed' : ''
+              className={`w-full px-4 py-2 text-base font-semibold text-center text-black transition duration-200 ease-in bg-white shadow-md hover:bg-gradient-to-b hover:from-pink-500 -mt-8 hover:to-pink-600 hover:text-white focus:outline-none focus:ring-2 ${loading ? 'opacity-70 cursor-not-allowed' : ''
                 }`}
               disabled={loading}
             >
@@ -106,7 +106,7 @@ const Login = () => {
           <div className="pt-12 pb-12 text-center">
             <p>
               Don&apos;t have an account?
-              <a href="/register" className="font-semibold underline">
+              <a href="/register" className="ml-1 font-semibold underline">
                 Register here.
               </a>
             </p>
