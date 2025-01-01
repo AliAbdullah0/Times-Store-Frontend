@@ -4,10 +4,10 @@ import { fetchWomenWatches } from '../api';
 import Error from '../pages/Error';
 import ProductsNotFound from '../components/ProductsNotFound';
 import { MultiStepLoader } from '../components/ui/MultiStepLoader';
-import { useWomenProducts } from '../WomensWatches';
+import { useWomenProducts } from '../WomensWatchesContext';
 
 function Products() {
-  const { womensWatches, setWomensWatches } = useWomenProducts();  // Destructuring both `womensWatches` and `setWomensWatches`
+  const { womensWatches, setWomensWatches } = useWomenProducts();  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -15,8 +15,7 @@ function Products() {
     setLoading(true);
     try {
       const response = await fetchWomenWatches();
-      setWomensWatches(response.data.data || []);  // Setting products to context state
-
+      setWomensWatches(response.data.data || []); 
     } catch (err) {
       setError('Error fetching products');
     } finally {

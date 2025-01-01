@@ -17,7 +17,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react"
 import { BackgroundBeamsWithCollision } from './components/ui/Background-beams-with-collision.jsx'
 import WomenWatches from './pages/WomensWatches'
 import { ProductProvider } from './ProductContext.jsx'
-import { WomensContextProvider } from './WomensWatches.jsx'
+import { WomensContextProvider } from './WomensWatchesContext.jsx'
 import { ProfileContextProvider } from './ProfileContext.jsx'
 
 createRoot(document.getElementById('root')).render(
