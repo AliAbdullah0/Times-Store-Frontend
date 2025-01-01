@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Feature from '../components/Feature';
-import Carousel from '../components/Carousel';
 import { HeroParallax } from '../components/ui/Hero-parrallax';
 import { fetchProducts } from '../api';
-import { CanvasRevealEffectDemo3 } from '../components/CanvasRevealEffectDemo3';
 import { TextGenerateEffect } from '../components/ui/Text-generate-effect';
 import Userfeedbacks from '../components/Userfeedbacks';
 import { SparklesPreview } from '../components/SparkeSection';
 import { useProduct } from '../ProductContext';
 
 function Home() {
-  const { products, setProducts } = useProduct(); 
+  const { products, setProducts } = useProduct();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [isVerified, setIsVerified] = useState(false);
 
   const getProducts = async () => {
-    if (products.length > 0) return; 
+    if (products.length > 0) return;
 
     setLoading(true);
     try {
       const response = await fetchProducts();
-      setProducts(response.data.data || []); 
-
+      setProducts(response.data.data || []);
     } catch (err) {
       setError('Error fetching products');
     } finally {
@@ -31,14 +28,17 @@ function Home() {
   };
 
   useEffect(() => {
-    getProducts()
+    getProducts();
+
     const jwt = localStorage.getItem('jwt');
-    if (jwt) {
+    const hasRefreshed = localStorage.getItem('hasRefreshed'); // Check if the page has already been refreshed
+
+    if (jwt && !hasRefreshed) {
       setIsVerified(true);
-      window.location.reload(); 
+      localStorage.setItem('hasRefreshed', 'true'); // Mark as refreshed
+      window.location.reload(); // Refresh the page
     }
   }, []);
-  
 
   return (
     <main className="bg-black relative overflow-x-hidden">
