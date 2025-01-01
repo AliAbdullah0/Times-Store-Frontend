@@ -30,9 +30,6 @@ const Login = () => {
     }
   };
 
-  useEffect(()=>{
-    
-  },[])
 
   return (
     <div className="flex flex-wrap w-full p-3">
