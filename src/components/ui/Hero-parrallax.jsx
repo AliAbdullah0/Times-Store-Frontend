@@ -11,6 +11,7 @@ export const Header = () => {
         <p className="max-w-2xl text-base md:text-xl mt-8 text-neutral-200">
         <TextGenerateEffect words={'Where timeless craftsmanship meets modern design.Our collection is curated to help you make a statement with your timepiece. Explore our selection of carefully crafted watches, each one designed to bring precision and style to your wrist.'} className={'max-w-2xl text-base md:text-xl mt-8 text-neutral-200'} duration={1}/>
         </p>
+        <button><Link to={'/profile'} className="p-2 bg-white text-black hover:bg-black hover:text-white hover:transition-all">Get Started</Link></button>
       </div>
     );
   };
