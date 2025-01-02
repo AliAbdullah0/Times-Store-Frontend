@@ -28,11 +28,11 @@ export const ProfileContextProvider = ({ children }) => {
     if (!token) return;
 
     const decodedToken = JSON.parse(atob(token.split('.')[1]));
-    if (!user) { // Only fetch user profile if not already present
+    if (!user) { 
       fetchUserProfile(decodedToken.email);
     }
     fetchCanceledOrders();
-    fetchCartCheckoutOrders(); // Fetch Cart Checkout orders when the component mounts
+    fetchCartCheckoutOrders(); 
   }, [user]);
 
   const fetchUserProfile = async (email) => {

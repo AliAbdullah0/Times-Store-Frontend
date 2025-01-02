@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useProfile } from '../ProfileContext';
 
 function Checkout() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -18,33 +19,10 @@ function Checkout() {
   const deliveryCharge = 300;
   const totalPrice = parseFloat(price) + deliveryCharge;
 
-  useEffect(() => {
-    const token = localStorage.getItem('jwt');
-    if (!token) {
-      navigate('/login');
-      return;
-    }
-
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(`${apiUrl}/api/users/me`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        if (response.ok) {
-          const user = await response.json();
-          setUserData({ email: user.email, username: user.username });
-        } else {
-          navigate('/login');
-        }
-      } catch {
-        navigate('/login');
-      }
-    };
-
-    fetchUserData();
-  }, [apiUrl, navigate]);
+  const user = useProfile()
+  if(!user){
+    navigate('/login')
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;

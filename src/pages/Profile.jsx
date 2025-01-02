@@ -138,7 +138,7 @@ function Profile() {
 
           <h2 className="text-2xl font-semibold mb-4 text-pink-600 dark:text-pink-400">Your Orders</h2>
           {orders.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 place-items-center place-content-center lg:grid-cols-3 gap-6">
               {orders.map((order) => (
                 <div
                   key={order.id}
