@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 function CartCheckout() {
   const navigate = useNavigate();
-  const { id, title, price, image } = useParams();
   const [userData, setUserData] = useState({ email: '', username: '' });
   const [formData, setFormData] = useState({
     Address: '',

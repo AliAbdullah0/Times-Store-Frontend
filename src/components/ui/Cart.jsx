@@ -54,10 +54,7 @@ const MyCartPage = () => {
             <p className="font-semibold">Total: Rs {cart.totalPrice}</p>
           </div>
           <Link
-            to={{
-              pathname: `/cartcheckout`,
-              state: { totalPrice: cart.totalPrice, items: cart.items },
-            }}
+            to='cartcheckout'
           >
             <button className="mt-6 bg-blue-600 text-white py-2 px-4 rounded">
               Proceed to Checkout
