@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ImagesSlider } from "./ImagesSlider"; // Import ImagesSlider component
+import {ImagesSlider } from './ui/ImageSlider' // Import ImagesSlider component
 
 const HeroSection = () => {
   const [imagesData, setImagesData] = useState([]);
