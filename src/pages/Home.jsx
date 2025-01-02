@@ -53,7 +53,7 @@ function Home() {
       <div className="w-full overflow-x-hidden flex items-center justify-center">
         <Feature />
       </div>
-      <div className='w-full overflow-x-hidden flex items-center justify-center mt-8 mb-6'>
+      <div className='w-full overflow-x-hidden flex flex-col gap-2 items-center justify-center mt-8 mb-6'>
         <div className='w-full'>
           <img src="https://www.watchesofswitzerland.com/medias/breitling-nfl-desktop-homepage.jpg?context=bWFzdGVyfGltYWdlc3wxMDA1MjgyfGltYWdlL2pwZWd8YURSbUwyZ3hZaTg1TWprMk1UVXpNVGd5TWpNNEwySnlaV2wwYkdsdVp5MXVabXd0WkdWemEzUnZjQzFvYjIxbGNHRm5aUzVxY0djfDE1MmExZGUwNzBkMmVjNDk4ZTc3OGUzZmQ4YmFjNmQ5ZWViNzNiOWE3NzQ0MDY5MTUxYWRjNjllMzVmYjFkYjk&imwidth=1920" alt="" className='w-full' />
         </div>
@@ -64,7 +64,7 @@ function Home() {
           <p className="font-light text-pink-500">
             Discover the finest collection of watches crafted for every moment.
           </p>
-          <Link to='product' className='text-light text-green-600 hover:translate-y-0.5 hover:transition-all'>Browse Now</Link>
+          <Link to='product' className='text-light text-green-600 hover:translate-y-0.5 font-light hover:transition-all'>Browse Now</Link>
         </div>
 
       </div>

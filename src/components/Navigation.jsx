@@ -9,8 +9,8 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
   const [isVerified, setIsVerified] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isCartDrawerOpen,setCartDrawerOpen] = useState(false)
-  const user = useProfile()
+  const [isCartDrawerOpen, setCartDrawerOpen] = useState(false);
+  const user = useProfile();
 
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
@@ -33,14 +33,12 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
     setIsVerified(false);
   };
   
-  useEffect(()=>{
-    if(!user){
-      localStorage.removeItem('jwt')
-      window.location.reload()
-      Navigate('/login')
+  useEffect(() => {
+    if (!user) {
+      localStorage.removeItem('jwt');
+      window.location.reload();  // Automatically refresh page if user is removed
     }
-  },[user])
-
+  }, [user]);
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -91,7 +89,7 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
               </div>
               <NavLink to="/contact">Contact</NavLink>
               <NavLink to='/cart'>Cart</NavLink>
-              {isVerified && (
+              {user && (
                 <>
                   <NavLink to="profile">My Profile</NavLink>
                   <NavLink to="canceledorders">Canceled</NavLink>
@@ -103,7 +101,7 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
                   </button>
                 </>
               )}
-              {!isVerified && (
+              {!user && (
                 <>
                   <NavLink to="login">Login</NavLink>
                   <NavLink to="register">Register</NavLink>
@@ -122,9 +120,7 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
         </div>
       </div>
       <div
-        className={`fixed top-0 left-0 h-full bg-gray-100 dark:bg-black text-gray-800 dark:text-white w-3/4 z-50 transform ${
-          mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-        } transition-transform duration-300 ease-in-out`}
+        className={`fixed top-0 left-0 h-full bg-gray-100 dark:bg-black text-gray-800 dark:text-white w-3/4 z-50 transform ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}
       >
         <div className="flex items-center justify-between p-4 border-b border-gray-400">
           <h2 className="text-lg font-bold">
@@ -155,7 +151,7 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
           <NavLink to="/cart" onClick={toggleMobileMenu}>
             Cart
           </NavLink>
-          {isVerified ? (
+          {user ? (
             <>
               <NavLink to="profile" onClick={toggleMobileMenu}>
                 Profile
@@ -183,7 +179,6 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
               </NavLink>
             </>
           )}
-          {/* Dark Mode Toggle in Mobile Drawer */}
           <div className="flex justify-center mt-4">
             <DarkModeToggle isDarkMode={isDarkMode} toggle={() => setIsDarkMode(!isDarkMode)} />
           </div>
