@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 const ImagesSlider = ({
   images,
   children,
-  overlay = true,
+  overlay = false,
   overlayClassName,
   className,
   autoplay = true,
@@ -105,9 +105,6 @@ const ImagesSlider = ({
     },
   };
 
-  // Adjust perspective dynamically based on screen size
-  const perspective = window.innerWidth < 768 ? "600px" : "1000px";
-
   return (
     <div
       className={cn(
@@ -115,7 +112,7 @@ const ImagesSlider = ({
         className
       )}
       style={{
-        perspective: perspective,
+        perspective: "1000px",
       }}
     >
       {loadedImages.length > 0 && children}
@@ -127,7 +124,6 @@ const ImagesSlider = ({
           <motion.img
             key={currentIndex}
             src={loadedImages[currentIndex]}
-            alt={`Slide ${currentIndex}`}
             initial="initial"
             animate="visible"
             exit={direction === "up" ? "upExit" : "downExit"}
