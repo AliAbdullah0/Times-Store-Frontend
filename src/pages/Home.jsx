@@ -52,6 +52,9 @@ function Home() {
       <div className="w-full overflow-x-hidden flex items-center justify-center">
         <Feature />
       </div>
+      <div className='w-full overflow-x-hidden flex items-center justify-center mt-8 mb-6'>
+        <img src="https://www.watchesofswitzerland.com/medias/breitling-nfl-desktop-homepage.jpg?context=bWFzdGVyfGltYWdlc3wxMDA1MjgyfGltYWdlL2pwZWd8YURSbUwyZ3hZaTg1TWprMk1UVXpNVGd5TWpNNEwySnlaV2wwYkdsdVp5MXVabXd0WkdWemEzUnZjQzFvYjIxbGNHRm5aUzVxY0djfDE1MmExZGUwNzBkMmVjNDk4ZTc3OGUzZmQ4YmFjNmQ5ZWViNzNiOWE3NzQ0MDY5MTUxYWRjNjllMzVmYjFkYjk&imwidth=1920" alt="" className='w-full'/>
+      </div>
       <Userfeedbacks />
       <SparklesPreview />
     </main>
