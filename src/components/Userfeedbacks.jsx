@@ -14,7 +14,7 @@ function Userfeedbacks() {
         try {
             const response = await fetchUserFeedbacks()
             setFeedbacks(response.data.data || [])
-            console.log(response.data.data);
+
         } catch (err) {
             setError(err)
         } finally {
