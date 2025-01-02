@@ -20,6 +20,7 @@ function Checkout() {
   const totalPrice = parseFloat(price) + deliveryCharge;
 
   const user = useProfile()
+  setUserData(user)
   if(!user){
     navigate('/login')
   }
@@ -44,10 +45,10 @@ function Checkout() {
         },
         body: JSON.stringify({
           data: {
-            Name: userData.username,
+            Name: user.username,
             Address: formData.Address,
             Phone: formData.Phone,
-            Email: userData.email,
+            Email: user.email,
             Products: title,
             TotalPrice: totalPrice,
           },
@@ -104,7 +105,7 @@ function Checkout() {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <p className="text-lg text-gray-800 dark:text-gray-200">
-            Email: <span className="font-semibold text-pink-500">{userData.email}</span>
+            Email: <span className="font-semibold text-pink-500">{userData.email || 'No Name'}</span>
           </p>
           <p className="text-lg text-gray-800 dark:text-gray-200">
             Username: <span className="font-semibold text-pink-500">{userData.username}</span>
