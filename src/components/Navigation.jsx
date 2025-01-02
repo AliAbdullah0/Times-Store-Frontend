@@ -9,9 +9,10 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
   const [isVerified, setIsVerified] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isCartDrawerOpen, setCartDrawerOpen] = useState(false)
+  const [isCartDrawerOpen,setCartDrawerOpen] = useState(false)
   const user = useProfile()
   const navigate = useNavigate()
+
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
     if (storedTheme) {
@@ -32,13 +33,13 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
     localStorage.removeItem('jwt');
     setIsVerified(false);
   };
-
-  useEffect(() => {
-    if (!user) {
+  
+  useEffect(()=>{
+    if(!user){
       localStorage.removeItem('jwt')
-      navigate('/')
+    navigate('/login')
     }
-  }, [user])
+  },[user])
 
 
   useEffect(() => {
@@ -74,34 +75,20 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
           <div className="flex items-center">
             <nav className="font-sen text-gray-800 dark:text-white uppercase text-lg lg:flex items-center hidden">
               <NavLink to="/">Home</NavLink>
-              <div className="relative">
-                <button
-                  className="py-2 px-4 uppercase text-lg flex"
-                  onClick={(e) => e.stopPropagation()}
-                >
+              <div
+                className="relative"
+                onClick={() => setDropdownOpen((prev) => !prev)}
+              >
+                <button className="py-2 px-4 uppercase text-lg flex">
                   Product
                 </button>
                 {dropdownOpen && (
-                  <div
-                    className="absolute left-0 w-40 mt-2 flex flex-col bg-gray-100 dark:bg-black text-gray-800 dark:text-white shadow-lg z-50"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <Link
-                      to="/product/men"
-                      className="py-2 px-4 hover:bg-pink-500 hover:text-white dark:hover:bg-white dark:hover:text-black"
-                    >
-                      Men's
-                    </Link>
-                    <Link
-                      to="/product/women"
-                      className="py-2 px-4 hover:bg-pink-500 hover:text-white dark:hover:bg-white dark:hover:text-black"
-                    >
-                      Women's
-                    </Link>
+                  <div className="absolute left-0 w-40 mt-2 flex flex-col bg-gray-100 dark:bg-black text-gray-800 dark:text-white shadow-lg z-50">
+                    <NavLink to="/product/men">Men's</NavLink>
+                    <NavLink to="/product/women">Women's</NavLink>
                   </div>
                 )}
               </div>
-
               <NavLink to="/contact">Contact</NavLink>
               <NavLink to='/cart'>Cart</NavLink>
               {isVerified && (
@@ -135,8 +122,9 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
         </div>
       </div>
       <div
-        className={`fixed top-0 left-0 h-full bg-gray-100 dark:bg-black text-gray-800 dark:text-white w-3/4 z-50 transform ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-          } transition-transform duration-300 ease-in-out`}
+        className={`fixed top-0 left-0 h-full bg-gray-100 dark:bg-black text-gray-800 dark:text-white w-3/4 z-50 transform ${
+          mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        } transition-transform duration-300 ease-in-out`}
       >
         <div className="flex items-center justify-between p-4 border-b border-gray-400">
           <h2 className="text-lg font-bold">
