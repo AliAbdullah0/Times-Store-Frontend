@@ -6,7 +6,7 @@ const initialState = {
   items: [
     {
       id: 1,
-      name: "Watch",
+      title: "Watch",
       price: 100,
       quantity: 1,
     },

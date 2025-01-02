@@ -1,63 +1,46 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../features/CartSlice';
-
 function ProductCard({ product }) {
   if (!product) return null;
-
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    dispatch(addToCart(product));
+    dispatch(addToCart(product)); // Directly dispatch the product as payload
   };
-
-  const fallbackImage = 'default-image.png'; // Replace with your actual fallback image path if necessary.
-
   return (
-    <div className="flex flex-col w-full overflow-hidden border border-gray-200 dark:border-gray-700 rounded-md shadow-lg">
-      {/* Product Image */}
-      <div className="w-full overflow-hidden">
+    
+    <div className="flex flex-col md:w-[23%] w-10/12 justify-between bg-black ml-2 mr-2 hover:scale-[1.03] hover:transition-all hover:shadow-2xl drop-shadow-xl  p-3">
+      <div className='w-full overflow-hidden'>
         <img
-          src={product.image?.url || fallbackImage}
+          src={product.image?.url || 'default-image.png'}
           alt={product.title || 'Product'}
-          className="w-full h-48 object-cover hover:scale-105 transition-transform"
+          className="size-full  hover:scale-105 hover:transition-all "
         />
       </div>
-
-      {/* Product Details */}
-      <div className="flex flex-col p-4">
-        <h3 className="font-extrabold text-pink-400 text-2xl">{product.title}</h3>
-        <p className="text-gray-600 dark:text-gray-200 text-sm">{product.description}</p>
-        <p className="text-gray-600 dark:text-gray-200 text-sm">
-          <span className="font-extrabold text-base text-gray-800 dark:text-gray-200">Items Left: </span>
-          {product.stock}
-        </p>
-        <p className="font-semibold text-sm text-pink-400">
-          <span className="font-extrabold text-base text-gray-800 dark:text-gray-200">Rs </span>
-          {product.price}
-        </p>
-      </div>
-
-      {/* Actions */}
-      <div className="flex items-center justify-between px-4 pb-4">
+      <div className="flex h-full items-end justify-between w-full p-1">
+        <ul className="flex flex-col items-start justify-start w-fit">
+          <li className="font-extrabold text-pink-400 text-2xl">{product.title}</li>
+          <li className="dark:text-gray-200 text-sm">{product.description}</li>
+          <li className="dark:text-gray-200 text-sm">
+            <span className="font-extrabold text-base text-gray-200">Items Left:</span> {product.stock}
+          </li>
+          <li className="font-semibold font-[Roboto] text-sm text-pink-400">
+            <span className="font-extrabold text-base dark:text-gray-200">Rs </span> {product.price}
+          </li>
+        </ul>
+        
         <Link
           to={{
-            pathname: `/product/checkout/${product.id}/${product.title}/${product.price}/${encodeURIComponent(
-              product.image?.url || fallbackImage
-            )}`,
-            state: { product },
+            pathname: `/product/checkout/${product.id}/${product.title}/${product.price}/${encodeURIComponent(product.image.url)}`,
+            state: { product } 
           }}
-          className="flex-grow bg-pink-600 hover:bg-pink-700 text-white text-xs md:text-base p-2 text-center rounded transition-all"
         >
-          Buy Now
+          <button className="bg-pink-500 text-white text-xs md:text-base p-2 -xl hover:bg-pink-600 hover:transition-all">
+            Buy Now
+          </button>
         </Link>
-        <button
-          onClick={handleAddToCart}
-          className="flex-grow ml-2 bg-blue-600 hover:bg-blue-700 text-white text-xs md:text-base p-2 rounded transition-all"
-        >
-          Add To Cart
-        </button>
+          <button onClick={handleAddToCart} className="bg-blue-500 text-white text-xs md:text-base p-2 -xl hover:bg-blue-600 hover:transition-all">Add To Cart</button>
       </div>
     </div>
   );

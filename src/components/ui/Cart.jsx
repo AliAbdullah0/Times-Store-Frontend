@@ -59,7 +59,7 @@ const CartDrawer = () => {
             {cart.items.map((item) => (
               <li key={item.id} className="flex justify-between mb-4">
                 <div>
-                  <p>{item.name}</p>
+                  <p>{item.title}</p>
                   <p>Qty: {item.quantity}</p>
                   <input
                     type="number"
