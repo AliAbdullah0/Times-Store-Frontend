@@ -45,7 +45,9 @@ function Profile() {
       <h1 className="text-3xl font-extrabold text-pink-500 mb-6">Your Profile</h1>
 
       {isLoading ? (
-        <div className="flex w-full justify-center items-center rounded-2xl"></div>
+        <div className="flex justify-center items-center space-x-2">
+          <div className="w-10 h-10 border-4 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
+        </div>
       ) : error ? (
         <div className="text-center text-red-500">{error}</div>
       ) : (
@@ -61,9 +63,12 @@ function Profile() {
 
           <h2 className="text-2xl font-semibold mb-4 text-pink-500 dark:text-white">Your Orders</h2>
           {orders.length > 0 ? (
-            <ul className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {orders.map((order) => (
-                <li key={order.id} className="p-4 text-white rounded-lg bg-black dark:bg-white dark:text-black">
+                <div
+                  key={order.id}
+                  className="p-4 text-white rounded-lg bg-blue-500 dark:bg-gray-800 dark:text-white min-w-[500px]"
+                >
                   <h3 className="text-xl font-semibold">Order ID: {order.id}</h3>
                   <p>Products: {order.Products}</p>
                   <p>Total Price: Rs {order.TotalPrice}</p>
@@ -107,9 +112,9 @@ function Profile() {
                       ? 'Canceled'
                       : 'Cancel Order'}
                   </button>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           ) : (
             <p className="text-center text-gray-600 dark:text-gray-400">No orders found.</p>
           )}
@@ -122,9 +127,12 @@ function Profile() {
 
           <h2 className="text-2xl font-semibold mb-4 text-pink-500 dark:text-white">Your Cart Checkout Orders</h2>
           {cartCheckoutOrders.length > 0 ? (
-            <ul className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {cartCheckoutOrders.map((cartCheckout) => (
-                <li key={cartCheckout.id} className="p-4 text-white bg-black dark:bg-white dark:text-black">
+                <div
+                  key={cartCheckout.id}
+                  className="p-4 text-white bg-green-500 dark:bg-gray-800 dark:text-white min-w-[500px]"
+                >
                   <h3 className="text-xl font-semibold">Cart Checkout ID: {cartCheckout.id}</h3>
                   <p>Products: {cartCheckout.Products}</p>
                   <p>Total Price: Rs {cartCheckout.TotalPrice}</p>
@@ -168,13 +176,12 @@ function Profile() {
                       ? 'Canceled'
                       : 'Cancel Cart Checkout Order'}
                   </button>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           ) : (
             <p className="text-center text-gray-600 dark:text-gray-400">No cart checkout orders found.</p>
           )}
-
         </>
       )}
 
