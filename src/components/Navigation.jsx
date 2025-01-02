@@ -48,7 +48,7 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
       setIsVerified(true);
       window.location.reload()
     }
-  }, []);
+  }, [isVerified]);
 
   const NavLink = ({ to, children, onClick }) => (
     <Link
