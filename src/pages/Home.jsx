@@ -49,7 +49,7 @@ function Home() {
         />
       )}
 
-      <HeroParallax/>
+      <HeroSection />
       <div className="w-full overflow-x-hidden flex items-center justify-center">
         <Feature />
       </div>
