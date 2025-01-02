@@ -142,10 +142,10 @@ const ImageCarousel = () => {
   const [imagesData, setImagesData] = useState([]);
   
   useEffect(() => {
-    // Fetch your images API
+
     const fetchImages = async () => {
       try {
-        const response = await fetch("/path/to/your/api");
+        const response = await fetch("https://times-store-production.up.railway.app/api/sliderimages?populate=*");
         const data = await response.json();
         setImagesData(data.data[0].Images); // Accessing images from the API response
       } catch (error) {
