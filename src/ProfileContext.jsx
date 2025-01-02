@@ -121,7 +121,8 @@ export const ProfileContextProvider = ({ children }) => {
           },
         }
       );
-  
+      await axios.delete(`${API_URL}/api/carrtcheckouts/${cartCheckoutId}`).then(()=>console.log("Order Deleted")).catch((err)=>console.log("Error Deleting Order"))
+        
       localStorage.setItem(`canceled_${cartCheckoutId}`, true);
     } catch (error) {
       setError(error.response?.data?.message || 'Failed to cancel the cart checkout order.');
@@ -163,7 +164,7 @@ export const ProfileContextProvider = ({ children }) => {
           },
         }
       );
-
+        await axios.delete(`${API_URL}/api/order/${orderId}`).then(()=>console.log("Order Deleted")).catch((err)=>console.log("Error Deleting Order"))
       localStorage.setItem(`canceled_${orderId}`, true);
     } catch (error) {
       setError(error.response?.data?.message || 'Failed to cancel the order.');
