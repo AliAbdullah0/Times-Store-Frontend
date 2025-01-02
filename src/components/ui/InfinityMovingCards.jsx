@@ -72,8 +72,8 @@ export const InfiniteMovingCards = ({
               "w-[350px] max-w-full relative rounded-2xl border px-8 py-6 md:w-[450px]",
               "flex-shrink-0",
               theme === "dark"
-                ? "border-slate-700 bg-gradient-to-b from-slate-800 to-slate-900 text-gray-100"
-                : "border-pink-500 bg-gradient-to-b from-pink-400 to-pink-600 text-neutral-100"
+                ? "border-slate-700 bg-gradient-to-b from-zinc-800 to-zinc-900 text-gray-100"
+                : "border-black bg-black text-neutral-100"
             )}
             key={item.name}>
             <blockquote>
