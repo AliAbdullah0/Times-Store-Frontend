@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router';
 
 const API_URL = 'https://times-store-production.up.railway.app'; // API URL constant
 
@@ -19,27 +20,30 @@ export const ProfileContextProvider = ({ children }) => {
   const [isCanceledLoading, setIsCanceledLoading] = useState(false);
   const [cancelingError, setCancelingError] = useState(false);
   const [loadingOrderId, setLoadingOrderId] = useState(null); // Track which order is being canceled
-
+  const [cartCheckoutOrders, setCartCheckoutOrders] = useState([]); // New state for Cart Checkout orders
+  const [userId,setUserId] = useState(0)
   useEffect(() => {
     const token = localStorage.getItem('jwt');
     if (!token) return;
 
     const decodedToken = JSON.parse(atob(token.split('.')[1]));
-    if (!user) { // Only fetch user profile if not already present
+    if (!user) { 
       fetchUserProfile(decodedToken.email);
     }
     fetchCanceledOrders();
+    fetchCartCheckoutOrders(); 
   }, [user]);
 
   const fetchUserProfile = async (email) => {
     try {
-      const response = await fetch(`https://times-store-production.up.railway.app/api/users/me`, {
+      const response = await fetch(`${API_URL}/api/users/me`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         },
       });
       const data = await response.json();
       setUser(data);
+      setUserId(data.id)
       setUserEmail(data.email);
       setUserPhone(data.phone);
       setUsername(data.username);
@@ -52,7 +56,7 @@ export const ProfileContextProvider = ({ children }) => {
   const fetchUserOrders = async (email) => {
     try {
       setIsLoading(true);
-      const response = await axios.get(`https://times-store-production.up.railway.app/api/orders?populate=*`);
+      const response = await axios.get(`${API_URL}/api/orders?populate=*`);
       const filteredOrders = response.data.data.filter((order) => order.Email === email);
       setOrders(filteredOrders);
     } catch (error) {
@@ -65,7 +69,7 @@ export const ProfileContextProvider = ({ children }) => {
   const fetchCanceledOrders = async () => {
     setIsCanceledLoading(true);
     try {
-      const response = await axios.get(`https://times-store-production.up.railway.app/api/canceleds?populate=*`);
+      const response = await axios.get(`${API_URL}/api/canceleds?populate=*`);
       setCanceledOrders(response.data.data);
     } catch (error) {
       console.log(error);
@@ -74,8 +78,61 @@ export const ProfileContextProvider = ({ children }) => {
     }
   };
 
+
+  const fetchCartCheckoutOrders = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/api/cartcheckouts?populate=*`);
+      setCartCheckoutOrders(response.data.data);
+    } catch (error) {
+      setError('Failed to load cart checkout orders.');
+    }
+  };
+
+  const handleCartCheckoutCancellation = async (cartCheckoutId) => {
+    setLoadingOrderId(cartCheckoutId); 
+    try {
+      setCancelingError(false);
+  
+      if (canceledOrders.some((order) => order.OrderId === cartCheckoutId)) {
+        setCancelingError(true);
+        return;
+      }
+  
+      const cartCheckoutToCancel = cartCheckoutOrders.find((order) => order.id === cartCheckoutId);
+      if (!cartCheckoutToCancel) throw new Error('Cart checkout not found');
+  
+      await axios.post(
+        `${API_URL}/api/canceleds/`,
+        {
+          data: {
+            Product: cartCheckoutToCancel?.Products || 'N/A',
+            OrderId: cartCheckoutId,
+            OrderedOn: new Date(cartCheckoutToCancel?.createdAt).toISOString(),
+            CanceledOn: new Date().toISOString(),
+            OrderedBy: username,
+            Email: userEmail,
+            Phone: userPhone,
+          },
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+          },
+        }
+      );
+      await axios.delete(`${API_URL}/api/cartcheckouts/${cartCheckoutId}`).then(()=>console.log("Order Deleted")).catch((err)=>console.log("Error Deleting Order"))
+        
+      localStorage.setItem(`canceled_${cartCheckoutId}`, true);
+    } catch (error) {
+      setError(error.response?.data?.message || 'Failed to cancel the cart checkout order.');
+    } finally {
+      setLoadingOrderId(null);
+    }
+  };
+  
+
   const handleOrderCancellation = async (orderId) => {
-    setLoadingOrderId(orderId); // Set the loading order ID
+    setLoadingOrderId(orderId); 
     try {
       setCancelingError(false);
 
@@ -88,7 +145,7 @@ export const ProfileContextProvider = ({ children }) => {
       if (!orderToCancel) throw new Error('Order not found');
 
       await axios.post(
-        `https://times-store-production.up.railway.app/api/canceleds/`,
+        `${API_URL}/api/canceleds/`,
         {
           data: {
             Product: orderToCancel?.Products || 'N/A',
@@ -106,19 +163,21 @@ export const ProfileContextProvider = ({ children }) => {
           },
         }
       );
-
+        await axios.delete(`${API_URL}/api/order/${orderId}`).then(()=>console.log("Order Deleted")).catch((err)=>console.log("Error Deleting Order"))
       localStorage.setItem(`canceled_${orderId}`, true);
     } catch (error) {
       setError(error.response?.data?.message || 'Failed to cancel the order.');
     } finally {
-      setLoadingOrderId(null); // Reset loading state
+      setLoadingOrderId(null);
     }
   };
-
+  
+  
   const value = {
     user,
     orders,
     canceledOrders,
+    cartCheckoutOrders, 
     userEmail,
     userPhone,
     username,
@@ -128,6 +187,7 @@ export const ProfileContextProvider = ({ children }) => {
     cancelingError,
     loadingOrderId,
     handleOrderCancellation,
+    handleCartCheckoutCancellation,
   };
 
   return (
