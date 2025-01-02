@@ -36,7 +36,7 @@ createRoot(document.getElementById('root')).render(
             <Route index element={<Home/>}/>
             <Route path='product/men' element={<Products/>}/>
             <Route path='product/women' element={<WomenWatches/>}/>
-            <Route path='product/checkout/:id/:title/:price/:image' element={<BackgroundBeamsWithCollision children={<Checkout/>}/>}/>
+            <Route path='product/checkout/:id/:title/:price/:image' element={<Checkout/>}/>
             <Route path='register' element={<Registeration/>} />
             <Route path='login' element={<Login/>} />
             <Route path='profile' element={<Profile/>} />

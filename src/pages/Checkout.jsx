@@ -13,7 +13,6 @@ function Checkout() {
   const [errorMessage, setErrorMessage] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const productImage = image;
   const deliveryCharge = 300;
   const totalPrice = parseFloat(price) + deliveryCharge;
 
