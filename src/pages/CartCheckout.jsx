@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function CartCheckout() {
   const navigate = useNavigate();
+  const cart = useSelector(state => state.cart); // Getting cart data from Redux
   const [userData, setUserData] = useState({ email: '', username: '' });
   const [formData, setFormData] = useState({
     Address: '',
@@ -13,9 +14,10 @@ function CartCheckout() {
   const [errorMessage, setErrorMessage] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const productImage = image;
   const deliveryCharge = 300;
-  const totalPrice = parseFloat(price) + deliveryCharge;
+
+  // Calculate total price
+  const totalPrice = cart.items.reduce((acc, item) => acc + item.price, 0) + deliveryCharge;
 
   useEffect(() => {
     const token = localStorage.getItem('jwt');
@@ -23,10 +25,10 @@ function CartCheckout() {
       navigate('/login');
       return;
     }
-    const cart = useSelector(state=>state.cart)
+
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`https://times-store-production.up.railway.app/api/users/me`, {
+        const response = await fetch('https://times-store-production.up.railway.app/api/users/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -43,7 +45,7 @@ function CartCheckout() {
     };
 
     fetchUserData();
-  }, [apiUrl, navigate]);
+  }, [navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,7 +60,7 @@ function CartCheckout() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`https://times-store-production.up.railway.app/api/cartcheckouts`, {
+      const response = await fetch('https://times-store-production.up.railway.app/api/cartcheckouts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -69,16 +71,12 @@ function CartCheckout() {
             Address: formData.Address,
             Phone: formData.Phone,
             Email: userData.email,
-            Products: cart.item.title,
-            TotalPrice: cart.totalPrice,
+            Products: cart.items.map(item => item.title).join(', '),
+            TotalPrice: totalPrice,
           },
         }),
       });
 
-      console.log("Cart-",cart);
-      console.log(cart.item);
-      console.log(cart.item.title);
-      console.log(cart.item.totalPrice);
       if (response.ok) {
         const result = await response.json();
         setSuccessMessage(`Order placed successfully! Order ID: ${result.data.id}`);
@@ -98,23 +96,26 @@ function CartCheckout() {
 
   return (
     <div className="max-w-4xl mt-4 mx-auto p-6 bg-white shadow-lg rounded-lg dark:bg-gray-900">
-      <h1 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
-        Checkout
-      </h1>
+      <h1 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Checkout</h1>
 
       <div className="flex flex-col md:flex-row items-center mb-6">
         <div className="w-full md:w-1/2 p-4">
-          <h2 className="text-2xl font-semibold mb-2 text-gray-800 dark:text-white">
-            {cart.items}
-          </h2>
+          <h2 className="text-2xl font-semibold mb-2 text-gray-800 dark:text-white">Your Cart</h2>
+          <ul>
+            {cart.items.map((item, index) => (
+              <li key={index} className="flex justify-between mb-2">
+                <span className="text-lg text-gray-800 dark:text-white">{item.title}</span>
+                <span className="text-lg text-pink-500">Rs {item.price}</span>
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="w-full md:w-1/2 p-4 space-y-2">
-
           <p className="text-lg text-gray-800 dark:text-gray-200">
             Delivery Charge: <span className="font-semibold text-pink-500">Rs {deliveryCharge}</span>
           </p>
           <p className="text-lg text-gray-800 dark:text-gray-200">
-            Total Price: <span className="font-semibold text-pink-500">Rs {cart.totalPrice}</span>
+            Total Price: <span className="font-semibold text-pink-500">Rs {totalPrice}</span>
           </p>
         </div>
       </div>
