@@ -21,11 +21,6 @@ const MyCartPage = () => {
             {cart.items.map((item) => (
               <li key={item.id} className="flex justify-between items-center mb-4">
                 <div className="flex items-center">
-                  <img
-                    src={item.image.url} // Assuming `image` is available in item
-                    alt={item.title}
-                    className="w-16 h-16 object-cover mr-4"
-                  />
                   <div>
                     <p className="font-semibold">{item.title}</p>
                     <p className="text-gray-600">${item.price}</p>
