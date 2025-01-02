@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useProfile } from '../ProfileContext'; // Import the ProfileContext
+import { useProfile } from '../ProfileContext';
 import axios from 'axios';
+import ConfirmPopup from '../components/ConfirmPopup';
 
 function Profile() {
   const {
@@ -14,15 +15,17 @@ function Profile() {
     isLoading,
     error,
     isCanceledLoading,
-    cartCheckoutOrders, // Access cart checkout orders
+    cartCheckoutOrders,
     cancelingError,
     deleteProfile,
     loadingOrderId,
     handleCartCheckoutCancellation,
     handleOrderCancellation,
-  } = useProfile(); // Access the context values
+  } = useProfile();
 
+  const [isPopupOpen, setPopupOpen] = useState(false);
   const navigate = useNavigate();
+
   useEffect(() => {
     const token = localStorage.getItem('jwt');
     if (!token) {
@@ -31,14 +34,18 @@ function Profile() {
     }
   }, [navigate]);
 
+  const handleDeleteProfile = () => {
+    deleteProfile();
+    setPopupOpen(false);
+    navigate('/');
+  };
+
   return (
     <div className="w-[95%] mx-auto p-6 drop-shadow-xl rounded-lg shadow-lg bg-white bg-grid-small-black/[0.2] dark:bg-black dark:bg-grid-small-white/[0.2]">
       <h1 className="text-3xl font-extrabold text-pink-500 mb-6">Your Profile</h1>
 
       {isLoading ? (
-        <div className="flex w-full justify-center items-center rounded-2xl">
-          {/* Loader component or animation */}
-        </div>
+        <div className="flex w-full justify-center items-center rounded-2xl"></div>
       ) : error ? (
         <div className="text-center text-red-500">{error}</div>
       ) : (
@@ -170,9 +177,21 @@ function Profile() {
 
         </>
       )}
+
       <div className='w-full p-2'>
-        <button onClick={deleteProfile} className='bg-red-500 text-white p-2'>Delete Profile</button>
+        <button
+          onClick={() => setPopupOpen(true)}
+          className='bg-red-500 text-white p-2'
+        >
+          Delete Profile
+        </button>
       </div>
+
+      <ConfirmPopup
+        isOpen={isPopupOpen}
+        onClose={() => setPopupOpen(false)}
+        onConfirm={handleDeleteProfile}
+      />
     </div>
   );
 }

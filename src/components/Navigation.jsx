@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import DarkModeToggle from '../pages/Darkmode';
 import CartDrawer from './ui/Cart';
+import { useProfile } from '../ProfileContext';
 
 function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -9,6 +10,7 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isCartDrawerOpen,setCartDrawerOpen] = useState(false)
+  const user = useProfile()
 
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
@@ -30,6 +32,14 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
     localStorage.removeItem('jwt');
     setIsVerified(false);
   };
+  
+  useEffect(()=>{
+    if(!user){
+      localStorage.removeItem('jwt')
+      window.location.reload()
+      Navigate('/login')
+    }
+  },[user])
 
 
   useEffect(() => {

@@ -173,9 +173,6 @@ export const ProfileContextProvider = ({ children }) => {
   const deleteProfile = async ()=>{
     setDeletingProfile(true)
     const response = await axios.delete(`${API_URL}/api/users/${userId}`).then(()=>console.log("User Deleted!")).catch((err)=>console.log("Error Deleting User:",err))
-    if(response.ok){
-      setDeletingProfile(false)
-    }
     
   }
   const value = {
