@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 function Checkout() {
   const apiUrl = import.meta.env.VITE_API_URL;
+  const { id, title, price, image } = useParams();
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: '', username: '' });
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ function Checkout() {
   const [errorMessage, setErrorMessage] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const productImage = image
   const deliveryCharge = 300;
   const totalPrice = parseFloat(price) + deliveryCharge;
 
