@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart } from '../../features/CartSlice';
 
 const MyCartPage = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  // Load cart from localStorage on component mount
+  useEffect(() => {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      // You can dispatch an action to update your Redux store with the saved cart
+      const cartData = JSON.parse(savedCart);
+      // Assuming you have an action to set cart
+      dispatch({ type: 'cart/setCart', payload: cartData }); 
+    }
+  }, [dispatch]);
 
   const handleRemove = (item) => {
     dispatch(removeFromCart(item));
@@ -23,7 +39,7 @@ const MyCartPage = () => {
                 <div className="flex items-center">
                   <div>
                     <p className="font-semibold">{item.title}</p>
-                    <p className="text-gray-600">${item.price}</p>
+                    <p className="text-gray-600">Rs {item.price}</p>
                   </div>
                 </div>
                 <button
@@ -36,7 +52,7 @@ const MyCartPage = () => {
             ))}
           </ul>
           <div className="mt-4">
-            <p className="font-semibold">Total: ${cart.totalPrice}</p>
+            <p className="font-semibold">Total: Rs {cart.totalPrice}</p>
           </div>
           <button className="mt-6 bg-blue-600 text-white py-2 px-4 rounded">
             Proceed to Checkout

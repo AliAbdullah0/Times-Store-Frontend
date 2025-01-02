@@ -1,17 +1,19 @@
-// src/features/CartSlice.js
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
-const initialState = {
-  id: nanoid(),
-  items: [
-    {
-      id: 1,
-      title: "Watch",
-      price: 100,
-    },
-  ],
-  totalPrice: 100,
+// Initialize the cart with data from localStorage (if available)
+const loadCartFromLocalStorage = () => {
+  const savedCart = localStorage.getItem('cart');
+  if (savedCart) {
+    return JSON.parse(savedCart);
+  }
+  return {
+    id: nanoid(),
+    items: [],
+    totalPrice: 0,
+  };
 };
+
+const initialState = loadCartFromLocalStorage();
 
 const cartSlice = createSlice({
   name: "cart",
@@ -24,7 +26,7 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity += 1;
       } else {
-        state.items.push(action.payload);
+        state.items.push({ ...action.payload, quantity: 1 });
       }
       state.totalPrice += action.payload.price;
     },
@@ -37,9 +39,12 @@ const cartSlice = createSlice({
         state.items.splice(itemIndex, 1);
       }
     },
+    setCart(state, action) {
+      return action.payload; // Set the cart from local storage
+    },
   },
 });
 
-export const { addToCart, removeFromCart, updateQuantity } = cartSlice.actions;
+export const { addToCart, removeFromCart, setCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
