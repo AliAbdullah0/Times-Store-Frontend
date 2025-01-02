@@ -85,7 +85,7 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
                 {dropdownOpen && (
                   <div className="absolute left-0 w-40 mt-2 flex flex-col bg-gray-100 dark:bg-black text-gray-800 dark:text-white shadow-lg z-50">
                     <NavLink to="/product/men">Men's</NavLink>
-                    <NavLink to="/product/women">Women's</NavLink>
+                    <Link className='py-2 px-4 text-current hover:bg-pink-500 hover:text-white dark:hover:bg-white dark:hover:text-black' to="/product/women">Women's</Link>
                   </div>
                 )}
               </div>
