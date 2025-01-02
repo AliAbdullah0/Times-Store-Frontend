@@ -9,8 +9,9 @@ export default function HeroSection() {
     "https://www.watchesofswitzerland.com/medias/wosus-patek-philippe-desktop-carousel-may-23.jpg?context=bWFzdGVyfHJvb3R8MjIxNjAwfGltYWdlL2pwZWd8YURRNUwyZzBZaTg1TWpJd05URTFOalU1T0RBMkxtcHdad3w5M2U2MGJjZGQ2NDU5YjU3MGNmN2UyMmFiN2NiNmFhZTllMjczYjk1ZGQ1ZGM1NzIzNjMyZDMxN2NkNDU4MWQ3&imwidth=1920",
     "https://www.watchesofswitzerland.com/medias/wosus-grand-seiko-carousel-desktop-dec23.jpg?context=bWFzdGVyfGltYWdlc3wyMzQ5ODh8aW1hZ2UvanBlZ3xhVzFoWjJWekwyZzNaUzlvTjJFdk9USTFNVFV4T0RZM056QXlNaTVxY0djfDk3NmU2ZWEzZWE1MTliZTAwZmQ1ZjlhMDZjNjg3MmExNGRhMjI0MTJiMTg0ODUwODcwMjY2NTAxODM3YTc5MDU&imwidth=1920",
   ];
+
   return (
-    (<ImagesSlider className="h-[40rem]" images={images}>
+    <ImagesSlider className="h-[35rem] md:h-[40rem]" images={images}>
       <motion.div
         initial={{
           opacity: 0,
@@ -23,18 +24,24 @@ export default function HeroSection() {
         transition={{
           duration: 0.6,
         }}
-        className="z-50 flex flex-col justify-center items-center">
+        className="z-50 flex flex-col justify-center items-center px-4 text-center"
+      >
         <motion.p
-          className="font-bold text-xl md:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4">
+          className="font-bold text-lg sm:text-2xl md:text-4xl lg:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4"
+        >
           Where timeless craftsmanship <br /> meets modern design
         </motion.p>
         <button
-          className="px-4 py-2 backdrop-blur-sm border bg-emerald-300/10 border-emerald-500/20 text-white mx-auto text-center rounded-full relative mt-4">
-          <Link to='profile'><span>Get Started →</span></Link>
+          className="px-3 py-2 md:px-4 md:py-3 backdrop-blur-sm border bg-emerald-300/10 border-emerald-500/20 text-white mx-auto text-center rounded-full relative mt-4 text-sm md:text-base"
+        >
+          <Link to="profile">
+            <span>Get Started →</span>
+          </Link>
           <div
-            className="absolute inset-x-0  h-px -bottom-px bg-gradient-to-r w-3/4 mx-auto from-transparent via-emerald-500 to-transparent" />
+            className="absolute inset-x-0 h-px -bottom-px bg-gradient-to-r w-3/4 mx-auto from-transparent via-emerald-500 to-transparent"
+          />
         </button>
       </motion.div>
-    </ImagesSlider>)
+    </ImagesSlider>
   );
 }
