@@ -1,7 +1,7 @@
 // src/components/CartDrawer.jsx
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart, updateQuantity } from "../features/CartSlice";
+import { removeFromCart, updateQuantity } from "../../features/CartSlice";
 
 const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
