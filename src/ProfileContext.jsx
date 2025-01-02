@@ -121,7 +121,7 @@ export const ProfileContextProvider = ({ children }) => {
           },
         }
       );
-      await axios.delete(`${API_URL}/api/carrtcheckouts/${cartCheckoutId}`).then(()=>console.log("Order Deleted")).catch((err)=>console.log("Error Deleting Order"))
+      await axios.delete(`${API_URL}/api/cartcheckouts/${cartCheckoutId}`).then(()=>console.log("Order Deleted")).catch((err)=>console.log("Error Deleting Order"))
         
       localStorage.setItem(`canceled_${cartCheckoutId}`, true);
     } catch (error) {
@@ -172,15 +172,24 @@ export const ProfileContextProvider = ({ children }) => {
       setLoadingOrderId(null);
     }
   };
-  const deleteProfile = async ()=>{
-    setDeletingProfile(true)
-    const response = await axios.delete(`${API_URL}/api/users/${userId}`).then(()=>console.log("User Deleted!")).catch((err)=>console.log("Error Deleting   User:",err)).then(()=>{
-      localStorage.removeItem('jwt')
-      window.location.reload()
-      useNavigate('/login')
-    })
-    
-  }
+  const deleteProfile = async () => {
+    setDeletingProfile(true);
+    try {
+      await axios.delete(`${API_URL}/api/users/${userId}`);
+      console.log("User Deleted!");
+  
+   
+      localStorage.removeItem('jwt');
+      window.location.reload();
+  
+
+      const navigate = useNavigate();
+      navigate('/login');
+    } catch (err) {
+      console.error("Error Deleting User:", err);
+    }
+  };
+  
   const value = {
     user,
     orders,

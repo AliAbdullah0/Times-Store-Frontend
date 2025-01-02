@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import DarkModeToggle from '../pages/Darkmode';
 import CartDrawer from './ui/Cart';
 import { useProfile } from '../ProfileContext';
@@ -11,7 +11,7 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isCartDrawerOpen,setCartDrawerOpen] = useState(false)
   const user = useProfile()
-
+const navigate = useNavigate()
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
     if (storedTheme) {
@@ -37,7 +37,7 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
     if(!user){
       localStorage.removeItem('jwt')
       window.location.reload()
-      Navigate('/')
+      navigate('/')
     }
   },[user])
 
