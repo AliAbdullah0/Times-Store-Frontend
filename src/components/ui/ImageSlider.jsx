@@ -105,6 +105,9 @@ const ImagesSlider = ({
     },
   };
 
+  // Adjust perspective dynamically based on screen size
+  const perspective = window.innerWidth < 768 ? "600px" : "1000px";
+
   return (
     <div
       className={cn(
@@ -112,7 +115,7 @@ const ImagesSlider = ({
         className
       )}
       style={{
-        perspective: "1000px",
+        perspective: perspective,
       }}
     >
       {loadedImages.length > 0 && children}
@@ -124,13 +127,13 @@ const ImagesSlider = ({
           <motion.img
             key={currentIndex}
             src={loadedImages[currentIndex]}
+            alt={`Slide ${currentIndex}`}
             initial="initial"
             animate="visible"
             exit={direction === "up" ? "upExit" : "downExit"}
             variants={slideVariants}
-            className="image h-full w-full absolute inset-0 object-cover object-center sm:object-contain"
+            className="image h-full w-full absolute inset-0 object-cover object-center"
           />
-
         </AnimatePresence>
       )}
     </div>
