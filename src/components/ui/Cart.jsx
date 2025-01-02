@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { removeFromCart } from '../../features/CartSlice';
 
 const MyCartPage = () => {
@@ -15,10 +16,8 @@ const MyCartPage = () => {
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
-      // You can dispatch an action to update your Redux store with the saved cart
       const cartData = JSON.parse(savedCart);
-      // Assuming you have an action to set cart
-      dispatch({ type: 'cart/setCart', payload: cartData }); 
+      dispatch({ type: 'cart/setCart', payload: cartData });
     }
   }, [dispatch]);
 
@@ -54,9 +53,16 @@ const MyCartPage = () => {
           <div className="mt-4">
             <p className="font-semibold">Total: Rs {cart.totalPrice}</p>
           </div>
-          <button className="mt-6 bg-blue-600 text-white py-2 px-4 rounded">
-            Proceed to Checkout
-          </button>
+          <Link
+            to={{
+              pathname: `/cartcheckout`,
+              state: { totalPrice: cart.totalPrice, items: cart.items },
+            }}
+          >
+            <button className="mt-6 bg-blue-600 text-white py-2 px-4 rounded">
+              Proceed to Checkout
+            </button>
+          </Link>
         </div>
       )}
     </div>

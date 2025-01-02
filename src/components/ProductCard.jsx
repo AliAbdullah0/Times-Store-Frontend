@@ -36,7 +36,7 @@ function ProductCard({ product }) {
         </ul>
 
         {/* Action Buttons */}
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 w-fit">
           <Link
             to={{
               pathname: `/product/checkout/${product.id}/${product.title}/${product.price}/${encodeURIComponent(
@@ -51,7 +51,7 @@ function ProductCard({ product }) {
           </Link>
           <button
             onClick={handleAddToCart}
-            className="bg-blue-500 text-white text-xs md:text-base px-4 py-2 rounded hover:bg-blue-600 transition-all"
+            className="bg-blue-500 text-white w-fit line-clamp-1 text-xs md:text-base px-4 py-2 rounded hover:bg-blue-600 transition-all"
           >
             Add To Cart
           </button>

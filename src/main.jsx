@@ -22,6 +22,7 @@ import { WomensContextProvider } from './WomensWatchesContext.jsx'
 import { ProfileContextProvider } from './ProfileContext.jsx'
 import store from './store/Store.js'
 import {Provider} from 'react-redux'
+import CartCheckout from './pages/CartCheckout.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
@@ -42,6 +43,7 @@ createRoot(document.getElementById('root')).render(
             <Route path='canceledorders' element={<CanceledOrders/>} />
             <Route path='contact' element={ <Contact/>}/>
             <Route path='cart' element={ <MyCartPage/>}/>
+            <Route path='cartcheckout/:id/:title/:price' element={<CartCheckout/>}/>
             <Route path='*' element={<Error/>}/>
         </Route>
       </Routes>
