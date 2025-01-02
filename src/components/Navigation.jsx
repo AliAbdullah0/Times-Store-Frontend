@@ -47,61 +47,65 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
   );
 
   return (
-    <header className="h-24 bg-white dark:bg-black sm:h-32 flex items-center z-30 w-full">
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link
-          to="/"
-          className="uppercase text-gray-800 dark:text-white font-black sm:text-3xl text-2xl"
-        >
-          <span className="uppercase text-pink-500 font-black sm:text-3xl text-2xl">ZEN</span>TIME
-        </Link>
-        <div className="flex items-center">
-          <nav className="font-sen text-gray-800 dark:text-white uppercase text-lg lg:flex items-center hidden">
-            <NavLink to="/">Home</NavLink>
-            <div
-              className="relative"
-              onClick={() => setDropdownOpen((prev) => !prev)}
-            >
-              <button className="py-2 px-4 uppercase text-lg flex">
-                Product
-              </button>
-              {dropdownOpen && (
-                <div className="absolute left-0 w-40 mt-2 flex flex-col bg-gray-100 dark:bg-black text-gray-800 dark:text-white shadow-lg z-50">
-                  <NavLink to="/product/men">Men's</NavLink>
-                  <NavLink to="/product/women">Women's</NavLink>
-                </div>
-              )}
-            </div>
-            <NavLink to="/contact">Contact</NavLink>
-            {isVerified && (
-              <>
-                <NavLink to="profile">My Profile</NavLink>
-                <NavLink to="canceledorders">Canceled</NavLink>
-                <button
-                  onClick={handleLogout}
-                  className="pl-2 ml-2 mr-1 pr-2 py-2 uppercase font-sen text-lg hover:bg-gray-800 dark:hover:bg-white hover:text-white dark:hover:text-black hover:transition-all rounded-md bg-transparent"
-                >
-                  Logout
-                </button>
-              </>
-            )}
-            {!isVerified && (
-              <>
-                <NavLink to="login">Login</NavLink>
-                <NavLink to="register">Register</NavLink>
-              </>
-            )}
-          </nav>
-          <button
-            className="lg:hidden flex flex-col ml-4"
-            onClick={toggleMobileMenu}
+    <header>
+      <div className='w-full h-5 bg-pink-500 text-white flex items-center justify-center p-4 font-semibold'>
+        Winter Sale! 50% Off On All Items!
+      </div>
+      <div className="h-24 bg-white dark:bg-black sm:h-32 flex items-center z-30 w-full">
+        <div className="container mx-auto px-6 flex items-center justify-between">
+          <Link
+            to="/"
+            className="uppercase text-gray-800 dark:text-white font-black sm:text-3xl text-2xl"
           >
-            <span className="w-6 h-1 bg-pink-500 mb-1"></span>
-            <span className="w-6 h-1 bg-pink-500 mb-1"></span>
-            <span className="w-6 h-1 bg-pink-500 mb-1"></span>
-          </button>
+            <span className="uppercase text-pink-500 font-black sm:text-3xl text-2xl">ZEN</span>TIME
+          </Link>
+          <div className="flex items-center">
+            <nav className="font-sen text-gray-800 dark:text-white uppercase text-lg lg:flex items-center hidden">
+              <NavLink to="/">Home</NavLink>
+              <div
+                className="relative"
+                onClick={() => setDropdownOpen((prev) => !prev)}
+              >
+                <button className="py-2 px-4 uppercase text-lg flex">
+                  Product
+                </button>
+                {dropdownOpen && (
+                  <div className="absolute left-0 w-40 mt-2 flex flex-col bg-gray-100 dark:bg-black text-gray-800 dark:text-white shadow-lg z-50">
+                    <NavLink to="/product/men">Men's</NavLink>
+                    <NavLink to="/product/women">Women's</NavLink>
+                  </div>
+                )}
+              </div>
+              <NavLink to="/contact">Contact</NavLink>
+              {isVerified && (
+                <>
+                  <NavLink to="profile">My Profile</NavLink>
+                  <NavLink to="canceledorders">Canceled</NavLink>
+                  <button
+                    onClick={handleLogout}
+                    className="pl-2 ml-2 mr-1 pr-2 py-2 uppercase font-sen text-lg hover:bg-gray-800 dark:hover:bg-white hover:text-white dark:hover:text-black hover:transition-all rounded-md bg-transparent"
+                  >
+                    Logout
+                  </button>
+                </>
+              )}
+              {!isVerified && (
+                <>
+                  <NavLink to="login">Login</NavLink>
+                  <NavLink to="register">Register</NavLink>
+                </>
+              )}
+            </nav>
+            <button
+              className="lg:hidden flex flex-col ml-4"
+              onClick={toggleMobileMenu}
+            >
+              <span className="w-6 h-1 bg-pink-500 mb-1"></span>
+              <span className="w-6 h-1 bg-pink-500 mb-1"></span>
+              <span className="w-6 h-1 bg-pink-500 mb-1"></span>
+            </button>
+          </div>
         </div>
-        <DarkModeToggle isDarkMode={isDarkMode} toggle={() => setIsDarkMode(!isDarkMode)} />
       </div>
       <div
         className={`fixed top-0 left-0 h-full bg-gray-100 dark:bg-black text-gray-800 dark:text-white w-3/4 z-50 transform ${
@@ -162,6 +166,10 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
               </NavLink>
             </>
           )}
+          {/* Dark Mode Toggle in Mobile Drawer */}
+          <div className="flex justify-center mt-4">
+            <DarkModeToggle isDarkMode={isDarkMode} toggle={() => setIsDarkMode(!isDarkMode)} />
+          </div>
         </nav>
       </div>
     </header>

@@ -101,28 +101,42 @@ function Checkout() {
   };
 
   return (
-    <div className="max-w-4xl mt-2 mb-2 mx-auto p-6 bg-transparent shadow-lg">
-      <h1 className="text-3xl font-bold text-pink-500 mb-6"><span className='text-white'>Chec</span>kout</h1>
+    <div className="max-w-4xl mt-2 mb-2 mx-auto p-6 bg-transparent shadow-lg dark:bg-gray-800">
+      <h1 className="text-3xl font-bold text-pink-500 mb-6 dark:text-white">
+        <span className="text-white">Chec</span>kout
+      </h1>
       
       <div className="flex flex-col md:flex-row items-center mb-6">
         <div className="w-full md:w-1/2 p-4 overflow-hidden">
-          <h2 className="text-2xl font-semibold mb-2 text-white">{title}</h2>
+          <h2 className="text-2xl font-semibold mb-2 text-white dark:text-gray-200">{title}</h2>
           <div className="overflow-hidden w-full">
             <img src={productImage} alt={title} className="w-full h-64 object-cover rounded-md hover:scale-105 hover:transition-all" />
           </div>
         </div>
         <div className="w-full md:w-1/2 p-4">
-          <p className="text-lg text-white">Price: <span className="font-semibold text-pink-500">Rs {price}</span></p>
-          <p className="text-lg text-white">Delivery Charge: <span className="font-semibold text-pink-500">Rs {deliveryCharge}</span></p>
-          <p className="text-lg text-white">Total Price: <span className="font-semibold text-pink-500">Rs {totalPrice}</span></p>
-          <p className="text-lg text-white">Product ID: <span className="font-semibold text-pink-500">{id}</span></p>
+          <p className="text-lg text-white dark:text-gray-200">
+            Price: <span className="font-semibold text-pink-500">Rs {price}</span>
+          </p>
+          <p className="text-lg text-white dark:text-gray-200">
+            Delivery Charge: <span className="font-semibold text-pink-500">Rs {deliveryCharge}</span>
+          </p>
+          <p className="text-lg text-white dark:text-gray-200">
+            Total Price: <span className="font-semibold text-pink-500">Rs {totalPrice}</span>
+          </p>
+          <p className="text-lg text-white dark:text-gray-200">
+            Product ID: <span className="font-semibold text-pink-500">{id}</span>
+          </p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="mb-4">
-          <p className="text-lg text-white">Email: <span className="font-semibold text-pink-500">{userData.email}</span></p>
-          <p className="text-lg text-white">Username: <span className="font-semibold text-pink-500">{userData.username}</span></p>
+          <p className="text-lg text-white dark:text-gray-200">
+            Email: <span className="font-semibold text-pink-500">{userData.email}</span>
+          </p>
+          <p className="text-lg text-white dark:text-gray-200">
+            Username: <span className="font-semibold text-pink-500">{userData.username}</span>
+          </p>
         </div>
 
         <div className="flex flex-col md:flex-row">
@@ -133,7 +147,7 @@ function Checkout() {
             value={formData.Address}
             onChange={handleChange}
             required
-            className="p-3 border border-gray-300 bg-transparent rounded-md w-full md:w-1/2 text-gray-200 mr-2 mb-4 md:mb-0"
+            className="p-3 border border-gray-300 bg-transparent rounded-md w-full md:w-1/2 text-gray-200 mr-2 mb-4 md:mb-0 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
           />
           <input
             type="text"
@@ -142,13 +156,13 @@ function Checkout() {
             value={formData.Phone}
             onChange={handleChange}
             required
-            className="p-3 border border-gray-300 bg-transparent rounded-md w-full text-gray-200 md:w-1/2"
+            className="p-3 border border-gray-300 bg-transparent rounded-md w-full text-gray-200 md:w-1/2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full py-3 bg-pink-500 text-white font-semibold rounded-md hover:bg-pink-600 transition flex justify-center items-center"
+          className="w-full py-3 bg-pink-500 text-white font-semibold rounded-md hover:bg-pink-600 transition flex justify-center items-center dark:bg-pink-600 dark:hover:bg-pink-700"
           disabled={isLoading}
         >
           {isLoading ? (
@@ -159,23 +173,22 @@ function Checkout() {
         </button>
       </form>
 
-      {successMessage && <p className="mt-4 text-green-500">{successMessage}</p>}
-      {errorMessage && <p className="mt-4 text-red-500">{errorMessage}</p>}
+      {successMessage && <p className="mt-4 text-green-500 dark:text-green-400">{successMessage}</p>}
+      {errorMessage && <p className="mt-4 text-red-500 dark:text-red-400">{errorMessage}</p>}
 
       {isModalOpen && (
         <div className="fixed p-2 inset-0 text-white flex justify-center items-center z-50">
-        <div className="sm:p-8 p-4 rounded-lg bg-black shadow-lg w-full sm:w-1/3 text-center">
-          <h2 className="text-xl font-bold mb-4">Order Confirmed!</h2>
-          <p className="mb-4">Your order has been placed successfully. Thank you for shopping with us!</p>
-          <button
-            onClick={closeModal}
-            className="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600"
-          >
-            Close
-          </button>
+          <div className="sm:p-8 p-4 rounded-lg bg-black shadow-lg w-full sm:w-1/3 text-center">
+            <h2 className="text-xl font-bold mb-4">Order Confirmed!</h2>
+            <p className="mb-4">Your order has been placed successfully. Thank you for shopping with us!</p>
+            <button
+              onClick={closeModal}
+              className="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 dark:bg-pink-600 dark:hover:bg-pink-700"
+            >
+              Close
+            </button>
+          </div>
         </div>
-      </div>
-      
       )}
     </div>
   );
