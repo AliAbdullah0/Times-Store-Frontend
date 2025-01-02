@@ -52,7 +52,7 @@ function Profile() {
             </div>
           )}
 
-          <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">Your Orders</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-pink-500 dark:text-white">Your Orders</h2>
           {orders.length > 0 ? (
             <ul className="space-y-4">
               {orders.map((order) => (
@@ -113,12 +113,11 @@ function Profile() {
             </div>
           )}
 
-          <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">Cart Checkout Orders</h2>
-          <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">Your Cart Checkout Orders</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-pink-500 dark:text-white">Your Cart Checkout Orders</h2>
           {cartCheckoutOrders.length > 0 ? (
             <ul className="space-y-4">
               {cartCheckoutOrders.map((cartCheckout) => (
-                <li key={cartCheckout.id} className="p-4 text-white rounded-lg bg-black dark:bg-white dark:text-black">
+                <li key={cartCheckout.id} className="p-4 text-white bg-black dark:bg-white dark:text-black">
                   <h3 className="text-xl font-semibold">Cart Checkout ID: {cartCheckout.id}</h3>
                   <p>Products: {cartCheckout.Products}</p>
                   <p>Total Price: Rs {cartCheckout.TotalPrice}</p>

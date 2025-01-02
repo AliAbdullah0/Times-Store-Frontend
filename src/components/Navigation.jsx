@@ -142,6 +142,9 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
           <NavLink to="/contact" onClick={toggleMobileMenu}>
             Contact
           </NavLink>
+          <NavLink to="/cart" onClick={toggleMobileMenu}>
+            Cart
+          </NavLink>
           {isVerified ? (
             <>
               <NavLink to="profile" onClick={toggleMobileMenu}>

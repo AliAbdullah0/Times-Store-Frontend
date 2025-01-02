@@ -10,13 +10,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem('jwt');
-    if (token) {
-      navigate('/');
-    }
-  }, [navigate]);
-
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -34,7 +27,7 @@ const Login = () => {
       const token = response.data.jwt;
       localStorage.setItem('jwt', token);
       setLoading(false);
-      toast.success('Logged in successfully!'); // Show success toast
+      toast.success('Logged in successfully!');
       navigate('/');
     } catch (error) {
       console.error('Login error:', error);
