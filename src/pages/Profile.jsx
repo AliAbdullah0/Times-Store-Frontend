@@ -125,30 +125,41 @@ function Profile() {
             </div>
           )}
 
-          <h2 className="text-2xl font-semibold mb-4 text-pink-500 dark:text-white">Your Cart Checkout Orders</h2>
-          {cartCheckoutOrders.length > 0 ? (
+          <h1 className="text-3xl font-extrabold text-pink-600 dark:text-pink-400 mb-6">Your Profile</h1>
+
+          {user && (
+            <div className="mb-6 bg-transparent p-4 rounded-lg shadow text-gray-700 dark:text-gray-300">
+              <h2 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400">
+                <span className="text-2xl font-semibold text-blue-600 dark:text-blue-400">Hello,</span> {user.username}
+              </h2>
+              <p className="italic text-indigo-600 dark:text-indigo-400">{user.email}</p>
+            </div>
+          )}
+
+          <h2 className="text-2xl font-semibold mb-4 text-pink-600 dark:text-pink-400">Your Orders</h2>
+          {orders.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {cartCheckoutOrders.map((cartCheckout) => (
+              {orders.map((order) => (
                 <div
-                  key={cartCheckout.id}
-                  className="p-4 text-white bg-white shadow-lg dark:bg-gray-800 dark:text-white min-w-[500px]"
+                  key={order.id}
+                  className="p-4 rounded-lg bg-blue-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100"
                 >
-                  <h3 className="text-xl font-semibold">Cart Checkout ID: {cartCheckout.id}</h3>
-                  <p>Products: {cartCheckout.Products}</p>
-                  <p>Total Price: Rs {cartCheckout.TotalPrice}</p>
-                  <a href='/canceledorders' className='text-blue-500 hover:underline'>Status</a>
-                  <p>Date: {new Date(cartCheckout.createdAt).toLocaleDateString()}</p>
+                  <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400">Order ID: {order.id}</h3>
+                  <p>Products: {order.Products}</p>
+                  <p>Total Price: <span className="font-bold text-green-600 dark:text-green-400">Rs {order.TotalPrice}</span></p>
+                  <a href="/canceledorders" className="text-blue-500 dark:text-blue-400 hover:underline">Status</a>
+                  <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
                   <button
-                    className={`pl-2 pr-2 py-1.5 ${localStorage.getItem(`canceled_${cartCheckout.id}`)
-                      ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
-                      : loadingOrderId === cartCheckout.id
+                    className={`pl-2 pr-2 py-1.5 mt-1 ${localStorage.getItem(`canceled_${order.id}`)
+                      ? 'bg-gray-400 text-gray-700 dark:bg-gray-700 dark:text-gray-400 cursor-not-allowed'
+                      : loadingOrderId === order.id
                         ? 'bg-blue-400 text-white cursor-wait'
                         : 'bg-red-500 text-white hover:bg-red-600 transition-all'
-                      } rounded-md mt-1`}
-                    onClick={() => handleCartCheckoutCancellation(cartCheckout.id)}
-                    disabled={localStorage.getItem(`canceled_${cartCheckout.id}`) || loadingOrderId === cartCheckout.id}
+                      } rounded-md`}
+                    onClick={() => handleOrderCancellation(order.id)}
+                    disabled={localStorage.getItem(`canceled_${order.id}`) || loadingOrderId === order.id}
                   >
-                    {loadingOrderId === cartCheckout.id ? (
+                    {loadingOrderId === order.id ? (
                       <span className="flex items-center gap-1">
                         <svg
                           className="animate-spin h-4 w-4 text-white"
@@ -172,16 +183,17 @@ function Profile() {
                         </svg>
                         Canceling...
                       </span>
-                    ) : localStorage.getItem(`canceled_${cartCheckout.id}`)
+                    ) : localStorage.getItem(`canceled_${order.id}`)
                       ? 'Canceled'
-                      : 'Cancel Cart Checkout Order'}
+                      : 'Cancel Order'}
                   </button>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-center text-gray-600 dark:text-gray-400">No cart checkout orders found.</p>
+            <p className="text-center text-gray-600 dark:text-gray-400">No orders found.</p>
           )}
+
         </>
       )}
 
