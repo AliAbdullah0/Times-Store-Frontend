@@ -39,7 +39,7 @@ function ProductCard({ product }) {
         <div className="flex space-x-2 w-full mt-4 justify-between">
           <Link
             to={{
-              pathname: `/product/checkout/${product.id}/${product.title}/${product.price}/${encodeURIComponent(
+              pathname: `/product/men/checkout/${product.id}/${product.title}/${product.price}/${encodeURIComponent(
                 product.image?.url || 'default-image.png'
               )}`,
               state: { product },
