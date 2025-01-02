@@ -30,10 +30,10 @@ function Userfeedbacks() {
     return (
         <>
             {loading && (
-                <h2 className="uppercase md:text-5xl text-xl text-gray-400 text-center font-bold animate-pulse">
+                <h2 className="uppercase md:text-5xl text-xl text-black dark:text-gray-400 text-center mt-20 font-light animate-pulse">
                     <TextGenerateEffect
                         words="Hang tight, fetching amazing feedback..."
-                        className="uppercase md:text-5xl text-xl text-gray-400 text-center font-bold animate-pulse"
+                        className="uppercase md:text-5xl text-xl text-black dark:text-gray-400 text-center font-light animate-pulse"
                     />
                 </h2>
             )}
