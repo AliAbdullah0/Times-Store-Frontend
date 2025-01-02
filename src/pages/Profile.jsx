@@ -16,13 +16,13 @@ function Profile() {
     isCanceledLoading,
     cartCheckoutOrders, // Access cart checkout orders
     cancelingError,
+    deleteProfile,
     loadingOrderId,
     handleCartCheckoutCancellation,
     handleOrderCancellation,
   } = useProfile(); // Access the context values
 
   const navigate = useNavigate();
-
   useEffect(() => {
     const token = localStorage.getItem('jwt');
     if (!token) {
@@ -170,6 +170,9 @@ function Profile() {
 
         </>
       )}
+      <div className='w-full p-2'>
+        <button onClick={deleteProfile} className='bg-red-500 text-white p-2'>Delete Profile</button>
+      </div>
     </div>
   );
 }
