@@ -10,7 +10,7 @@ const HeroSection = () => {
       try {
         const response = await fetch("https://times-store-production.up.railway.app/api/sliderimages?populate=*");
         const data = await response.json();
-        setImagesData(data.data[0].Images); // Accessing images from the API response
+        setImagesData(data.Images.map((item)=>item)); // Accessing images from the API response
         setLoading(false); // Set loading to false when images are fetched
       } catch (error) {
         console.error("Error fetching images:", error);
