@@ -1,8 +1,8 @@
 import React from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { CanvasRevealEffect } from "../components/ui/Canvas-reveal-effect";
-import { TextGenerateEffect } from "./ui/Text-generate-effect";
+import { CanvasRevealEffect } from "./Canvas-reveal-effect";
+import { TextGenerateEffect } from "./Text-generate-effect";
 
 export function CanvasRevealEffectDemo3() {
   const [hovered, setHovered] = React.useState(false);

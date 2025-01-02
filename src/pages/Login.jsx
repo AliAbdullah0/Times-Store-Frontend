@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -8,43 +10,53 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      navigate('/');
+    }
+  }, [navigate]);
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
     setLoading(true);
 
     try {
-      const response = await axios.post(`https://times-store-production.up.railway.app/api/auth/local`, {
-        identifier: email,
-        password,
-      });
+      const response = await axios.post(
+        `https://times-store-production.up.railway.app/api/auth/local`,
+        {
+          identifier: email,
+          password,
+        }
+      );
 
       const token = response.data.jwt;
       localStorage.setItem('jwt', token);
       setLoading(false);
+      toast.success('Logged in successfully!'); // Show success toast
       navigate('/');
     } catch (error) {
       console.error('Login error:', error);
-      alert('Invalid Email Or Password');
+      alert('Invalid Email or Password');
       setLoading(false);
     }
   };
 
-
   return (
-    <div className="flex flex-wrap w-full p-3">
+    <div className="flex flex-wrap w-full p-3 bg-white dark:bg-black">
       <div className="flex flex-col w-full md:w-1/2">
         <div className="flex justify-center pt-12 md:justify-start md:pl-12 md:-mb-24">
-          <a href="#" className="p-4 text-xl font-bold text-white bg-black">
+          <a href="#" className="p-4 text-xl font-bold text-white bg-black dark:bg-white dark:text-black">
             ZENTIME
           </a>
         </div>
         <div className="flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32">
-          <p className="text-3xl text-center">Welcome.</p>
+          <p className="text-3xl text-center text-gray-900 dark:text-gray-100">Welcome.</p>
           <form className="flex flex-col pt-3 md:pt-8" onSubmit={handleLogin}>
             <div className="flex flex-col pt-4">
               <div className="flex relative">
-                <span className="inline-flex items-center px-3 border-t bg-white border-l border-b border-gray-300 text-gray-500 shadow-sm text-sm">
+                <span className="inline-flex items-center px-3 border bg-white border-gray-300 text-gray-500 shadow-sm text-sm dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400">
                   <svg
                     width="15"
                     height="15"
@@ -60,14 +72,14 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  className="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-500"
                   placeholder="Email"
                 />
               </div>
             </div>
             <div className="flex flex-col pt-4 mb-12">
               <div className="flex relative">
-                <span className="inline-flex items-center px-3 border-t bg-white border-l border-b border-gray-300 text-gray-500 shadow-sm text-sm">
+                <span className="inline-flex items-center px-3 border bg-white border-gray-300 text-gray-500 shadow-sm text-sm dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400">
                   <svg
                     width="15"
                     height="15"
@@ -83,7 +95,7 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  className="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent dark:bg-gray-900 dark:text-gray-100 dark:placeholder-gray-500"
                   placeholder="Password"
                 />
               </div>
@@ -91,21 +103,20 @@ const Login = () => {
             <button
               type="submit"
               className={`w-full px-4 py-2 text-base font-semibold text-center text-black transition duration-200 ease-in bg-white shadow-md hover:bg-gradient-to-b hover:from-pink-500 -mt-8 hover:to-pink-600 hover:text-white focus:outline-none focus:ring-2 ${loading ? 'opacity-70 cursor-not-allowed' : ''
-                }`}
+                } dark:bg-gray-900 dark:text-white`}
               disabled={loading}
             >
               {loading ? (
                 <div className="flex justify-center">
-                  <div className="animate-spin border-t-2 border-black border-2 w-5 h-5 rounded-full"></div>
+                  <div className="animate-spin border-t-2 border-black border-2 w-5 h-5 rounded-full dark:border-white"></div>
                 </div>
               ) : (
                 'Login'
               )}
             </button>
-
           </form>
           <div className="pt-12 pb-12 text-center">
-            <p>
+            <p className="text-gray-700 dark:text-gray-300">
               Don&apos;t have an account?
               <a href="/register" className="ml-1 font-semibold underline">
                 Register here.
@@ -121,6 +132,7 @@ const Login = () => {
           alt="Login visual"
         />
       </div>
+      <ToastContainer /> 
     </div>
   );
 };

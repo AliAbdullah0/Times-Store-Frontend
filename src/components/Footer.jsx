@@ -9,7 +9,7 @@ function Footer({
   ] 
 }) {
   return (
-    <footer className="bg-black dark:bg-black pt-4 pb-8 xl:pt-8">
+    <footer className="bg-white dark:bg-black pt-4 pb-8 xl:pt-8">
       <div className="max-w-screen-lg px-4 mx-auto text-gray-400 xl:max-w-screen-xl sm:px-6 md:px-8 dark:text-gray-300">
         <ul className="flex flex-wrap justify-center pb-8 text-lg font-light">
           {columns.map((section, index) => (

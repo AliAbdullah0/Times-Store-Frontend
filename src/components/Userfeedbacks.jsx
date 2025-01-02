@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { InfiniteMovingCards } from './ui/InfinityMovingCards'
 import { TextGenerateEffect } from './ui/Text-generate-effect'
+import { fetchUserFeedbacks } from '../api'
 
 function Userfeedbacks() {
     const [feedbacks, setFeedbacks] = useState([])
@@ -11,7 +12,7 @@ function Userfeedbacks() {
     const fetchFeedbacks = async () => {
         setLoading(true)
         try {
-            const response = await axios.get('https://times-store-production.up.railway.app/api/feedbacks?populate=*')
+            const response = await fetchUserFeedbacks()
             setFeedbacks(response.data.data || [])
             console.log(response.data.data);
         } catch (err) {
@@ -40,7 +41,7 @@ function Userfeedbacks() {
             {error && (<TextGenerateEffect words={'Oops! Error Getting Feedbacks!'} className={'text-center w-full text-red-400 font-light md:text-4xl text-xl'} />)}
             <div className='w-full flex items-center justify-center p-2 mt-8 md:h-[30rem]'>
                 {/* Pass feedbacks directly to InfiniteMovingCards */}
-                <InfiniteMovingCards items={feedbacks} direction='right' />
+                <InfiniteMovingCards items={feedbacks} direction='right' className={''} theme='light'/>
             </div>
         </>
     )

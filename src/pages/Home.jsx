@@ -6,6 +6,7 @@ import { TextGenerateEffect } from '../components/ui/Text-generate-effect';
 import Userfeedbacks from '../components/Userfeedbacks';
 import { SparklesPreview } from '../components/SparkeSection';
 import { useProduct } from '../ProductContext';
+import HeroSection from '../components/HeroSection'
 
 function Home() {
   const { products, setProducts } = useProduct();
@@ -28,31 +29,18 @@ function Home() {
   };
 
   useEffect(() => {
-    getProducts();
-
     const jwt = localStorage.getItem('jwt');
     const hasRefreshed = localStorage.getItem('hasRefreshed'); // Check if the page has already been refreshed
 
     if (jwt && !hasRefreshed) {
       setIsVerified(true);
-      localStorage.setItem('hasRefreshed', 'true'); // Mark as refreshed
-      window.location.reload(); // Refresh the page
+      localStorage.setItem('hasRefreshed', 'true'); 
+      window.location.reload(); 
     }
   }, []);
 
   return (
-    <main className="bg-black relative overflow-x-hidden">
-      {loading && (
-        <div className="flex w-full justify-center items-center mt-8">
-          <h2 className="uppercase md:text-5xl text-xl text-gray-400 text-center font-bold animate-pulse">
-            <TextGenerateEffect
-              words={'Creating Mindblowing effects'}
-              className={'uppercase md:text-5xl text-xl text-gray-400 text-center font-bold animate-pulse'}
-            />
-          </h2>
-        </div>
-      )}
-
+    <main className="dark:bg-black bg-white relative overflow-x-hidden">
       {error && (
         <TextGenerateEffect
           words={'Oops! Looks Like An Error! Try Refreshing Page!'}
@@ -60,7 +48,7 @@ function Home() {
         />
       )}
 
-      <HeroParallax products={products} />
+      <HeroSection/>
       <div className="w-full overflow-x-hidden flex items-center justify-center">
         <Feature />
       </div>

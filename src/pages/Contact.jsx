@@ -31,13 +31,11 @@ function Contact() {
         }
       });
 
-
       setFormSuccess('Your message has been sent successfully!');
       setName('');
       setEmail('');
       setMessage('');
     } catch (error) {
-      // Handle error
       setFormError('Failed to send message. Please try again later.');
     } finally {
       setIsSubmitting(false);
@@ -45,35 +43,27 @@ function Contact() {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto p-6 bg-black">
-      <h1 className="text-3xl font-extrabold text-white mb-6">Contact Us</h1>
+    <div className="w-full max-w-7xl mx-auto p-6 bg-white dark:bg-black dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2]">
+      <h1 className="text-3xl font-extrabold text-black dark:text-white mb-6">Contact Us</h1>
 
       <div className="bg-transparent p-6 rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold text-pink-500 mb-4">Get in Touch</h2>
-        <p className="text-gray-200 mb-6">Feel free to reach out to us if you have any questions or inquiries about our watches!</p>
+        <p className="text-gray-800 dark:text-gray-200 mb-6">Feel free to reach out to us if you have any questions or inquiries about our watches!</p>
 
         <div className="flex items-center space-x-2">
-          <span className="font-semibold text-white">Email:</span>
+          <span className="font-semibold text-black dark:text-white">Email:</span>
           <a href="mailto:aliabdullah10nov2006@gmail.com" className="text-pink-500 hover:underline">
             aliabdullah10nov2006@gmail.com
           </a>
         </div>
 
-        {/* GitHub Section */}
-        {/* <div className="flex items-center space-x-2 mt-2">
-          <span className="font-semibold text-gray-800">GitHub:</span>
-          <a href="https://github.com/AliAbdullah0" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:underline">
-            AliAbdullah0
-          </a>
-        </div> */}
-
         <div className="flex items-center space-x-2 mt-2">
-          <span className="font-semibold text-white">Phone:</span>
+          <span className="font-semibold text-black dark:text-white">Phone:</span>
           <span className="text-pink-500">+92 319 705 5066</span>
         </div>
 
         <div className="flex items-center space-x-2 mt-2">
-          <span className="font-semibold text-white">Address:</span>
+          <span className="font-semibold text-black dark:text-white">Address:</span>
           <span className="text-pink-500">Islamabad,Pakistan</span>
         </div>
       </div>
@@ -97,12 +87,12 @@ function Contact() {
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-white outline-none">Full Name</label>
+              <label htmlFor="name" className="block text-black dark:text-white">Full Name</label>
               <input
                 type="text"
                 id="name"
                 name="name"
-                className="w-full p-3 border border-gray-500 bg-transparent rounded-md"
+                className="w-full p-3 border border-gray-500 bg-transparent rounded-md text-black dark:text-white dark:bg-gray-800 dark:border-gray-600"
                 placeholder="Your Full Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -111,12 +101,12 @@ function Contact() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-white outline-none">Email Address</label>
+              <label htmlFor="email" className="block text-black dark:text-white">Email Address</label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                className="w-full p-3 border border-gray-500 bg-transparent rounded-md"
+                className="w-full p-3 border border-gray-500 bg-transparent rounded-md text-black dark:text-white dark:bg-gray-800 dark:border-gray-600"
                 placeholder="Your Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -125,12 +115,12 @@ function Contact() {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-white outline-none">Message</label>
+              <label htmlFor="message" className="block text-black dark:text-white">Message</label>
               <textarea
                 id="message"
                 name="message"
                 rows="4"
-                className="w-full p-3 border border-gray-500 bg-transparent rounded-md"
+                className="w-full p-3 border border-gray-500 bg-transparent rounded-md text-black dark:text-white dark:bg-gray-800 dark:border-gray-600"
                 placeholder="Your Message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
@@ -141,7 +131,7 @@ function Contact() {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="w-full py-3 bg-pink-500 text-white rounded-md hover:bg-pink-600 focus:outline-none"
+                className="w-full py-3 bg-pink-500 text-white rounded-md hover:bg-pink-600 focus:outline-none dark:bg-pink-500 dark:hover:bg-pink-600"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}

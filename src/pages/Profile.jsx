@@ -30,7 +30,7 @@ function Profile() {
   }, [navigate]);
 
   return (
-    <div className="w-[95%] mx-auto p-6 drop-shadow-xl rounded-lg shadow-lg">
+    <div className="w-[95%] mx-auto p-6 drop-shadow-xl rounded-lg shadow-lg bg-white bg-grid-small-black/[0.2] dark:bg-black dark:bg-grid-small-white/[0.2]">
       <h1 className="text-3xl font-extrabold text-pink-500 mb-6">Your Profile</h1>
 
       {isLoading ? (
@@ -42,7 +42,7 @@ function Profile() {
       ) : (
         <>
           {user && (
-            <div className="mb-6 bg-transparent p-4 rounded-lg shadow text-white">
+            <div className="mb-6 bg-transparent p-4 rounded-lg shadow text-white dark:text-white">
               <h2 className="text-2xl font-semibold text-indigo-500">
                 <span className='text-2xl font-semibold text-blue-500'>Hello,</span> {user.username}
               </h2>
@@ -50,11 +50,11 @@ function Profile() {
             </div>
           )}
 
-          <h2 className="text-2xl font-semibold mb-4 text-white">Your Orders</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-white dark:text-white">Your Orders</h2>
           {orders.length > 0 ? (
             <ul className="space-y-4">
               {orders.map((order) => (
-                <li key={order.id} className="p-4 text-white rounded-lg bg-black">
+                <li key={order.id} className="p-4 text-white rounded-lg bg-black dark:bg-white dark:text-black">
                   <h3 className="text-xl font-semibold">Order ID: {order.id}</h3>
                   <p>Products: {order.Products}</p>
                   <p>Total Price: Rs {order.TotalPrice}</p>
@@ -102,7 +102,7 @@ function Profile() {
               ))}
             </ul>
           ) : (
-            <p className="text-center text-gray-200">No orders found.</p>
+            <p className="text-center text-gray-200 dark:text-gray-400">No orders found.</p>
           )}
 
           {cancelingError && (

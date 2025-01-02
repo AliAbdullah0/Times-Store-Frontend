@@ -60,7 +60,7 @@ function Products() {
     products.map((product) => <ProductCard key={product.id} product={product} />);
 
   return (
-    <div className="w-full bg-grid-small-white/[0.2] flex flex-col md:flex-row p-2 items-center md:items-start h-fit bg-black gap-2 flex-wrap">
+    <div className="w-full dark:bg-grid-small-white/[0.2] light:bg-grid-small-black/[0.2] flex flex-col md:flex-row p-2 items-center md:items-start h-fit dark:bg-black bg-white gap-2 flex-wrap">
       {loading
         ? renderLoading()
         : error
