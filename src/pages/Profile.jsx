@@ -131,7 +131,7 @@ function Profile() {
               {cartCheckoutOrders.map((cartCheckout) => (
                 <div
                   key={cartCheckout.id}
-                  className="p-4 text-white bg-green-500 dark:bg-gray-800 dark:text-white min-w-[500px]"
+                  className="p-4 text-white bg-white shadow-lg dark:bg-gray-800 dark:text-white min-w-[500px]"
                 >
                   <h3 className="text-xl font-semibold">Cart Checkout ID: {cartCheckout.id}</h3>
                   <p>Products: {cartCheckout.Products}</p>
