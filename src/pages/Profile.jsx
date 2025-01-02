@@ -50,7 +50,7 @@ function Profile() {
             </div>
           )}
 
-          <h2 className="text-2xl font-semibold mb-4 text-white dark:text-white">Your Orders</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">Your Orders</h2>
           {orders.length > 0 ? (
             <ul className="space-y-4">
               {orders.map((order) => (

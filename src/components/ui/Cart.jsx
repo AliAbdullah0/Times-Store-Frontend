@@ -1,78 +1,55 @@
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFromCart } from '../../features/CartSlice';
 
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart, updateQuantity } from "../../features/CartSlice";
-
-const CartDrawer = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const MyCartPage = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
-  };
 
   const handleRemove = (item) => {
     dispatch(removeFromCart(item));
   };
 
-  const stopPropagation = (e) => {
-    e.stopPropagation();
-  };
-
   return (
-    <>
-      {/* Cart Icon */}
-      <div
-        className="fixed bottom-4 right-4 p-4 bg-blue-600 text-white rounded-full cursor-pointer"
-        onClick={toggleDrawer}
-      >
-        <span className="text-xl">🛒</span>
-      </div>
-
-      {/* Drawer Overlay */}
-      <div
-        className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        onClick={toggleDrawer}
-      />
-      
-      {/* Cart Drawer */}
-      <div
-        className={`fixed top-0 right-0 w-80 h-full bg-white p-6 overflow-y-auto transition-transform ${
-          isOpen ? "transform-none" : "transform translate-x-full"
-        }`}
-        onClick={stopPropagation}  // Prevents closing the drawer when clicking inside
-      >
-        <h2 className="text-2xl font-bold mb-4">Cart</h2>
-        {cart.items.length === 0 ? (
-          <p>Your cart is empty</p>
-        ) : (
+    <div className="container mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-6">My Cart</h1>
+      {cart.items.length === 0 ? (
+        <p>Your cart is empty</p>
+      ) : (
+        <div>
           <ul>
             {cart.items.map((item) => (
-              <li key={item.id} className="flex justify-between mb-4">
-                <div>
-                  <p>{item.title}</p>  
+              <li key={item.id} className="flex justify-between items-center mb-4">
+                <div className="flex items-center">
+                  <img
+                    src={item.image.url} // Assuming `image` is available in item
+                    alt={item.title}
+                    className="w-16 h-16 object-cover mr-4"
+                  />
+                  <div>
+                    <p className="font-semibold">{item.title}</p>
+                    <p className="text-gray-600">${item.price}</p>
+                  </div>
                 </div>
-                <div>
-                  <button
-                    className="bg-red-500 text-white p-2 rounded"
-                    onClick={() => handleRemove(item)}
-                  >
-                    Remove
-                  </button>
-                </div>
+                <button
+                  className="bg-red-500 text-white py-1 px-4 rounded"
+                  onClick={() => handleRemove(item)}
+                >
+                  Remove
+                </button>
               </li>
             ))}
           </ul>
-        )}
-        <div className="mt-4">
-          <p className="font-semibold">Total: ${cart.totalPrice}</p>
+          <div className="mt-4">
+            <p className="font-semibold">Total: ${cart.totalPrice}</p>
+          </div>
+          <button className="mt-6 bg-blue-600 text-white py-2 px-4 rounded">
+            Proceed to Checkout
+          </button>
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 
-export default CartDrawer;
+export default MyCartPage;

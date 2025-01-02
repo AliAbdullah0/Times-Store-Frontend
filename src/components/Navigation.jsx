@@ -80,7 +80,7 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
                 )}
               </div>
               <NavLink to="/contact">Contact</NavLink>
-              <NavLink onClick={() => setCartDrawerOpen(!isCartDrawerOpen)}>Cart</NavLink>
+              <NavLink to='/cart'>Cart</NavLink>
               {isVerified && (
                 <>
                   <NavLink to="profile">My Profile</NavLink>
@@ -176,9 +176,6 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
           </div>
         </nav>
       </div>
-      {
-        isCartDrawerOpen && (<CartDrawer/>)
-      }
     </header>
   );
 }

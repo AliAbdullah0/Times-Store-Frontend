@@ -12,7 +12,7 @@ function ProductCard({ product }) {
   };
 
   return (
-    <div className="flex flex-col md:w-[23%] w-10/12 justify-between bg-black dark:bg-transparent border border-gray-300 dark:border-gray-700 rounded-md ml-2 mr-2 hover:scale-[1.03] hover:transition-all hover:shadow-2xl drop-shadow-xl p-3">
+    <div className="flex flex-col md:w-[23%] w-10/12 justify-between dark:bg-transparent rounded-md ml-2 mr-2 hover:scale-[1.03] hover:transition-all hover:shadow-2xl drop-shadow-xl p-3">
       {/* Product Image */}
       <div className="w-full overflow-hidden">
         <img

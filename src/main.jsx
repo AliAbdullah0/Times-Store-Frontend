@@ -13,6 +13,7 @@ import Registeration from './pages/Registration.jsx'
 import Profile from './pages/Profile.jsx'
 import CanceledOrders from './pages/CanceledOrders.jsx'
 import Contact from './pages/Contact.jsx'
+import MyCartPage from './components/ui/Cart.jsx'
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { BackgroundBeamsWithCollision } from './components/ui/Background-beams-with-collision.jsx'
 import WomenWatches from './pages/WomensWatches'
@@ -40,6 +41,7 @@ createRoot(document.getElementById('root')).render(
             <Route path='profile' element={<Profile/>} />
             <Route path='canceledorders' element={<CanceledOrders/>} />
             <Route path='contact' element={ <Contact/>}/>
+            <Route path='cart' element={ <MyCartPage/>}/>
             <Route path='*' element={<Error/>}/>
         </Route>
       </Routes>
