@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { addToCart } from '../features/CartSlice';
+import { useDispatch } from 'react-redux';
 
 function ProductCard({ product }) {
   if (!product) return null;
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product)); 
+  };
 
   return (
     <Link
@@ -10,7 +17,7 @@ function ProductCard({ product }) {
         pathname: `/product/checkout/${product.id}/${product.title}/${product.price}/${encodeURIComponent(product.image?.url || 'default-image.png')}`,
         state: { product },
       }}
-      className="flex flex-col md:w-[23%] w-10/12 justify-between bg-white dark:bg-transparent ml-2 mr-2 hover:scale-[1.03] hover:transition-all hover:shadow-2xl drop-shadow-xl  p-3"
+      className="flex flex-col md:w-[23%] w-10/12 justify-between bg-white dark:bg-transparent ml-2 mr-2 hover:scale-[1.03] hover:transition-all hover:shadow-2xl drop-shadow-xl p-3"
     >
       <div className="w-full overflow-hidden">
         <img
@@ -31,9 +38,15 @@ function ProductCard({ product }) {
           </li>
         </ul>
         <button
-          className="bg-pink-500 text-white text-xs md:text-base p-2  hover:bg-pink-600 hover:transition-all"
+          className="bg-pink-600 hover:bg-gradient-to-b hover:from-pink-600 hover:to-pink-800 text-white text-xs md:text-base p-2 hover:transition-all"
         >
           Buy Now
+        </button>
+        <button
+          onClick={handleAddToCart} // Trigger the function when clicked
+          className="bg-blue-600 hover:bg-gradient-to-b hover:from-blue-600 hover:to-blue-800 text-white text-xs md:text-base p-2 hover:transition-all"
+        >
+          Add To Cart
         </button>
       </div>
     </Link>

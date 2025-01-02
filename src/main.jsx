@@ -19,9 +19,11 @@ import WomenWatches from './pages/WomensWatches'
 import { ProductProvider } from './ProductContext.jsx'
 import { WomensContextProvider } from './WomensWatchesContext.jsx'
 import { ProfileContextProvider } from './ProfileContext.jsx'
-
+import store from './store/Store.js'
+import {Provider} from 'react-redux'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <Provider store={store}>
     <SpeedInsights/>
     <BrowserRouter>
     <ProfileContextProvider>
@@ -45,5 +47,6 @@ createRoot(document.getElementById('root')).render(
       </WomensContextProvider>
       </ProfileContextProvider>
     </BrowserRouter>
+    </Provider>
   </StrictMode>
 )
