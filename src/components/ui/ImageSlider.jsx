@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 const ImagesSlider = ({
   images,
   children,
-  overlay = false,
+  overlay = true,
   overlayClassName,
   className,
   autoplay = true,

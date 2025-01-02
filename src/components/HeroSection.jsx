@@ -11,7 +11,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <ImagesSlider className="h-[35rem] w-full md:h-[40rem]" overlay="false" images={images}>
+    <ImagesSlider className="w-full" images={images}>
       <motion.div
         initial={{
           opacity: 0,
