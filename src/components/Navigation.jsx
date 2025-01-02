@@ -46,8 +46,8 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       setIsVerified(true);
-      window.location.reload()
     }
+    window.location.reload()
   }, [isVerified]);
 
   const NavLink = ({ to, children, onClick }) => (
