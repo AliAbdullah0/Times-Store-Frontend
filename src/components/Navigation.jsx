@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DarkModeToggle from '../pages/Darkmode';
+import CartDrawer from './ui/Cart';
 
 function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isCartDrawerOpen,setCartDrawerOpen] = useState(false)
 
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
@@ -28,6 +30,7 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
     localStorage.removeItem('jwt');
     setIsVerified(false);
   };
+
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -77,6 +80,7 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
                 )}
               </div>
               <NavLink to="/contact">Contact</NavLink>
+              <NavLink onClick={(prev)=>setCartDrawerOpen(!prev)}>Cart</NavLink>
               {isVerified && (
                 <>
                   <NavLink to="profile">My Profile</NavLink>
@@ -172,6 +176,9 @@ function Navigation({ links = ['Products', 'Orders', 'Contact'], ...props }) {
           </div>
         </nav>
       </div>
+      {
+        isCartDrawerOpen && (<CartDrawer/>)
+      }
     </header>
   );
 }
