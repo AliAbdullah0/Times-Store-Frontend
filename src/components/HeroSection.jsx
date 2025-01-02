@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import ImagesSlider from "./ui/ImageSlider";
 
-export function ImagesSliderDemo() {
+export default function HeroSection() {
   const images = [
     "https://www.watchesofswitzerland.com/medias/wosus-hp-tudor-desktop-jan25.jpg?context=bWFzdGVyfGltYWdlc3w5NjA1NDR8aW1hZ2UvanBlZ3xhRE5oTDJneVl5ODVNekk0TkRrMk16UTFNVEU0TDNkdmMzVnpMV2h3TFhSMVpHOXlMV1JsYzJ0MGIzQXRhbUZ1TWpVdWFuQm58ODIyNmNhZGEzMDY5ZWRhYjI4ZTNiZGQzOWIxYzYwNTE0NjgxMzBhYTk4ZWM0NzE2MTA4MTU2NmRhNmNhYmQxOA&imwidth=1920",
     "https://www.watchesofswitzerland.com/medias/wosus-patek-philippe-desktop-carousel-may-23.jpg?context=bWFzdGVyfHJvb3R8MjIxNjAwfGltYWdlL2pwZWd8YURRNUwyZzBZaTg1TWpJd05URTFOalU1T0RBMkxtcHdad3w5M2U2MGJjZGQ2NDU5YjU3MGNmN2UyMmFiN2NiNmFhZTllMjczYjk1ZGQ1ZGM1NzIzNjMyZDMxN2NkNDU4MWQ3&imwidth=1920",
