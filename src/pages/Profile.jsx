@@ -17,13 +17,14 @@ function Profile() {
     isCanceledLoading,
     cartCheckoutOrders,
     cancelingError,
-    deleteProfile,
     loadingOrderId,
     handleCartCheckoutCancellation,
     handleOrderCancellation,
   } = useProfile();
 
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [deletingProfile,setDeletingProfile] = useState(false)
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,7 +34,21 @@ function Profile() {
       return;
     }
   }, [navigate]);
+  const deleteProfile = async () => {
+    setDeletingProfile(true);
+    try {
+      await axios.delete(`${API_URL}/api/users/${userId}`);
+      console.log("User Deleted!");
+  
+   
+      localStorage.removeItem('jwt');
 
+      const navigate = useNavigate();
+      navigate('/login');
+    } catch (err) {
+      console.error("Error Deleting User:", err);
+    }
+  };
   const handleDeleteProfile = () => {
     deleteProfile();
     setPopupOpen(false);

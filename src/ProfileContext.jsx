@@ -22,7 +22,6 @@ export const ProfileContextProvider = ({ children }) => {
   const [loadingOrderId, setLoadingOrderId] = useState(null); // Track which order is being canceled
   const [cartCheckoutOrders, setCartCheckoutOrders] = useState([]); // New state for Cart Checkout orders
   const [userId,setUserId] = useState(0)
-  const [deletingProfile,setDeletingProfile] = useState(false)
   useEffect(() => {
     const token = localStorage.getItem('jwt');
     if (!token) return;
@@ -172,23 +171,7 @@ export const ProfileContextProvider = ({ children }) => {
       setLoadingOrderId(null);
     }
   };
-  const deleteProfile = async () => {
-    setDeletingProfile(true);
-    try {
-      await axios.delete(`${API_URL}/api/users/${userId}`);
-      console.log("User Deleted!");
   
-   
-      localStorage.removeItem('jwt');
-      window.location.reload();
-  
-
-      const navigate = useNavigate();
-      navigate('/login');
-    } catch (err) {
-      console.error("Error Deleting User:", err);
-    }
-  };
   
   const value = {
     user,
@@ -205,7 +188,6 @@ export const ProfileContextProvider = ({ children }) => {
     loadingOrderId,
     handleOrderCancellation,
     handleCartCheckoutCancellation,
-    deleteProfile,
   };
 
   return (
