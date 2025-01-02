@@ -43,7 +43,7 @@ createRoot(document.getElementById('root')).render(
             <Route path='canceledorders' element={<CanceledOrders/>} />
             <Route path='contact' element={ <Contact/>}/>
             <Route path='cart' element={ <MyCartPage/>}/>
-            <Route path='cartcheckout' element={<CartCheckout/>}/>
+            <Route path='cart/cartcheckout' element={<CartCheckout/>}/>
             <Route path='*' element={<Error/>}/>
         </Route>
       </Routes>

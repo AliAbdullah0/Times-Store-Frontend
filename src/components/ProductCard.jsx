@@ -23,8 +23,8 @@ function ProductCard({ product }) {
       </div>
 
       {/* Product Details */}
-      <div className="flex h-full items-end justify-between w-full p-1">
-        <ul className="flex flex-col items-start justify-start w-fit">
+      <div className="flex flex-col h-full items-start justify-between w-full p-1 mt-2">
+        <ul className="flex flex-col items-start justify-start w-full">
           <li className="font-extrabold text-pink-400 text-2xl">{product.title}</li>
           <li className="text-gray-700 dark:text-gray-200 text-sm">{product.description}</li>
           <li className="text-gray-700 dark:text-gray-200 text-sm">
@@ -36,7 +36,7 @@ function ProductCard({ product }) {
         </ul>
 
         {/* Action Buttons */}
-        <div className="flex space-x-2 w-fit">
+        <div className="flex space-x-2 w-full mt-4 justify-between">
           <Link
             to={{
               pathname: `/product/checkout/${product.id}/${product.title}/${product.price}/${encodeURIComponent(
@@ -45,13 +45,13 @@ function ProductCard({ product }) {
               state: { product },
             }}
           >
-            <button className="bg-pink-500 text-white text-xs md:text-base px-4 py-2 rounded hover:bg-pink-600 transition-all">
+            <button className="bg-pink-500 text-white text-xs md:text-base px-4 py-2 rounded hover:bg-pink-600 transition-all w-full md:w-auto">
               Buy Now
             </button>
           </Link>
           <button
             onClick={handleAddToCart}
-            className="bg-blue-500 text-white w-fit line-clamp-1 text-xs md:text-base px-4 py-2 rounded hover:bg-blue-600 transition-all"
+            className="bg-blue-500 text-white text-xs md:text-base px-4 py-2 rounded hover:bg-blue-600 transition-all w-full md:w-auto"
           >
             Add To Cart
           </button>
