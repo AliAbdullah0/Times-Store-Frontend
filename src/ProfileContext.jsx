@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { Navigate } from 'react-router';
 
 const API_URL = 'https://times-store-production.up.railway.app'; // API URL constant
 
@@ -172,7 +173,10 @@ export const ProfileContextProvider = ({ children }) => {
   };
   const deleteProfile = async ()=>{
     setDeletingProfile(true)
-    const response = await axios.delete(`${API_URL}/api/users/${userId}`).then(()=>console.log("User Deleted!")).catch((err)=>console.log("Error Deleting User:",err))
+    const response = await axios.delete(`${API_URL}/api/users/${userId}`).then(()=>console.log("User Deleted!")).catch((err)=>console.log("Error Deleting   User:",err))
+    localStorage.removeItem('jwt')
+    Navigate('/')
+    window.location.reload()
     
   }
   const value = {
