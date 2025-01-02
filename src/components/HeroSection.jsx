@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
+import axios from "axios"; // Import axios
 import { ImagesSlider } from "./ui/ImageSlider";
+import {fetchSliderImages} from '../api'
 
 export default function ImagesSliderDemo() {
   const [data, setData] = useState([]);
@@ -8,12 +10,11 @@ export default function ImagesSliderDemo() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const fetchSliderImages = async () => {
+  const getImages = async () => {
     try {
-      const response = await fetch('/path-to-your-api'); // Adjust your API path here
-      const result = await response.json();
-      setData(result.data);
-      setImages(result.data[0].Images.map((image) => image.url)); // Assuming 'Images' is an array
+      const response = await fetchSliderImages();
+      setData(response.data);
+      setImages(response.data[0].Images.map((image) => image.url)); 
     } catch (error) {
       console.error("Error fetching images:", error);
       setError(true);
@@ -23,7 +24,7 @@ export default function ImagesSliderDemo() {
   };
 
   useEffect(() => {
-    fetchSliderImages();
+    getImages();
   }, []);
 
   if (loading) {
