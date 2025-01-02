@@ -6,6 +6,7 @@ import { TextGenerateEffect } from '../components/ui/Text-generate-effect';
 import Userfeedbacks from '../components/Userfeedbacks';
 import { SparklesPreview } from '../components/SparkeSection';
 import { useProduct } from '../ProductContext';
+import { Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection'
 
 function Home() {
