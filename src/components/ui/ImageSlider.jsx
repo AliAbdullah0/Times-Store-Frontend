@@ -1,4 +1,5 @@
-import { cn } from "../../lib/utils";
+"use client";
+import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
@@ -27,14 +28,14 @@ export const ImagesSlider = ({
 
   useEffect(() => {
     loadImages();
-  }, [images]); // Added dependency to load images again if the prop changes
+  }, []);
 
   const loadImages = () => {
     setLoading(true);
     const loadPromises = images.map((image) => {
       return new Promise((resolve, reject) => {
         const img = new Image();
-        img.src = image.url; // Accessing the url from the API response
+        img.src = image;
         img.onload = () => resolve(image);
         img.onerror = reject;
       });
@@ -47,7 +48,6 @@ export const ImagesSlider = ({
       })
       .catch((error) => console.error("Failed to load images", error));
   };
-
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "ArrowRight") {
@@ -107,15 +107,14 @@ export const ImagesSlider = ({
   const areImagesLoaded = loadedImages.length > 0;
 
   return (
-    <div
+    (<div
       className={cn(
         "overflow-hidden h-full w-full relative flex items-center justify-center",
         className
       )}
       style={{
         perspective: "1000px",
-      }}
-    >
+      }}>
       {areImagesLoaded && children}
       {areImagesLoaded && overlay && (
         <div className={cn("absolute inset-0 bg-black/60 z-40", overlayClassName)} />
@@ -124,37 +123,14 @@ export const ImagesSlider = ({
         <AnimatePresence>
           <motion.img
             key={currentIndex}
-            src={loadedImages[currentIndex].url} // Display the image URL
+            src={loadedImages[currentIndex]}
             initial="initial"
             animate="visible"
             exit={direction === "up" ? "upExit" : "downExit"}
             variants={slideVariants}
-            className="image h-full w-full absolute inset-0 object-cover object-center"
-          />
+            className="image h-full w-full absolute inset-0 object-cover object-center" />
         </AnimatePresence>
       )}
-    </div>
+    </div>)
   );
-};
-
-// Example of how to fetch the data from the API and pass it to ImagesSlider
-const ImageCarousel = () => {
-  const [imagesData, setImagesData] = useState([]);
-  
-  useEffect(() => {
-
-    const fetchImages = async () => {
-      try {
-        const response = await fetch("https://times-store-production.up.railway.app/api/sliderimages?populate=*");
-        const data = await response.json();
-        setImagesData(data.data[0].Images); // Accessing images from the API response
-      } catch (error) {
-        console.error("Error fetching images:", error);
-      }
-    };
-
-    fetchImages();
-  }, []);
-
-  return <ImagesSlider images={imagesData} autoplay={true} />;
 };
