@@ -8,7 +8,6 @@ const initialState = {
       id: 1,
       title: "Watch",
       price: 100,
-      quantity: 1,
     },
   ],
   totalPrice: 100,
@@ -36,15 +35,6 @@ const cartSlice = createSlice({
       if (itemIndex !== -1) {
         state.totalPrice -= state.items[itemIndex].price * state.items[itemIndex].quantity;
         state.items.splice(itemIndex, 1);
-      }
-    },
-    updateQuantity(state, action) {
-      const { item, newQuantity } = action.payload;
-      const existingItem = state.items.find((i) => i.id === item.id);
-      if (existingItem && newQuantity > 0) {
-        const priceDifference = (newQuantity - existingItem.quantity) * existingItem.price;
-        existingItem.quantity = newQuantity;
-        state.totalPrice += priceDifference;
       }
     },
   },

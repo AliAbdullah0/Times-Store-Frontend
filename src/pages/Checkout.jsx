@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { BackgroundBeamsWithCollision } from '../components/ui/Background-beams-with-collision';
 
 function Checkout() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -22,13 +21,13 @@ function Checkout() {
   useEffect(() => {
     const token = localStorage.getItem('jwt');
     if (!token) {
-      navigate('/login'); 
+      navigate('/login');
       return;
     }
 
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`https://times-store-production.up.railway.app/api/users/me`, {
+        const response = await fetch(`${apiUrl}/api/users/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -37,17 +36,15 @@ function Checkout() {
           const user = await response.json();
           setUserData({ email: user.email, username: user.username });
         } else {
-          console.error('Failed to fetch user data');
           navigate('/login');
         }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
+      } catch {
         navigate('/login');
       }
     };
 
     fetchUserData();
-  }, [navigate]);
+  }, [apiUrl, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -62,7 +59,7 @@ function Checkout() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://times-store-production.up.railway.app/api/orders', {
+      const response = await fetch(`${apiUrl}/api/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,67 +76,64 @@ function Checkout() {
         }),
       });
 
-      if (!response.ok) {
-        const errorDetails = await response.json();
-        setErrorMessage(`Failed to place the order. Details: ${errorDetails.error.details[0].message}`);
-      } else {
+      if (response.ok) {
         const result = await response.json();
         setSuccessMessage(`Order placed successfully! Order ID: ${result.data.id}`);
         setFormData({ Address: '', Phone: '' });
         setIsModalOpen(true);
+      } else {
+        setErrorMessage('Failed to place the order. Please try again.');
       }
-    } catch (error) {
-      console.error('Request failed:', error);
+    } catch {
       setErrorMessage('An error occurred. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="max-w-4xl mt-2 mb-2 mx-auto p-6 bg-transparent shadow-lg bg-white dark:bg-black">
-      <h1 className="text-3xl font-bold text-pink-500 mb-6 dark:text-white">
-        <span className="text-white">Chec</span>kout
+    <div className="max-w-4xl mt-4 mx-auto p-6 bg-white shadow-lg rounded-lg dark:bg-gray-900">
+      <h1 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
+        Checkout
       </h1>
-      
+
       <div className="flex flex-col md:flex-row items-center mb-6">
-        <div className="w-full md:w-1/2 p-4 overflow-hidden">
-          <h2 className="text-2xl font-semibold mb-2 text-white dark:text-gray-200">{title}</h2>
-          <div className="overflow-hidden w-full">
-            <img src={productImage} alt={title} className="w-full h-64 object-cover rounded-md hover:scale-105 hover:transition-all" />
-          </div>
-        </div>
         <div className="w-full md:w-1/2 p-4">
-          <p className="text-lg text-white dark:text-gray-200">
+          <h2 className="text-2xl font-semibold mb-2 text-gray-800 dark:text-white">
+            {title}
+          </h2>
+          <img
+            src={productImage}
+            alt={title}
+            className="w-full h-64 object-cover rounded-md hover:scale-105 transition-transform"
+          />
+        </div>
+        <div className="w-full md:w-1/2 p-4 space-y-2">
+          <p className="text-lg text-gray-800 dark:text-gray-200">
             Price: <span className="font-semibold text-pink-500">Rs {price}</span>
           </p>
-          <p className="text-lg text-white dark:text-gray-200">
+          <p className="text-lg text-gray-800 dark:text-gray-200">
             Delivery Charge: <span className="font-semibold text-pink-500">Rs {deliveryCharge}</span>
           </p>
-          <p className="text-lg text-white dark:text-gray-200">
+          <p className="text-lg text-gray-800 dark:text-gray-200">
             Total Price: <span className="font-semibold text-pink-500">Rs {totalPrice}</span>
-          </p>
-          <p className="text-lg text-white dark:text-gray-200">
-            Product ID: <span className="font-semibold text-pink-500">{id}</span>
           </p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="mb-4">
-          <p className="text-lg text-white dark:text-gray-200">
+        <div>
+          <p className="text-lg text-gray-800 dark:text-gray-200">
             Email: <span className="font-semibold text-pink-500">{userData.email}</span>
           </p>
-          <p className="text-lg text-white dark:text-gray-200">
+          <p className="text-lg text-gray-800 dark:text-gray-200">
             Username: <span className="font-semibold text-pink-500">{userData.username}</span>
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row gap-4">
           <input
             type="text"
             name="Address"
@@ -147,7 +141,7 @@ function Checkout() {
             value={formData.Address}
             onChange={handleChange}
             required
-            className="p-3 border border-gray-300 bg-transparent rounded-md w-full md:w-1/2 text-gray-200 mr-2 mb-4 md:mb-0 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+            className="p-3 border rounded-md bg-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white"
           />
           <input
             type="text"
@@ -156,31 +150,35 @@ function Checkout() {
             value={formData.Phone}
             onChange={handleChange}
             required
-            className="p-3 border border-gray-300 bg-transparent rounded-md w-full text-gray-200 md:w-1/2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+            className="p-3 border rounded-md bg-transparent dark:bg-gray-800 dark:border-gray-600 dark:text-white"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full py-3 bg-pink-500 text-white font-semibold rounded-md hover:bg-pink-600 transition flex justify-center items-center dark:bg-pink-600 dark:hover:bg-pink-700"
+          className="w-full py-3 bg-pink-500 text-white font-semibold rounded-md hover:bg-pink-600 dark:bg-pink-600 dark:hover:bg-pink-700"
           disabled={isLoading}
         >
-          {isLoading ? (
-            <div className="spinner-border animate-spin border-4 border-t-4 border-white rounded-full w-6 h-6"></div>
-          ) : (
-            'Place Order'
-          )}
+          {isLoading ? 'Placing Order...' : 'Place Order'}
         </button>
       </form>
 
-      {successMessage && <p className="mt-4 text-green-500 dark:text-green-400">{successMessage}</p>}
-      {errorMessage && <p className="mt-4 text-red-500 dark:text-red-400">{errorMessage}</p>}
+      {successMessage && (
+        <p className="mt-4 text-green-500 dark:text-green-400">{successMessage}</p>
+      )}
+      {errorMessage && (
+        <p className="mt-4 text-red-500 dark:text-red-400">{errorMessage}</p>
+      )}
 
       {isModalOpen && (
-        <div className="fixed p-2 inset-0 text-white flex justify-center items-center z-50">
-          <div className="sm:p-8 p-4 rounded-lg bg-black shadow-lg w-full sm:w-1/3 text-center">
-            <h2 className="text-xl font-bold mb-4">Order Confirmed!</h2>
-            <p className="mb-4">Your order has been placed successfully. Thank you for shopping with us!</p>
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center z-50">
+          <div className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg text-center">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
+              Order Confirmed!
+            </h2>
+            <p className="text-gray-700 dark:text-gray-200 mb-4">
+              Your order has been placed successfully. Thank you for shopping with us!
+            </p>
             <button
               onClick={closeModal}
               className="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 dark:bg-pink-600 dark:hover:bg-pink-700"

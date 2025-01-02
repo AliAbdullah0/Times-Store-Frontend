@@ -1,4 +1,4 @@
-// src/components/CartDrawer.jsx
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart, updateQuantity } from "../../features/CartSlice";
@@ -14,12 +14,6 @@ const CartDrawer = () => {
 
   const handleRemove = (item) => {
     dispatch(removeFromCart(item));
-  };
-
-  const handleQuantityChange = (item, newQuantity) => {
-    if (newQuantity > 0) {
-      dispatch(updateQuantity({ item, newQuantity }));
-    }
   };
 
   const stopPropagation = (e) => {
@@ -59,17 +53,7 @@ const CartDrawer = () => {
             {cart.items.map((item) => (
               <li key={item.id} className="flex justify-between mb-4">
                 <div>
-                  <p>{item.title}</p>
-                  <p>Qty: {item.quantity}</p>
-                  <input
-                    type="number"
-                    min="1"
-                    value={item.quantity}
-                    onChange={(e) =>
-                      handleQuantityChange(item, parseInt(e.target.value))
-                    }
-                    className="w-16 mt-2 p-1 border border-gray-300 rounded"
-                  />
+                  <p>{item.title}</p>  
                 </div>
                 <div>
                   <button
